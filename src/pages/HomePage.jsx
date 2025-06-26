@@ -5,6 +5,8 @@ import WhatWeDo from '../components/WhatWeDo';
 import WhyTheyNeedUs from '../components/WhyTheyNeedUs';
 import Activities from '../components/Activities';
 import Curriculum from '../components/Curriculum';
+import Testimonial from '../components/testamonial';
+import FAQ from '../components/FAQ';
 
 const HomePage = () => {
   return (
@@ -15,6 +17,8 @@ const HomePage = () => {
       <WhyTheyNeedUs />
       <Activities />
       <Curriculum />
+      <Testimonial />
+      <FAQ />
     </div>
   );
 };
