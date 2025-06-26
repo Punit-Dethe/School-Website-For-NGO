@@ -3,7 +3,7 @@ import { FiPlus, FiMinus } from 'react-icons/fi';
 import faqImage from '../assets/Screenshot 2025-06-26 122635.png';
 
 const FAQ = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(null);
 
   const faqs = [
     {
@@ -17,7 +17,7 @@ const FAQ = () => {
           To keep ticket prices as <span className="font-bold">low</span> as we can for <span className="font-bold">everyone</span>, we are <span className="font-bold">unable</span> to offer
           discounts and appreciate your <span className="font-bold">support</span> for this community event.
           <br /><br />
-          <button className="bg-[#FF6B6B] text-white px-6 py-3 rounded-lg font-bold hover:bg-[#FF4F4F] transition-colors duration-300 border-2 border-black">
+          <button className="bg-[#FF6B6B] text-white px-6 py-3 rounded-full font-bold hover:bg-[#FF4F4F] transition-colors duration-300 border-2 border-black">
             Buy Tickets
           </button>
         </>
@@ -58,7 +58,7 @@ const FAQ = () => {
         </div>
         <div className="flex flex-col md:flex-row gap-8 items-start">
           <div className="md:w-1/2">
-            <img src={faqImage} alt="FAQ" className="rounded-2xl border-2 border-black" />
+            <img src={faqImage} alt="FAQ" className="rounded-2xl border-2 border-black" style={{ width: '100%', height: '450px' }} />
           </div>
           <div className="md:w-1/2">
             {faqs.map((faq, index) => (
@@ -68,9 +68,7 @@ const FAQ = () => {
                   <div className="bg-white rounded-xl h-full w-full absolute top-1 left-1 border-2 border-black"></div>
                   
                   {/* Main container */}
-                  <div className="relative bg-[#FBBF24] rounded-xl border-2 border-black">
-                    {/* Folder Tab */}
-                    <div className="absolute -top-px left-4 w-32 h-6 bg-inherit rounded-t-lg border-x-2 border-t-2 border-black"></div>
+                  <div className="relative bg-[#f3a20f] rounded-xl border-2 border-black">
                     
                     <button
                       className="flex justify-between items-center w-full p-4 text-left focus:outline-none"
