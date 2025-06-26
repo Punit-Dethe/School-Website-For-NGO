@@ -73,7 +73,7 @@ const Curriculum = () => {
           {/* Right Side: Curriculum Bars */}
           <div className="w-full lg:flex-1 relative">
             <div className="absolute inset-y-0 left-0 right-0 lg:right-[-100vw] bg-white -z-10"></div>
-            <div className="relative ml-[-64px] pl-0 pr-0">
+            <div className="relative ml-[-1px] lg:ml-[-64px] pl-0 pr-0">
               {curriculumData.map((item, index) => (
                 <div
                   key={item.level}
