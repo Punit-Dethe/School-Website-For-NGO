@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FiPlus, FiMinus } from 'react-icons/fi';
+import { FiPlus, FiX } from 'react-icons/fi';
 import faqImage from '../assets/Screenshot 2025-06-26 122635.png';
 
 const FAQ = () => {
@@ -7,21 +7,8 @@ const FAQ = () => {
 
   const faqs = [
     {
-      question: 'Can I have a discount?',
-      answer: (
-        <>
-          This is a <span className="font-bold">non-profit</span> event, and our goal is to make FlowFest as <span className="font-bold">affordable</span> as
-          we possibly can whilst delivering a <span className="font-bold">quality</span> day that you'll never forget. Due to
-          last year's feedback we are investing more in <span className="font-bold">comfort and quality</span> this year.
-          <br /><br />
-          To keep ticket prices as <span className="font-bold">low</span> as we can for <span className="font-bold">everyone</span>, we are <span className="font-bold">unable</span> to offer
-          discounts and appreciate your <span className="font-bold">support</span> for this community event.
-          <br /><br />
-          <button className="bg-[#FF6B6B] text-white px-6 py-3 rounded-full font-bold hover:bg-[#FF4F4F] transition-colors duration-300 border-2 border-black">
-            Buy Tickets
-          </button>
-        </>
-      ),
+      question: 'WHat are u doing',
+      answer: 'chuhc uieweo cbwiebc w w we we wwt w we wev ew w w we wewgwfwfsvw ww w w we we wweew uiwgcuy gwecwec vwiubniwe iuwb iwe iwu igbuyiweubwiv vwv wvwevwevwe we we ouwbiuweci wvwwee w w w w'
     },
     {
       question: 'How do I get there?',
@@ -78,7 +65,7 @@ const FAQ = () => {
                         {faq.question}
                       </h3>
                       <span className="ml-4 text-black">
-                        {activeIndex === index ? <FiMinus size={28} className="font-bold" /> : <FiPlus size={28} className="font-bold" />}
+                        {activeIndex === index ? <FiX size={28} className="font-bold" /> : <FiPlus size={28} className="font-bold" />}
                       </span>
                     </button>
                     
@@ -88,7 +75,7 @@ const FAQ = () => {
                       }`}
                     >
                       <div className="px-4 pb-4">
-                        <div className="p-4 bg-white rounded-lg border-2 border-black">
+                        <div className="p-4 bg-gray-100 rounded-lg">
                           <div className="text-gray-700">
                             {faq.answer}
                           </div>
