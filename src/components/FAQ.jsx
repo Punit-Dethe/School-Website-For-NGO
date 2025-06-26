@@ -50,42 +50,51 @@ const FAQ = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-5xl font-bold text-black inline-block">
-            Frequently Asked 
+            Frequently Asked
           </h2>
-          <div className="inline-block bg-[#FF7A00] text-white px-6 py-2 rounded-lg -rotate-2 transform translate-y-1 -translate-x-2 border-2 border-black">
+          <div className="inline-block bg-[#FF7A00] text-white px-6 py-2 rounded-lg mt-2 border-2 border-black shadow-[4px_4px_0px_#000000]">
             <h2 className="text-5xl font-bold">Questions</h2>
           </div>
         </div>
         <div className="flex flex-col md:flex-row gap-8 items-start">
           <div className="md:w-1/2">
-            <img src={faqImage} alt="FAQ" className="rounded-lg border-2 border-black" />
+            <img src={faqImage} alt="FAQ" className="rounded-2xl border-2 border-black" />
           </div>
           <div className="md:w-1/2">
             {faqs.map((faq, index) => (
-              <div key={index} className="mb-4">
+              <div key={index} className="mb-6">
                 <div className="relative">
-                  <div className="bg-[#FBBF24] h-8 w-40 rounded-t-lg border-2 border-b-0 border-black flex items-center justify-center">
-                    <div className="w-4 h-4 bg-[#FDF9E6] rounded-full border-2 border-black"></div>
-                  </div>
-                  <button
-                    className={`flex justify-between items-center w-full p-4 text-left bg-[#FBBF24] rounded-lg focus:outline-none border-2 border-black ${activeIndex === index ? 'rounded-b-none' : ''}`}
-                    onClick={() => toggleFAQ(index)}
-                  >
-                    <h3 className="text-lg font-medium text-black">
-                      {faq.question}
-                    </h3>
-                    <span className="ml-4 text-black">
-                      {activeIndex === index ? <FiMinus size={20} /> : <FiPlus size={20} />}
-                    </span>
-                  </button>
-                  <div
-                    className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                      activeIndex === index ? 'max-h-screen' : 'max-h-0'
-                    }`}
-                  >
-                    <div className="p-4 bg-white rounded-b-lg border-2 border-t-0 border-black">
-                      <div className="text-gray-700">
-                        {faq.answer}
+                  {/* Shadow */}
+                  <div className="bg-white rounded-xl h-full w-full absolute top-1 left-1 border-2 border-black"></div>
+                  
+                  {/* Main container */}
+                  <div className="relative bg-[#FBBF24] rounded-xl border-2 border-black">
+                    {/* Folder Tab */}
+                    <div className="absolute -top-px left-4 w-32 h-6 bg-inherit rounded-t-lg border-x-2 border-t-2 border-black"></div>
+                    
+                    <button
+                      className="flex justify-between items-center w-full p-4 text-left focus:outline-none"
+                      onClick={() => toggleFAQ(index)}
+                    >
+                      <h3 className="text-lg font-medium text-black relative z-10">
+                        {faq.question}
+                      </h3>
+                      <span className="ml-4 text-black">
+                        {activeIndex === index ? <FiMinus size={28} className="font-bold" /> : <FiPlus size={28} className="font-bold" />}
+                      </span>
+                    </button>
+                    
+                    <div
+                      className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                        activeIndex === index ? 'max-h-screen' : 'max-h-0'
+                      }`}
+                    >
+                      <div className="px-4 pb-4">
+                        <div className="p-4 bg-white rounded-lg border-2 border-black">
+                          <div className="text-gray-700">
+                            {faq.answer}
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -100,4 +109,3 @@ const FAQ = () => {
 };
 
 export default FAQ;
-''
