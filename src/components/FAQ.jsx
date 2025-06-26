@@ -25,7 +25,7 @@ const FAQ = () => {
     },
     {
       question: 'How do I get there?',
-      answer: 'Details about transportation and directions will be provided closer to the event date. Please check our website for updates.'
+      answer: ' about transportation and directions will be provided closer to the event date. Please check our website for updates.'
     },
     {
       question: 'Is there food included?',
