@@ -57,11 +57,11 @@ const Curriculum = () => {
         </div>
       </div>
 
-      <div className="relative w-full">
+      <div className="relative w-full overflow-hidden">
         <div className="flex flex-col lg:flex-row">
           {/* Left Side: Vertical Text Display */}
-          <div className="w-full lg:w-1/4 pl-0 pr-4 lg:pr-8 flex items-start">
-            <div className="overflow-hidden shadow-2xl w-full max-w-xs bg-black flex items-center justify-center" style={{ height: 'calc(5 * 4.25rem)' }}>
+          <div className="w-full lg:w-1/4 flex items-start">
+            <div className="overflow-hidden shadow-2xl w-full bg-black flex items-center justify-center" style={{ height: 'calc(5 * 4.25rem)' }}>
               <div className="relative w-full h-full flex items-center justify-center">
                 <div className="text-white text-2xl font-bold tracking-widest transform -rotate-90 whitespace-nowrap">
                   <span className="text-yellow-400">OUR</span> CURRICULUM
@@ -73,7 +73,7 @@ const Curriculum = () => {
           {/* Right Side: Curriculum Bars */}
           <div className="w-full lg:flex-1 relative">
             <div className="absolute inset-y-0 left-0 right-0 lg:right-[-100vw] bg-white -z-10"></div>
-            <div className="relative ml-[-1px] lg:ml-[-64px] pl-0 pr-0">
+            <div className="relative ml-0 pl-0 pr-0">
               {curriculumData.map((item, index) => (
                 <div
                   key={item.level}
