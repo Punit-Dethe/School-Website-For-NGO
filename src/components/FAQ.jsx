@@ -35,11 +35,14 @@ const FAQ = () => {
   return (
     <section className="py-16" style={{ backgroundColor: '#f3ecd2' }}>
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-5xl font-bold text-black inline-block">
+        <div className="text-center mb-12 flex flex-col items-center">
+          <h2 className="text-5xl font-bold text-black mb-3">
             Frequently Asked
           </h2>
-          <div className="inline-block bg-[#f97028] text-white px-6 py-2 rounded-lg mt-2 border-2 border-black shadow-[4px_4px_0px_#000000]">
+          <div 
+            className="bg-[#f97028] text-white px-6 py-2 rounded-lg border-2 border-black shadow-[4px_4px_0px_#000000]"
+            style={{ transform: 'rotate(2deg)' }}
+          >
             <h2 className="text-5xl font-bold">Questions</h2>
           </div>
         </div>
@@ -47,7 +50,7 @@ const FAQ = () => {
         <div className="flex flex-col md:flex-row gap-8 items-start">
           {/* Left side with just the image */}
           <div className="md:w-1/2">
-            <img src={faqImage} alt="FAQ" className="rounded-2xl border-2 border-black" style={{ width: '100%', height: '450px', objectFit: 'cover' }} />
+            <img src={faqImage} alt="FAQ" className="rounded-2xl border-2 border-black" style={{ width: '100%', height: '500px', objectFit: 'cover' }} />
           </div>
           
           {/* Right side with interactive FAQ */}
@@ -55,9 +58,11 @@ const FAQ = () => {
             {faqs.map((faq, index) => (
               <div key={index} className="mb-6 relative">
                 {/* FAQ Question Button */}
-                <div className="bg-secondary-orange rounded-xl border-2 border-black p-4 flex justify-between items-center cursor-pointer z-20 relative" 
-                     style={{ backgroundColor: 'rgb(243, 162, 15)' }}
-                     onClick={() => toggleFAQ(index)}>
+                <div 
+                  className="bg-secondary-orange rounded-xl border-2 border-black p-6 flex justify-between items-center cursor-pointer z-20 relative" 
+                  style={{ backgroundColor: 'rgb(243, 162, 15)' }}
+                  onClick={() => toggleFAQ(index)}
+                >
                   <h3 className="text-lg font-medium text-black">
                     {faq.question}
                   </h3>
