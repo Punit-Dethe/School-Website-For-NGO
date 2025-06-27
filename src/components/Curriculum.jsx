@@ -60,7 +60,7 @@ const Curriculum = () => {
       <div className="relative w-full overflow-x-hidden">
         <div className="flex flex-col lg:flex-row w-full">
           {/* Left Side: Perfect Square Container */}
-          <div className="w-full lg:w-auto flex items-start">
+          <div className="w-full lg:w-auto flex-shrink-0">
             <div className="overflow-hidden shadow-2xl bg-black flex items-center justify-center" 
                  style={{ 
                    width: 'calc(25rem + 5vw)',
@@ -79,11 +79,9 @@ const Curriculum = () => {
           </div>
 
           {/* Right Side: Curriculum Bars - Full Width */}
-          <div className="w-full relative">
-            <div className="absolute inset-y-0 left-0 right-0 bg-white -z-10">
-              <div className="max-w-[2000px] mx-auto w-full h-full"></div>
-            </div>
-            <div className="relative ml-0 pl-0 pr-0">
+          <div className="flex-1 relative">
+            <div className="absolute inset-y-0 left-0 right-0 bg-white -z-10"></div>
+            <div className="relative w-full h-full">
               {curriculumData.map((item, index) => (
                 <div
                   key={item.level}
