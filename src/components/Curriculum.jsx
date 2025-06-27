@@ -15,27 +15,27 @@ const placeholderImages = {
 const curriculumData = [
   {
     level: 'PRE-PRIMARY',
-    color: 'bg-[#f39c12]', // Orange
+    color: 'bg-[#f97028]', // Orange
     image: placeholderImages['PRE-PRIMARY'],
   },
   {
     level: 'PRIMARY',
-    color: 'bg-[#2ecc71]', // Green
+    color: 'bg-[#f489a3]', // Pink
     image: placeholderImages['PRIMARY'],
   },
   {
     level: 'MIDDLE',
-    color: 'bg-[#3498db]', // Blue
+    color: 'bg-[#f3a20f]', // Dark Yellow 
     image: placeholderImages['MIDDLE'],
   },
   {
     level: 'SECONDARY',
-    color: 'bg-[#9b59b6]', // Purple
+    color: 'bg-[#f0bb0d]', // Yellow
     image: placeholderImages['SECONDARY'],
   },
   {
     level: 'SENIOR SECONDARY',
-    color: 'bg-[#e74c3c]', // Red
+    color: 'bg-[#f97028]', // Red
     image: placeholderImages['SENIOR SECONDARY'],
   },
 ];
@@ -61,7 +61,7 @@ const Curriculum = () => {
         <div className="flex flex-col lg:flex-row">
           {/* Left Side: Vertical Text Display */}
           <div className="w-full lg:w-1/4 flex items-start">
-            <div className="overflow-hidden shadow-2xl w-full bg-black flex items-center justify-center" style={{ height: 'calc(5 * 4.25rem)' }}>
+            <div className="overflow-hidden shadow-2xl w-full bg-black flex items-center justify-center" style={{ height: '25rem' }}>
               <div className="relative w-full h-full flex items-center justify-center">
                 <div className="text-white text-2xl font-bold tracking-widest transform -rotate-90 whitespace-nowrap">
                   <span className="text-yellow-400">OUR</span> CURRICULUM
@@ -77,7 +77,7 @@ const Curriculum = () => {
               {curriculumData.map((item, index) => (
                 <div
                   key={item.level}
-                  className={`py-5 px-8 flex items-center justify-center text-center text-white font-bold text-xl cursor-pointer transition-all duration-300 hover:scale-105 ${item.color} ${
+                  className={`h-20 flex items-center justify-center text-center text-white font-bold text-xl cursor-pointer transition-all duration-300 hover:scale-105 ${item.color} ${
                     index < curriculumData.length - 1 
                       ? 'shadow-[inset_0_-2px_0_0_rgba(0,0,0,0.6),inset_0_-3px_12px_rgba(0,0,0,0.3)]' 
                       : ''
