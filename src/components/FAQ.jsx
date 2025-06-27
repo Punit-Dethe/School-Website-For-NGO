@@ -10,7 +10,7 @@ const FAQ = () => {
       question: 'WHat are u doing',
       answer: 'chuhc uieweo cbwiebc w w we we wwt w we wev ew w w we wewgwfwfsvw ww w w we we wweew uiwgcuy gwecwec vwiubniwe iuwb iwe iwu igbuyiweubwiv vwv wvwevwevwe we we ouwbiuweci wvwwee w w w w'
     },
-    {
+    { 
       question: 'How do I get there?',
       answer: 'Details about transportation and directions will be provided closer to the event date. Please check our website for updates.'
     },
@@ -55,7 +55,9 @@ const FAQ = () => {
             {faqs.map((faq, index) => (
               <div key={index} className="mb-6 relative">
                 {/* FAQ Question Button */}
-                <div className="bg-secondary-orange rounded-xl border-2 border-black p-4 flex justify-between items-center cursor-pointer z-20 relative" onClick={() => toggleFAQ(index)}>
+                <div className="bg-secondary-orange rounded-xl border-2 border-black p-4 flex justify-between items-center cursor-pointer z-20 relative" 
+                     style={{ backgroundColor: 'rgb(243, 162, 15)' }}
+                     onClick={() => toggleFAQ(index)}>
                   <h3 className="text-lg font-medium text-black">
                     {faq.question}
                   </h3>
@@ -66,15 +68,15 @@ const FAQ = () => {
                 
                 {/* Dropdown Content - tilted with left side lower */}
                 {activeIndex === index && (
-                  <div className="relative" style={{ marginTop: '-25px', marginBottom: '70px' }}>
+                  <div className="relative" style={{ marginTop: '-35px', marginBottom: '70px' }}>
                     <div className="bg-beige p-5 pb-8 rounded-lg border-2 border-black transform rotate-[-2deg] shadow-md z-0 relative w-[95%] mx-auto min-h-[120px]">
-                      <div className="pt-10">
+                      <div className="pt-14 pb-6">
                         <p className="text-sm">
                           {faq.answer}
                         </p>
                       </div>
-                      {/* Star decoration */}
-                      <div className="absolute top-5 right-3 text-2xl text-light-pink">★</div>
+                      {/* Star decoration - bottom right */}
+                      <div className="absolute bottom-3 right-3 text-2xl text-light-pink">★</div>
                     </div>
                   </div>
                 )}
