@@ -58,7 +58,7 @@ const FAQ = () => {
                 <div className="bg-secondary-orange rounded-xl border-2 border-black p-4 flex justify-between items-center cursor-pointer z-20 relative" 
                      style={{ backgroundColor: 'rgb(243, 162, 15)' }}
                      onClick={() => toggleFAQ(index)}>
-                  <h3 className="text-lg font-medium text-primary-orange">
+                  <h3 className="text-lg font-medium text-black">
                     {faq.question}
                   </h3>
                   <span>
@@ -70,13 +70,13 @@ const FAQ = () => {
                 {activeIndex === index && (
                   <div className="relative" style={{ marginTop: '-35px', marginBottom: '70px' }}>
                     <div className="rounded-lg border-2 border-black transform rotate-[-2deg] shadow-md z-0 relative w-[95%] mx-auto min-h-[120px] p-5 pb-8" style={{ backgroundColor: '#ffe2c9' }}>
-                      <div className="pt-8 pb-6">
+                      <div className="pt-12 pb-6">
                         <p className="text-lg">
                           {faq.answer}
                         </p>
                       </div>
                       {/* Star decoration - bottom right */}
-                      <div className="absolute bottom-3 right-3 text-4xl transform -rotate-12" style={{ color: '#ffba88' }}>★</div>
+                      <div className="absolute bottom-3 right-3 text-4xl transform rotate-12" style={{ color: '#ffba88' }}>★</div>
                     </div>
                   </div>
                 )}
