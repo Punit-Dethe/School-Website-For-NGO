@@ -8,7 +8,7 @@ const FAQ = () => {
   const faqs = [
     {
       question: 'WHat are u doing',
-      answer: 'chuhc uieweo cbwiebc w w we we wwt w we wev ew w w we wewgwfwfsvw ww w w we we wweew uiwgcuy gwecwec vwiubniwe iuwb iwe iwu igbuyiweubwiv vwv wvwevwevwe we we ouwbiuweci wvwwee w w w w'
+      answer: 'Food and beverages will be available for purchase from various vendors at the event. We will have options to cater to different dietary needs.'
     },
     { 
       question: 'How do I get there?',
@@ -33,13 +33,13 @@ const FAQ = () => {
   };
 
   return (
-    <section className="py-16 bg-beige">
+    <section className="py-16" style={{ backgroundColor: '#f3ecd2' }}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-5xl font-bold text-black inline-block">
             Frequently Asked
           </h2>
-          <div className="inline-block bg-primary-orange text-white px-6 py-2 rounded-lg mt-2 border-2 border-black shadow-[4px_4px_0px_#000000]">
+          <div className="inline-block bg-[#f97028] text-white px-6 py-2 rounded-lg mt-2 border-2 border-black shadow-[4px_4px_0px_#000000]">
             <h2 className="text-5xl font-bold">Questions</h2>
           </div>
         </div>
@@ -70,13 +70,13 @@ const FAQ = () => {
                 {activeIndex === index && (
                   <div className="relative" style={{ marginTop: '-35px', marginBottom: '70px' }}>
                     <div className="rounded-lg border-2 border-black transform rotate-[-2deg] shadow-md z-0 relative w-[95%] mx-auto min-h-[120px] p-5 pb-8" style={{ backgroundColor: '#ffe2c9' }}>
-                      <div className="pt-12 pb-6">
+                      <div className="pt-8 pb-6">
                         <p className="text-lg">
                           {faq.answer}
                         </p>
                       </div>
                       {/* Star decoration - bottom right */}
-                      <div className="absolute bottom-3 right-3 text-4xl transform rotate-12" style={{ color: '#ffba88' }}>★</div>
+                      <div className="absolute bottom-3 right-3 text-4xl transform -rotate-12" style={{ color: '#ffba88' }}>★</div>
                     </div>
                   </div>
                 )}
