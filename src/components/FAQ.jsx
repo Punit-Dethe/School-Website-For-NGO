@@ -7,7 +7,7 @@ const FAQ = () => {
 
   const faqs = [
     {
-      question: 'WHat are u doing',
+      question: 'What are u doing',
       answer: 'Food and beverages will be available for purchase from various vendors at the event. We will have options to cater to different dietary needs.'
     },
     { 
