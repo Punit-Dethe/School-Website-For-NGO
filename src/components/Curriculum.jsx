@@ -57,8 +57,8 @@ const Curriculum = () => {
         </div>
       </div>
 
-      <div className="relative w-full overflow-hidden">
-        <div className="flex flex-col lg:flex-row w-full max-w-[2000px] mx-auto">
+      <div className="relative w-full overflow-x-hidden">
+        <div className="flex flex-col lg:flex-row w-full">
           {/* Left Side: Perfect Square Container */}
           <div className="w-full lg:w-auto flex items-start">
             <div className="overflow-hidden shadow-2xl bg-black flex items-center justify-center" 
@@ -78,9 +78,11 @@ const Curriculum = () => {
             </div>
           </div>
 
-          {/* Right Side: Curriculum Bars - Proportional */}
-          <div className="w-full lg:w-[66.667%] relative">
-            <div className="absolute inset-y-0 left-0 right-0 lg:right-[-100vw] bg-white -z-10"></div>
+          {/* Right Side: Curriculum Bars - Full Width */}
+          <div className="w-full relative">
+            <div className="absolute inset-y-0 left-0 right-0 bg-white -z-10">
+              <div className="max-w-[2000px] mx-auto w-full h-full"></div>
+            </div>
             <div className="relative ml-0 pl-0 pr-0">
               {curriculumData.map((item, index) => (
                 <div
