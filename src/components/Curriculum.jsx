@@ -59,13 +59,15 @@ const Curriculum = () => {
 
       <div className="relative w-full overflow-hidden">
         <div className="flex flex-col lg:flex-row w-full max-w-[2000px] mx-auto">
-          {/* Left Side: Vertical Text Display - Proportional */}
-          <div className="w-full lg:w-[33.333%] flex items-start">
-            <div className="overflow-hidden shadow-2xl w-full bg-black flex items-center justify-center" 
+          {/* Left Side: Perfect Square Container */}
+          <div className="w-full lg:w-auto flex items-start">
+            <div className="overflow-hidden shadow-2xl bg-black flex items-center justify-center" 
                  style={{ 
-                   height: 'calc(25rem + 5vw)',
-                   minHeight: '25rem',
-                   maxHeight: '35rem'
+                   width: 'calc(25rem + 5vw)',
+                   minWidth: '25rem',
+                   maxWidth: '35rem',
+                   aspectRatio: '1/1',
+                   height: 'auto'
                  }}>
               <div className="relative w-full h-full flex items-center justify-center">
                 <div className="text-white font-bold tracking-widest transform -rotate-90 whitespace-nowrap" 
