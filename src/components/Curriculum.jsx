@@ -58,30 +58,42 @@ const Curriculum = () => {
       </div>
 
       <div className="relative w-full overflow-hidden">
-        <div className="flex flex-col lg:flex-row">
-          {/* Left Side: Vertical Text Display - Wider */}
-          <div className="w-full lg:w-1/3 flex items-start">
-            <div className="overflow-hidden shadow-2xl w-full bg-black flex items-center justify-center h-[25rem] lg:h-[30rem] xl:h-[35rem] transition-all duration-300">
+        <div className="flex flex-col lg:flex-row w-full max-w-[2000px] mx-auto">
+          {/* Left Side: Vertical Text Display - Proportional */}
+          <div className="w-full lg:w-[33.333%] flex items-start">
+            <div className="overflow-hidden shadow-2xl w-full bg-black flex items-center justify-center" 
+                 style={{ 
+                   height: 'calc(25rem + 5vw)',
+                   minHeight: '25rem',
+                   maxHeight: '35rem'
+                 }}>
               <div className="relative w-full h-full flex items-center justify-center">
-                <div className="text-white text-2xl lg:text-3xl xl:text-4xl font-bold tracking-widest transform -rotate-90 whitespace-nowrap">
+                <div className="text-white font-bold tracking-widest transform -rotate-90 whitespace-nowrap" 
+                     style={{ fontSize: 'calc(1.5rem + 0.8vw)' }}>
                   <span className="text-yellow-400">OUR</span> CURRICULUM
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right Side: Curriculum Bars - Adjusted Width */}
-          <div className="w-full lg:w-2/3 relative">
+          {/* Right Side: Curriculum Bars - Proportional */}
+          <div className="w-full lg:w-[66.667%] relative">
             <div className="absolute inset-y-0 left-0 right-0 lg:right-[-100vw] bg-white -z-10"></div>
             <div className="relative ml-0 pl-0 pr-0">
               {curriculumData.map((item, index) => (
                 <div
                   key={item.level}
-                  className={`h-20 lg:h-24 xl:h-28 flex items-center justify-center text-center text-white font-bold text-xl lg:text-2xl xl:text-3xl cursor-pointer transition-all duration-300 hover:scale-105 ${item.color} ${
+                  className={`flex items-center justify-center text-center text-white font-bold cursor-pointer transition-all duration-300 hover:scale-105 ${item.color} ${
                     index < curriculumData.length - 1 
                       ? 'shadow-[inset_0_-2px_0_0_rgba(0,0,0,0.6),inset_0_-3px_12px_rgba(0,0,0,0.3)]' 
                       : ''
                   }`}
+                  style={{
+                    height: 'calc(5rem + 1vw)',
+                    minHeight: '5rem',
+                    maxHeight: '7rem',
+                    fontSize: 'calc(1rem + 0.4vw)'
+                  }}
                   onMouseEnter={() => setActiveImage(item.image)}
                 >
                   {item.level}
