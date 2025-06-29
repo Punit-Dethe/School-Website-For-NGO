@@ -1,6 +1,7 @@
 import React, { useRef, useState, useLayoutEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
+
 const features = [
   {
     title: 'Safe Rides',
@@ -28,7 +29,7 @@ const features = [
   },
 ];
 
-const WhatWeDo = () => {
+const Features = () => {
   const targetRef = useRef(null);
   const viewportRef = useRef(null);
   const motionDivRef = useRef(null);
@@ -65,10 +66,10 @@ const WhatWeDo = () => {
     updateLayout();
     window.addEventListener('resize', updateLayout);
 
-    // Trigger updateLayout after a short delay (for late layout changes)
+    // --- Fix: Trigger updateLayout after a short delay (for late layout changes) ---
     const timeoutId = setTimeout(updateLayout, 200);
 
-    // Listen for image load events inside the scroll area
+    // --- Fix: Listen for image load events inside the scroll area ---
     const motionDiv = motionDivRef.current;
     let images = [];
     if (motionDiv) {
@@ -89,7 +90,7 @@ const WhatWeDo = () => {
   const x = useTransform(scrollYProgress, [0, 0.5], [0, -scrollEndOffset]);
 
   return (
-    <section id="what-we-do" ref={targetRef} className="relative h-[300vh] bg-black text-white">
+    <section id="features" ref={targetRef} className="relative h-[300vh] bg-black text-white">
       <div className="sticky top-0 h-screen overflow-hidden flex flex-col">
         {/* Added extra space at top - only visible on mobile */}
         <div className="h-[12vh] sm:h-0"></div>
@@ -153,4 +154,4 @@ const WhatWeDo = () => {
   );
 };
 
-export default WhatWeDo;
+export default Features; 

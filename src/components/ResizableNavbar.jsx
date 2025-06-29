@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import { IconMenu2, IconX } from '@tabler/icons-react';
 import { Link, useLocation } from 'react-router-dom';
-
+// Logo is loaded from public folder
 const logo = '/logo.ico';
 const logo2 = '/logo2.ico';
 
@@ -42,12 +42,14 @@ const Navbar = ({ className = '' }) => {
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious();
 
+    // Control shrink/blur effect
     if (latest > 100) {
       setVisible(true);
     } else {
       setVisible(false);
     }
 
+    // Control hide/show on scroll
     if (latest > previous && latest > window.innerHeight && !isMobileMenuOpen) {
       setHidden(true);
     } else {
@@ -99,6 +101,7 @@ const Navbar = ({ className = '' }) => {
           "relative z-[60] mx-auto hidden max-w-7xl self-start rounded-full lg:flex"
         )}
       >
+        {/* Background effects layer */}
         <motion.div
           className="absolute inset-0 rounded-full"
           style={{
@@ -118,6 +121,7 @@ const Navbar = ({ className = '' }) => {
           }}
         />
         
+        {/* Content layer */}
         <div className="relative z-10 flex w-full flex-row items-center justify-between px-4 py-2">
           <Link to="/" className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal">
             <img src={visible ? logo2 : logo} alt="Triply" className="h-8 w-auto" />
@@ -192,6 +196,7 @@ const Navbar = ({ className = '' }) => {
           WebkitFontSmoothing: 'subpixel-antialiased',
         }}
       >
+        {/* Background effects layer */}
         <motion.div
           className="absolute inset-0 rounded-[inherit]"
           style={{
@@ -209,6 +214,7 @@ const Navbar = ({ className = '' }) => {
           }}
         />
         
+        {/* Content layer */}
         <div className={cn(
           "relative z-10 flex w-full items-center justify-between px-4 transition-all duration-300 ease-in-out",
           visible ? 'py-3' : 'py-4'
@@ -246,6 +252,7 @@ const Navbar = ({ className = '' }) => {
             isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
           style={{
+            backgroundColor: '#FFF7ED',
             background: `linear-gradient(to left, rgba(108, 43, 199, 0.2), #FFF7ED 70%), #FFF7ED`,
             height: `${windowHeight}px`,
             overflow: 'hidden',

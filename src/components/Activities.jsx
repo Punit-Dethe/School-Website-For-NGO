@@ -67,7 +67,7 @@ const SpeakerCard = ({ speaker }) => (
 
 const Activities = () => {
   return (
-    <section id="speakers" className="py-24 bg-[#FDFCF9]">
+    <section id="speakers" className="py-24 bg-[#f3ecd2]">
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-3 gap-16 items-start">
           
