@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
+// Admin password - in a real app, this would be handled server-side
+const ADMIN_PASSWORD = 'admin123'; // You can change this to any password you want
+
 const RequireAdmin = (WrappedComponent) => {
   return function AuthenticatedComponent(props) {
     const [isAdmin, setIsAdmin] = useState(false);
@@ -9,13 +12,15 @@ const RequireAdmin = (WrappedComponent) => {
     const [error, setError] = useState('');
     const [isChecking, setIsChecking] = useState(true);
 
-    // Check for admin cookie on component mount
+    // Check for admin authentication on component mount
     useEffect(() => {
-      const checkAdminCookie = () => {
+      const checkAdminAuth = () => {
+        // Check both cookie and localStorage for admin status
         const cookies = document.cookie.split(';').map(cookie => cookie.trim());
         const adminCookie = cookies.find(cookie => cookie.startsWith('admin='));
+        const adminStorage = localStorage.getItem('adminAuth');
         
-        if (adminCookie && adminCookie.split('=')[1] === 'true') {
+        if ((adminCookie && adminCookie.split('=')[1] === 'true') || adminStorage === 'true') {
           setIsAdmin(true);
         } else {
           setShowPasswordForm(true);
@@ -23,7 +28,7 @@ const RequireAdmin = (WrappedComponent) => {
         setIsChecking(false);
       };
 
-      checkAdminCookie();
+      checkAdminAuth();
     }, []);
 
     const handlePasswordSubmit = async (e) => {
@@ -31,21 +36,14 @@ const RequireAdmin = (WrappedComponent) => {
       setIsLoading(true);
       setError('');
 
+      // Simulate a small delay for better UX
+      await new Promise(resolve => setTimeout(resolve, 500));
+
       try {
-        const response = await fetch('/api/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ password }),
-        });
-
-        const data = await response.json();
-
-        if (response.ok && data.ok) {
-          // Login successful - the server will set the httpOnly cookie
-          // We also set a client-side cookie for immediate checking
+        if (password === ADMIN_PASSWORD) {
+          // Login successful
           document.cookie = 'admin=true; path=/; SameSite=Lax';
+          localStorage.setItem('adminAuth', 'true');
           setIsAdmin(true);
           setShowPasswordForm(false);
           setPassword('');
@@ -53,7 +51,7 @@ const RequireAdmin = (WrappedComponent) => {
           setError('Invalid password. Please try again.');
         }
       } catch (err) {
-        setError('Login failed. Please check your connection and try again.');
+        setError('Login failed. Please try again.');
       } finally {
         setIsLoading(false);
       }

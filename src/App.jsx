@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { SWRConfig } from 'swr';
+import { fetcher } from './services/api';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
@@ -10,9 +11,10 @@ function App() {
   return (
     <SWRConfig
       value={{
-        fetcher: (url) => fetch(url).then((res) => res.json()),
+        fetcher,
         revalidateOnFocus: false,
-        dedupingInterval: 30000, // 30 seconds
+        dedupingInterval: 5000, // 5 seconds
+        revalidateOnMount: true,
       }}
     >
       <Router>

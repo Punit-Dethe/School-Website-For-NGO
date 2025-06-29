@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import useSWR, { mutate } from 'swr';
 import { Link } from 'react-router-dom';
+import { dataAPI } from '../services/api';
 import RequireAdmin from '../components/RequireAdmin';
 
 const Update = () => {
@@ -46,8 +47,7 @@ const Update = () => {
     }
   ];
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
-  const { data: speakersData, error } = useSWR('/api/data?key=speakers', fetcher);
+const { data: speakersData, error } = useSWR('/api/data?key=speakers');
 
   useEffect(() => {
     if (speakersData && speakersData.value) {
@@ -81,23 +81,23 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
   const handleSubmit = async () => {
     setIsSaving(true);
     try {
-      const response = await fetch('/api/data', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ key: 'speakers', value: speakers }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to update speakers.');
+      // Try to update first, if it fails, create new
+      try {
+        await dataAPI.update('speakers', speakers);
+      } catch (updateError) {
+        if (updateError.message.includes('Key already exists')) {
+          throw updateError;
+        }
+        // If key doesn't exist, create it
+        await dataAPI.create('speakers', speakers);
       }
 
+      // Revalidate the cache
       mutate('/api/data?key=speakers');
       alert('Speakers updated successfully! Visit the main page to see changes.');
     } catch (error) {
       console.error('Error updating speakers:', error);
-      alert('There was an error updating the speakers.');
+      alert(`There was an error updating the speakers: ${error.message}`);
     } finally {
       setIsSaving(false);
     }
@@ -123,12 +123,11 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
     if (confirm('Are you sure you want to reset all speakers to default? This action cannot be undone.')) {
       setSpeakers(defaultSpeakers);
       try {
-        await fetch('/api/data?key=speakers', {
-          method: 'DELETE',
-        });
+        await dataAPI.delete('speakers');
         mutate('/api/data?key=speakers');
       } catch (error) {
-        console.error('Error resetting speakers:', error);
+        // If key doesn't exist, that's fine - we just wanted to reset anyway
+        console.log('No existing data to delete, using defaults');
       }
     }
   };
