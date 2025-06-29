@@ -1,45 +1,63 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import useSWR from 'swr';
 // Note: Using the single provided screenshot for all speaker images.
 // In a real application, these should be separate, optimized image files.
 import speakerLineupImage from '../assets/Screenshot 2025-06-26 031635.png';
 
-const speakers = [
-  {
-    name: 'Vlad Magdalin',
-    category: 'Keynote',
-    description: "Our founding Webflow father. Our dad joke aficionado. He puts the mad into Magdalin and will be kicking off FlowFest '25 as our keynote speaker!",
-    bgColor: 'bg-yellow-400',
-    imgStyle: { objectPosition: '25% 15%' }
-  },
-  {
-    name: 'Ilja van Eck',
-    category: 'Development',
-    description: "Oh 'Eck, we've only gone and secured the web wizard himself. Co-founder of Osmo & Webflow superstar, we can't wait to learn from Ilja!",
-    bgColor: 'bg-orange-400',
-    imgStyle: { objectPosition: '70% 15%' }
-  },
-  {
-    name: 'Cassie Evans',
-    category: 'Animation',
-    description: "Our GSAP fairy codemother is here to sprinkle some tween magic, animation goodness & Webflow's deepest darkest secrets now she's on the inside.",
-    bgColor: 'bg-orange-400',
-    imgStyle: { objectPosition: '25% 80%' }
-  },
-  {
-    name: 'Stephanie Bruce',
-    category: 'Design',
-    description: "Devs want to work with her, designers want to be her. Steph has hit the ground running with her stunning web work and will be sharing her expert freelancer growth tips.",
-    bgColor: 'bg-pink-400',
-    imgStyle: { objectPosition: '50% 50%' } // This one is more central in the screenshot part
-  },
+const Activities = () => {
+  const [speakers, setSpeakers] = useState([]);
+
+  const defaultSpeakers = [
     {
-    name: 'Ross Plaskow',
-    category: 'Animation',
-    description: "We've all wanted to animate something cool with Rive, and Ross is here to show us how with his ridiculously fun and slick style.",
-    bgColor: 'bg-yellow-400',
-    imgStyle: { objectPosition: '75% 80%' }
-  },
-];
+      name: 'Vlad Magdalin',
+      category: 'Keynote',
+      description: "Our founding Webflow father. Our dad joke aficionado. He puts the mad into Magdalin and will be kicking off FlowFest '25 as our keynote speaker!",
+      bgColor: 'bg-yellow-400',
+      imgStyle: { objectPosition: '25% 15%' }
+    },
+    {
+      name: 'Ilja van Eck',
+      category: 'Development',
+      description: "Oh 'Eck, we've only gone and secured the web wizard himself. Co-founder of Osmo & Webflow superstar, we can't wait to learn from Ilja!",
+      bgColor: 'bg-orange-400',
+      imgStyle: { objectPosition: '70% 15%' }
+    },
+    {
+      name: 'Cassie Evans',
+      category: 'Animation',
+      description: "Our GSAP fairy codemother is here to sprinkle some tween magic, animation goodness & Webflow's deepest darkest secrets now she's on the inside.",
+      bgColor: 'bg-orange-400',
+      imgStyle: { objectPosition: '25% 80%' }
+    },
+    {
+      name: 'Stephanie Bruce',
+      category: 'Design',
+      description: "Devs want to work with her, designers want to be her. Steph has hit the ground running with her stunning web work and will be sharing her expert freelancer growth tips.",
+      bgColor: 'bg-pink-400',
+      imgStyle: { objectPosition: '50% 50%' }
+    },
+    {
+      name: 'Ross Plaskow',
+      category: 'Animation',
+      description: "We've all wanted to animate something cool with Rive, and Ross is here to show us how with his ridiculously fun and slick style.",
+      bgColor: 'bg-yellow-400',
+      imgStyle: { objectPosition: '75% 80%' }
+    }
+  ];
+
+  const fetcher = (url) => fetch(url).then((res) => res.json());
+  const { data: speakersData, error } = useSWR('/api/data?key=speakers', fetcher);
+
+  useEffect(() => {
+    if (speakersData && speakersData.value) {
+      setSpeakers(speakersData.value);
+    } else if (!speakersData && !error) {
+      // Still loading, don't set default yet
+    } else {
+      // No data found or error, use default
+      setSpeakers(defaultSpeakers);
+    }
+  }, [speakersData, error]);
 
 const SpeakerCard = ({ speaker }) => (
   <div className="w-full">
@@ -65,7 +83,6 @@ const SpeakerCard = ({ speaker }) => (
 );
 
 
-const Activities = () => {
   return (
     <section id="speakers" className="py-24 bg-[#FDFCF9]">
       <div className="container mx-auto px-6">
@@ -95,13 +112,13 @@ const Activities = () => {
             <div className="grid md:grid-cols-2 gap-16">
               {/* Stagger the columns manually for the desired effect */}
               <div className="space-y-16">
-                <SpeakerCard speaker={speakers[0]} />
-                <SpeakerCard speaker={speakers[2]} />
-                <SpeakerCard speaker={speakers[4]} />
+                {speakers[0] && <SpeakerCard speaker={speakers[0]} />}
+                {speakers[2] && <SpeakerCard speaker={speakers[2]} />}
+                {speakers[4] && <SpeakerCard speaker={speakers[4]} />}
               </div>
               <div className="space-y-16 mt-0 md:mt-24">
-                <SpeakerCard speaker={speakers[1]} />
-                <SpeakerCard speaker={speakers[3]} />
+                {speakers[1] && <SpeakerCard speaker={speakers[1]} />}
+                {speakers[3] && <SpeakerCard speaker={speakers[3]} />}
               </div>
             </div>
           </div>
