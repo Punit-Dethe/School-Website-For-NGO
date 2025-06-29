@@ -1,0 +1,49 @@
+{
+  "speakers": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "title": "Meditation Expert",
+      "bio": "John has been practicing meditation for over 15 years and specializes in mindfulness techniques.",
+      "image": "/images/speakers/john-doe.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "title": "Yoga Instructor",
+      "bio": "Jane is a certified yoga instructor with expertise in Hatha and Vinyasa yoga styles.",
+      "image": "/images/speakers/jane-smith.jpg"
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "name": "Morning Meditation",
+      "description": "Start your day with guided meditation",
+      "time": "7:00 AM - 8:00 AM",
+      "location": "Main Hall"
+    },
+    {
+      "id": 2,
+      "name": "Yoga Session",
+      "description": "Relaxing yoga practice for all levels",
+      "time": "9:00 AM - 10:30 AM",
+      "location": "Yoga Studio"
+    }
+  ],
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Alex Johnson",
+      "text": "This retreat changed my life. The peaceful environment and expert guidance helped me find inner peace.",
+      "rating": 5
+    },
+    {
+      "id": 2,
+      "name": "Maria Garcia",
+      "text": "Amazing experience! The meditation sessions were transformative.",
+      "rating": 5
+    }
+  ],
+  "lastUpdated": "2025-06-29T00:30:00Z"
+}

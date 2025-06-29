@@ -7,58 +7,60 @@ import RequireAdmin from '../components/RequireAdmin';
 const Update = () => {
   const [speakers, setSpeakers] = useState([]);
   const [isSaving, setIsSaving] = useState(false);
+  const [allData, setAllData] = useState(null);
 
   // Default speakers data
   const defaultSpeakers = [
     {
+      id: 1,
       name: 'Vlad Magdalin',
-      category: 'Keynote',
-      description: "Our founding Webflow father. Our dad joke aficionado. He puts the mad into Magdalin and will be kicking off FlowFest '25 as our keynote speaker!",
-      bgColor: 'bg-yellow-400',
-      imgStyle: { objectPosition: '25% 15%' }
+      title: 'Keynote Speaker',
+      bio: "Our founding Webflow father. Our dad joke aficionado. He puts the mad into Magdalin and will be kicking off FlowFest '25 as our keynote speaker!",
+      image: '/images/speakers/vlad.jpg'
     },
     {
+      id: 2,
       name: 'Ilja van Eck',
-      category: 'Development',
-      description: "Oh 'Eck, we've only gone and secured the web wizard himself. Co-founder of Osmo & Webflow superstar, we can't wait to learn from Ilja!",
-      bgColor: 'bg-orange-400',
-      imgStyle: { objectPosition: '70% 15%' }
+      title: 'Development Expert',
+      bio: "Oh 'Eck, we've only gone and secured the web wizard himself. Co-founder of Osmo & Webflow superstar, we can't wait to learn from Ilja!",
+      image: '/images/speakers/ilja.jpg'
     },
     {
+      id: 3,
       name: 'Cassie Evans',
-      category: 'Animation',
-      description: "Our GSAP fairy codemother is here to sprinkle some tween magic, animation goodness & Webflow's deepest darkest secrets now she's on the inside.",
-      bgColor: 'bg-orange-400',
-      imgStyle: { objectPosition: '25% 80%' }
+      title: 'Animation Specialist',
+      bio: "Our GSAP fairy codemother is here to sprinkle some tween magic, animation goodness & Webflow's deepest darkest secrets now she's on the inside.",
+      image: '/images/speakers/cassie.jpg'
     },
     {
+      id: 4,
       name: 'Stephanie Bruce',
-      category: 'Design',
-      description: "Devs want to work with her, designers want to be her. Steph has hit the ground running with her stunning web work and will be sharing her expert freelancer growth tips.",
-      bgColor: 'bg-pink-400',
-      imgStyle: { objectPosition: '50% 50%' }
+      title: 'Design Expert',
+      bio: "Devs want to work with her, designers want to be her. Steph has hit the ground running with her stunning web work and will be sharing her expert freelancer growth tips.",
+      image: '/images/speakers/stephanie.jpg'
     },
     {
+      id: 5,
       name: 'Ross Plaskow',
-      category: 'Animation',
-      description: "We've all wanted to animate something cool with Rive, and Ross is here to show us how with his ridiculously fun and slick style.",
-      bgColor: 'bg-yellow-400',
-      imgStyle: { objectPosition: '75% 80%' }
+      title: 'Animation Director',
+      bio: "We've all wanted to animate something cool with Rive, and Ross is here to show us how with his ridiculously fun and slick style.",
+      image: '/images/speakers/ross.jpg'
     }
   ];
 
-const { data: speakersData, error } = useSWR('/api/data?key=speakers');
+  const { data: contentData, error } = useSWR('/api/github', dataAPI.get);
 
   useEffect(() => {
-    if (speakersData && speakersData.value) {
-      setSpeakers(speakersData.value);
-    } else if (!speakersData && !error) {
+    if (contentData && contentData.content) {
+      setAllData(contentData.content);
+      setSpeakers(contentData.content.speakers || defaultSpeakers);
+    } else if (!contentData && !error) {
       // Still loading, don't set default yet
     } else {
       // No data found or error, use default
       setSpeakers(defaultSpeakers);
     }
-  }, [speakersData, error]);
+  }, [contentData, error]);
 
   const handleChange = (index, field, value) => {
     const newSpeakers = [...speakers];
@@ -81,20 +83,16 @@ const { data: speakersData, error } = useSWR('/api/data?key=speakers');
   const handleSubmit = async () => {
     setIsSaving(true);
     try {
-      // Try to update first, if it fails, create new
-      try {
-        await dataAPI.update('speakers', speakers);
-      } catch (updateError) {
-        if (updateError.message.includes('Key already exists')) {
-          throw updateError;
-        }
-        // If key doesn't exist, create it
-        await dataAPI.create('speakers', speakers);
-      }
+      const updatedContent = {
+        ...allData,
+        speakers: speakers
+      };
+
+      await dataAPI.update(updatedContent, 'Update speakers via admin panel');
 
       // Revalidate the cache
-      mutate('/api/data?key=speakers');
-      alert('Speakers updated successfully! Visit the main page to see changes.');
+      mutate('/api/github');
+      alert('Speakers updated successfully! The changes have been pushed to GitHub and will be live on your site.');
     } catch (error) {
       console.error('Error updating speakers:', error);
       alert(`There was an error updating the speakers: ${error.message}`);
