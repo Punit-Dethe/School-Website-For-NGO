@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../../../Web Dev/Projects/Prana/src/assets/fonts/fonts.css';
+
 
 const Navbar = () => {
     return (

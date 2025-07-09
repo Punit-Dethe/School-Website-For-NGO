@@ -11,7 +11,7 @@ const Hero = () => {
                 <div className='absolute w-[50rem] h-[30rem] border-4 border-black rounded-2xl top-[10rem] left-[40rem] right-2.5 bg-white z-10'>
 
                 </div>
-                <div className='w-1/2 flex flex-col items-center justify-center  bg-[#6CC4E3] h-full'>
+                <div className='w-3/5 flex flex-col items-center justify-center  bg-[#6CC4E3] h-full'>
                     <div className='max-w-[25rem] mr-24'>
                         <h1 className='text-white text-8xl font-bold'>Give <span className='underline underline-offset-4 decoration-4 under '> Hope </span> To Children In Need</h1>
                         <div className='flex gap-8 mt-10'>
@@ -21,7 +21,7 @@ const Hero = () => {
                     </div>
 
                 </div>
-                <div className='w-1/2 bg-[#02A856] h-full'>
+                <div className='w-2/5 bg-[#02A856] h-full'>
 
                 </div>
             </div>

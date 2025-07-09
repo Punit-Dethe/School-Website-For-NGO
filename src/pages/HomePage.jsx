@@ -1,5 +1,6 @@
 import React from 'react';
-import Hero from '../components/Hero';
+import Hero from '../New_components/Hero';
+import HopeCard from '../New_components/Hopecard';
 import OurStory from '../components/OurStory';
 import WhatWeDo from '../components/WhatWeDo';
 import WhyTheyNeedUs from '../components/WhyTheyNeedUs';
@@ -13,6 +14,7 @@ const HomePage = () => {
     <div>
       <Hero />
       <OurStory />
+      <HopeCard />
       <WhyTheyNeedUs />
       <WhatWeDo />
       <Activities />
