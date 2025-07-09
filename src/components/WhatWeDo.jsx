@@ -89,7 +89,7 @@ const WhatWeDo = () => {
   const x = useTransform(scrollYProgress, [0, 0.5], [0, -scrollEndOffset]);
 
   return (
-    <section id="what-we-do" ref={targetRef} className="relative h-[300vh] bg-black text-white">
+    <section id="what-we-do" ref={targetRef} className="relative h-[300vh] bg-white text-black">
       <div className="sticky top-0 h-screen overflow-hidden flex flex-col">
         {/* Added extra space at top - only visible on mobile */}
         <div className="h-[12vh] sm:h-0"></div>

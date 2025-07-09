@@ -31,7 +31,7 @@ const Activities = () => {
     <div 
       className="py-12 px-6 md:py-16 md:px-24 font-sans"
       style={{
-        backgroundImage: 'radial-gradient(circle at 100% 0%, rgba(249, 115, 22, 0.5) 0%, transparent 35%), linear-gradient(to bottom, rgba(125, 211, 252, 0.8), rgba(191, 219, 254, 0.8))'
+        backgroundImage: 'radial-gradient(circle at 100% 0%, rgba(251, 146, 60, 0.7) 0%, transparent 35%), linear-gradient(to bottom, rgba(125, 211, 252, 0.8), rgba(191, 219, 254, 0.8))'
       }}
     >
       {/* --- DESKTOP HEADER --- */}
