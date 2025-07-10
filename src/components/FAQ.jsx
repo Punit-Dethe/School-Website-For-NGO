@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { FiPlus, FiX } from 'react-icons/fi';
+import { motion, AnimatePresence } from 'framer-motion';
 import faqImage from '../assets/Screenshot 2025-06-26 122635.png';
 
 const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState(null);
+
+  const cardColors = ['#A8DDEB', '#8ACCE0', '#6CC4E3', '#4EABC9', '#3D93B0'];
 
   const faqs = [
     {
@@ -33,14 +36,14 @@ const FAQ = () => {
   };
 
   return (
-    <section className="py-16" style={{ backgroundColor: '#f3ecd2' }}>
+    <section className="py-16" style={{ backgroundColor: '#F0F9FF' }}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 flex flex-col items-center">
           <h2 className="text-5xl font-bold text-black mb-3">
             Frequently Asked
           </h2>
           <div 
-            className="bg-[#f97028] text-white px-6 py-2 rounded-lg border-2 border-black shadow-[4px_4px_0px_#000000]"
+            className="bg-[#A8DDEB] text-black px-6 py-2 rounded-lg border-2 border-black shadow-[4px_4px_0px_#000000]"
             style={{ transform: 'rotate(2deg)' }}
           >
             <h2 className="text-5xl font-bold">Questions</h2>
@@ -59,8 +62,8 @@ const FAQ = () => {
               <div key={index} className="mb-6 relative">
                 {/* FAQ Question Button */}
                 <div 
-                  className="bg-secondary-orange rounded-xl border-2 border-black p-6 flex justify-between items-center cursor-pointer z-20 relative" 
-                  style={{ backgroundColor: 'rgb(243, 162, 15)' }}
+                  className="rounded-xl border-2 border-black p-6 flex justify-between items-center cursor-pointer z-20 relative"
+                  style={{ backgroundColor: cardColors[index % cardColors.length] }}
                   onClick={() => toggleFAQ(index)}
                 >
                   <h3 className="text-lg font-medium text-black">
@@ -72,19 +75,27 @@ const FAQ = () => {
                 </div>
                 
                 {/* Dropdown Content - tilted with left side lower */}
-                {activeIndex === index && (
-                  <div className="relative" style={{ marginTop: '-35px', marginBottom: '70px' }}>
-                    <div className="rounded-lg border-2 border-black transform rotate-[-2deg] shadow-md z-0 relative w-[95%] mx-auto min-h-[120px] p-5 pb-8" style={{ backgroundColor: '#ffe2c9' }}>
-                      <div className="pt-8 pb-6">
-                        <p className="text-lg">
-                          {faq.answer}
-                        </p>
+                <AnimatePresence>
+                  {activeIndex === index && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0, y: -20 }}
+                      animate={{ opacity: 1, height: 'auto', y: 0, marginTop: '-35px', marginBottom: '70px' }}
+                      exit={{ opacity: 0, height: 0, y: -20, marginTop: '0px', marginBottom: '0px' }}
+                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                      className="relative overflow-hidden"
+                    >
+                      <div className="rounded-lg border-2 border-black transform rotate-[-2deg] shadow-md z-0 relative w-[95%] mx-auto min-h-[120px] p-5 pb-8" style={{ backgroundColor: '#E0F7FF' }}>
+                        <div className="pt-8 pb-6">
+                          <p className="text-lg">
+                            {faq.answer}
+                          </p>
+                        </div>
+                        {/* Star decoration - bottom right */}
+                        <div className="absolute bottom-3 right-3 text-4xl transform -rotate-12" style={{ color: '#A8DDEB' }}>★</div>
                       </div>
-                      {/* Star decoration - bottom right */}
-                      <div className="absolute bottom-3 right-3 text-4xl transform -rotate-12" style={{ color: '#ffba88' }}>★</div>
-                    </div>
-                  </div>
-                )}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             ))}
           </div>

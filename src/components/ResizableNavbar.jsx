@@ -64,10 +64,12 @@ const Navbar = ({ className = '' }) => {
   };
 
   const navItems = [
-    { name: 'Home', hoverName: 'Main', link: '/' },
-    { name: 'Services', hoverName: 'Offerings', link: '#features' },
-    { name: 'About', hoverName: 'Info', link: '#about-us' },
-    { name: 'Contact', hoverName: 'Connect', link: '/contact' },
+    { name: 'Home', hoverName: 'Start', link: '/' },
+    { name: 'About Us', hoverName: 'Story', link: '#about-us' },
+    { name: 'Curriculum', hoverName: 'Learn', link: '#curriculum' },
+    { name: 'Activities', hoverName: 'Play', link: '#activities' },
+    { name: 'Reviews', hoverName: 'Love', link: '#reviews' },
+    { name: 'FAQ', hoverName: 'Help', link: '#faq' },
   ];
 
   return (
@@ -105,14 +107,14 @@ const Navbar = ({ className = '' }) => {
         <motion.div
           className="absolute inset-0 rounded-full"
           style={{
-            backgroundColor: "rgba(255, 255, 255, 0.8)",
-            backdropFilter: "blur(10px)",
-            boxShadow: "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset",
-            willChange: "opacity",
+            backgroundColor: visible ? "rgba(230, 240, 255, 0.8)" : "transparent",
+            backdropFilter: visible ? "blur(10px)" : "none",
+            boxShadow: visible ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset" : "none",
+            willChange: "background-color, backdrop-filter, box-shadow",
           }}
-          initial={{ opacity: 0 }}
+          initial={{ opacity: 1 }}
           animate={{
-            opacity: visible ? 1 : 0,
+            opacity: 1,
           }}
           transition={{
             type: "tween",
@@ -123,18 +125,22 @@ const Navbar = ({ className = '' }) => {
         
         {/* Content layer */}
         <div className="relative z-10 flex w-full flex-row items-center justify-between px-4 py-2">
-          <Link to="/" className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal">
-            <img src={visible ? logo2 : logo} alt="Triply" className="h-8 w-auto" />
-            <span className={`font-medium ${visible || !isHomePage ? 'text-black' : 'text-gray-200'}`}>Triply</span>
+          <Link to="/" className="relative z-20 mr-4 flex items-center px-2 py-1 text-sm font-normal">
+            <div className="h-8 w-8 rounded-full bg-blue-500"></div>
+            <motion.div 
+              className="overflow-hidden"
+              animate={{ width: visible ? 0 : 'auto', opacity: visible ? 0 : 1 }}
+              transition={{ duration: 0.4, ease: 'easeInOut' }}
+            >
+              <span className="font-medium text-black ml-2">Prana</span>
+            </motion.div>
           </Link>
 
           <NavItems items={navItems} visible={visible} isHomePage={isHomePage} />
 
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-4 ml-4">
             <a
-              href="https://play.google.com/store/apps/details?id=com.triply.app&pcampaignid=web_share"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#donate"
               onMouseEnter={() => setIsDownloadHovered(true)}
               onMouseLeave={() => setIsDownloadHovered(false)}
               className={cn(
@@ -144,22 +150,20 @@ const Navbar = ({ className = '' }) => {
                   : "bg-[#4f36b6] hover:bg-[#3b2a89] focus:ring-[#4f36b6]"
               )}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-              </svg>
+
               <div className="relative h-5">
-                <span className="font-medium opacity-0">Download</span>
+                <span className="font-medium opacity-0">Donate</span>
                 <div className="absolute inset-0 flex items-center justify-center">
                   <AnimatePresence mode="wait">
                     <motion.span
-                      key={isDownloadHovered ? "Let's Go" : "Download"}
+                      key={isDownloadHovered ? "Support" : "Donate"}
                       variants={downloadAnimationVariants}
                       initial="initial"
                       animate="animate"
                       exit="exit"
                       transition={{ duration: 0.2, ease: 'easeInOut' }}
                     >
-                      {isDownloadHovered ? "Let's Go" : "Download"}
+                      {isDownloadHovered ? "Support" : "Donate"}
                     </motion.span>
                   </AnimatePresence>
                 </div>
@@ -200,13 +204,13 @@ const Navbar = ({ className = '' }) => {
         <motion.div
           className="absolute inset-0 rounded-[inherit]"
           style={{
-            backgroundColor: "rgba(255, 255, 255, 0.8)",
-            backdropFilter: "blur(10px)",
-            boxShadow: "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset",
-            willChange: "opacity",
+            backgroundColor: visible ? "rgba(230, 240, 255, 0.8)" : "transparent",
+            backdropFilter: visible ? "blur(10px)" : "none",
+            boxShadow: visible ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset" : "none",
+            willChange: "background-color, backdrop-filter, box-shadow",
           }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: visible ? 1 : 0 }}
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 1 }}
           transition={{
             type: "tween",
             duration: 0.4,
@@ -219,12 +223,18 @@ const Navbar = ({ className = '' }) => {
           "relative z-10 flex w-full items-center justify-between px-4 transition-all duration-300 ease-in-out",
           visible ? 'py-3' : 'py-4'
         )} style={{ minHeight: '64px' }}>
-          <Link to="/" className="flex items-center space-x-2">
-            <img src={visible ? logo2 : logo} alt="Triply" className={cn(
-              "w-auto transition-all duration-300 ease-in-out",
-              visible ? "h-7" : "h-8"
-            )} />
-            <span className={`text-lg font-medium ${visible || !isHomePage ? 'text-black' : 'text-gray-200'}`}>Triply</span>
+          <Link to="/" className="flex items-center">
+            <div className={cn(
+              "rounded-full bg-blue-500 transition-all duration-300 ease-in-out",
+              visible ? "h-7 w-7" : "h-8 w-8"
+            )}></div>
+            <motion.div 
+              className="overflow-hidden"
+              animate={{ width: visible ? 0 : 'auto', opacity: visible ? 0 : 1 }}
+              transition={{ duration: 0.4, ease: 'easeInOut' }}
+            >
+              <span className="text-lg font-medium text-black ml-2">Prana</span>
+            </motion.div>
           </Link>
           <button
             onClick={toggleMobileMenu}
@@ -337,9 +347,7 @@ const Navbar = ({ className = '' }) => {
             {/* Download Button (Mobile Menu) */}
             <div className="mt-auto mb-8">
               <a
-                href="https://play.google.com/store/apps/details?id=com.triply.app&pcampaignid=web_share"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#donate"
               className={`w-full text-center bg-black text-white hover:bg-gray-900 hover:text-white py-4 rounded-full text-xl font-medium transition-colors duration-200 ${
                   menuItemsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                 }`}
@@ -352,7 +360,7 @@ const Navbar = ({ className = '' }) => {
                   marginBottom: 'env(safe-area-inset-bottom, 20px)'
                 }}
               >
-                Download
+                Donate
               </a>
             </div>
           </div>
@@ -381,7 +389,7 @@ const NavItems = ({ items, visible, isHomePage }) => {
   return (
     <motion.div
       onMouseLeave={() => setHovered(null)}
-      className="hidden flex-1 flex-row items-center justify-center space-x-2 text-sm font-medium transition duration-200 lg:flex lg:space-x-2"
+      className="hidden flex-1 flex-row items-center justify-center space-x-1 text-sm font-medium transition duration-200 lg:flex"
     >
       {items.map((item, idx) => {
         const isAnchorLink = item.link.startsWith('#');
@@ -411,17 +419,15 @@ const NavItems = ({ items, visible, isHomePage }) => {
           </>
         );
 
+        const linkClassName = `relative inline-flex justify-center px-3 py-2 transition-colors duration-200 cursor-pointer text-black ${isHomePage && !visible ? 'hover:text-purple-200' : 'hover:text-purple-800'}`;
+
         return isAnchorLink ? (
           <a
             key={idx}
             href={item.link}
             onClick={(e) => scrollToSection(e, item.link.substring(1))}
             onMouseEnter={() => setHovered(idx)}
-            className={`relative inline-flex justify-center px-4 py-2 transition-colors duration-200 dark:text-gray-200 cursor-pointer ${
-              isHomePage && !visible
-                ? 'text-gray-200 hover:text-purple-200'
-                : 'text-black hover:text-purple-800'
-            }`}
+            className={linkClassName}
           >
             {linkContent}
           </a>
@@ -430,11 +436,7 @@ const NavItems = ({ items, visible, isHomePage }) => {
             key={idx}
             to={item.link}
             onMouseEnter={() => setHovered(idx)}
-            className={`relative inline-flex justify-center px-4 py-2 transition-colors duration-200 dark:text-gray-200 ${
-              isHomePage && !visible
-                ? 'text-gray-200 hover:text-purple-200'
-                : 'text-black hover:text-purple-800'
-            }`}
+            className={linkClassName}
           >
             {linkContent}
           </Link>

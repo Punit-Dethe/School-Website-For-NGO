@@ -21,8 +21,8 @@ const Hero = () => {
 
     return (
         <div className="relative font-sans overflow-hidden">
-            <section className="bg-[#fdefe4] pt-20 pb-32">
-                <div className="container mx-auto px-6">
+            <section className="bg-[#fdefe4] pb-32">
+                <div className="container mx-auto px-6 pt-32">
                     <div className="grid md:grid-cols-2 gap-12 items-center">
                         {/* Left Column */}
                         <div className="text-left">

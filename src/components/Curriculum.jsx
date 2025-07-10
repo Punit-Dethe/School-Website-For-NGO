@@ -1,107 +1,74 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
-// --- Image Placeholders ---
-// You can replace these placeholder URLs with your actual image paths.
-// For example: import prePrimaryImg from '../assets/Curriculum/pre-primary.jpg';
-// And then use `image: prePrimaryImg` in the curriculumData array.
-const placeholderImages = {
-  'PRE-PRIMARY': 'https://placehold.co/600x450/f39c12/white?text=Pre-Primary',
-  'PRIMARY': 'https://placehold.co/600x450/2ecc71/white?text=Primary',
-  'MIDDLE': 'https://placehold.co/600x450/3498db/white?text=Middle',
-  'SECONDARY': 'https://placehold.co/600x450/9b59b6/white?text=Secondary',
-  'SENIOR SECONDARY': 'https://placehold.co/600x450/e74c3c/white?text=Senior+Secondary',
-};
+// TODO: Replace this placeholder with the actual path to your image
+// For example: import curriculumImage from '../assets/curriculum-photo.jpg';
+const curriculumImage = 'https://placehold.co/400x400/333333/white?text=Your+Image+Here';
 
-const curriculumData = [
-  {
-    level: 'PRE-PRIMARY',
-    color: 'bg-[#f97028]', // Orange
-    image: placeholderImages['PRE-PRIMARY'],
-  },
-  {
-    level: 'PRIMARY',
-    color: 'bg-[#f489a3]', // Pink
-    image: placeholderImages['PRIMARY'],
-  },
-  {
-    level: 'MIDDLE',
-    color: 'bg-[#f3a20f]', // Dark Yellow 
-    image: placeholderImages['MIDDLE'],
-  },
-  {
-    level: 'SECONDARY',
-    color: 'bg-[#f0bb0d]', // Yellow
-    image: placeholderImages['SECONDARY'],
-  },
-  {
-    level: 'SENIOR SECONDARY',
-    color: 'bg-[#f97028]', // Red
-    image: placeholderImages['SENIOR SECONDARY'],
-  },
+const subjects = [
+  { name: 'Science', color: 'bg-[#A8DDEB]', image: 'https://placehold.co/400x400/A8DDEB/black?text=Science' },
+  { name: 'Maths', color: 'bg-[#6CC4E3]', image: 'https://placehold.co/400x400/6CC4E3/black?text=Maths' },
+  { name: 'Civics', color: 'bg-[#4EABC9]', image: 'https://placehold.co/400x400/4EABC9/white?text=Civics' },
+  { name: 'History', color: 'bg-[#3D93B0]', image: 'https://placehold.co/400x400/3D93B0/white?text=History' },
+  { name: 'Geography', color: 'bg-[#327E98]', image: 'https://placehold.co/400x400/327E98/white?text=Geography' },
 ];
 
 const Curriculum = () => {
-  // Set the initial image to be the first one in the list
-  const [activeImage, setActiveImage] = useState(curriculumData[0].image);
-
+  const [activeImage, setActiveImage] = useState(subjects[0].image);
   return (
-    <section id="curriculum" className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-extrabold text-gray-800 mb-4 tracking-wide">
-            OUR CURRICULUM
-          </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Prana School follows the C.B.S.E curriculum, ensuring a holistic and comprehensive education for our students.
-          </p>
-        </div>
-      </div>
-
-      <div className="relative w-full overflow-x-hidden">
+    <section id="curriculum" className="bg-white">
+      <div className="relative w-full overflow-hidden">
         <div className="flex flex-col lg:flex-row w-full">
-          {/* Left Side: Perfect Square Container */}
-          <div className="w-full lg:w-auto flex-shrink-0">
-            <div className="overflow-hidden shadow-2xl bg-black flex items-center justify-center" 
-                 style={{ 
-                   width: 'calc(25rem + 5vw)',
-                   minWidth: '25rem',
-                   maxWidth: '35rem',
-                   aspectRatio: '1/1',
-                   height: 'auto'
-                 }}>
-              <div className="relative w-full h-full flex items-center justify-center">
-                <div className="text-white font-bold tracking-widest transform -rotate-90 whitespace-nowrap" 
-                     style={{ fontSize: 'calc(1.5rem + 0.8vw)' }}>
-                  <span className="text-yellow-400">OUR</span> CURRICULUM
+          {/* Left Side: Image and Title */}
+          <div className="w-full lg:w-auto flex-shrink-0 self-stretch">
+            <div
+              className="bg-black flex items-center justify-center h-full"
+              style={{
+                width: 'calc(25rem + 5vw)',
+                minWidth: '25rem',
+                maxWidth: '35rem',
+              }}
+            >
+              <div className="w-full p-8 flex flex-col justify-center items-center text-center">
+                <h2 className="text-white text-4xl font-serif italic mb-4">
+                  <span className="border-b-2 border-white pb-1">Curriculum</span>
+                </h2>
+                <div className="w-full max-w-xs aspect-square mt-4 relative overflow-hidden">
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      key={activeImage} // Change the key to trigger animation
+                      src={activeImage}
+                      alt="Curriculum subject image"
+                      className="w-full h-full object-cover rounded-2xl shadow-lg absolute inset-0"
+                      initial={{ opacity: 0, scale: 1.05 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    />
+                  </AnimatePresence>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right Side: Curriculum Bars - Full Width */}
-          <div className="flex-1 relative">
-            <div className="absolute inset-y-0 left-0 right-0 bg-white -z-10"></div>
-            <div className="relative w-full h-full">
-              {curriculumData.map((item, index) => (
-                <div
-                  key={item.level}
-                  className={`flex items-center justify-center text-center text-white font-bold cursor-pointer transition-all duration-300 hover:scale-105 ${item.color} ${
-                    index < curriculumData.length - 1 
-                      ? 'shadow-[inset_0_-2px_0_0_rgba(0,0,0,0.6),inset_0_-3px_12px_rgba(0,0,0,0.3)]' 
-                      : ''
-                  }`}
-                  style={{
-                    height: 'calc(5rem + 1vw)',
-                    minHeight: '5rem',
-                    maxHeight: '7rem',
-                    fontSize: 'calc(1rem + 0.4vw)'
-                  }}
-                  onMouseEnter={() => setActiveImage(item.image)}
-                >
-                  {item.level}
-                </div>
-              ))}
-            </div>
+          {/* Right Side: Subjects List */}
+          <div className="flex-1 flex flex-col">
+            {subjects.map((subject) => (
+              <div
+                key={subject.name}
+                className={`flex items-center justify-center text-center text-white font-bold cursor-pointer transition-transform duration-200 hover:scale-105 ${subject.color}`}
+                style={{
+                  height: 'calc(5rem + 2vw)', // Responsive height
+                  minHeight: '6rem',
+                  maxHeight: '8rem',
+                  fontSize: 'calc(1.5rem + 0.5vw)', // Responsive font size
+                  flexGrow: 1,
+                }}
+                onMouseEnter={() => setActiveImage(subject.image)}
+              >
+                {subject.name}
+              </div>
+            ))}
           </div>
         </div>
       </div>
