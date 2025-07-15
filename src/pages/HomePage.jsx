@@ -4,7 +4,7 @@ import AboutSection from '../New_components/AboutSection';
 import QuotePage from '../New_components/QuotePage';
 import HopeCard from '../New_components/Hopecard';
 import OurStory from '../components/OurStory';
-import WhatWeDo from '../components/WhatWeDo';
+import WhatWeDo from '../New_components/WhatWeDo';
 import WhyTheyNeedUs from '../components/WhyTheyNeedUs';
 import Activities from '../components/Activities';
 import Curriculum from '../components/Curriculum';
@@ -18,6 +18,7 @@ const HomePage = () => {
       <QuotePage />
       <AboutSection />
       <HopeCard />
+        <WhatWeDo />
       <Activities />
       <Curriculum />
       <Testimonial />
