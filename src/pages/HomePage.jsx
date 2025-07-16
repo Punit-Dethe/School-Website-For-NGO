@@ -3,7 +3,7 @@ import Hero from "../New_components/Hero";
 import AboutSection from "../New_components/AboutSection";
 import QuotePage from "../New_components/QuotePage";
 import HopeCard from "../New_components/Hopecard";
-import WhatWeDo from "../New_components/WhatWeDo";
+import WhatWeDo from "../components/WhatWeDo";
 import Amenities from "../components/Amenities";
 import Activities from "../components/Activities";
 import Curriculum from "../components/Curriculum";

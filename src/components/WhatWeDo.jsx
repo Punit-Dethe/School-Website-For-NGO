@@ -1,153 +1,161 @@
-import React, { useRef, useState, useLayoutEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React, { useRef, useEffect, useState } from "react";
 
-const features = [
+const sections = [
   {
-    title: 'Safe Rides',
-    description: 'Prioritizing the safety of female employees is paramount for all corporations. We ensure secure transportation with trained drivers and real-time tracking.'
+    title: "Safe Rides",
+    description:
+      "Prioritizing the safety of female employees is paramount for all corporations. We ensure secure transportation with trained drivers and real-time tracking.",
+    imageIndex: 0,
   },
   {
-    title: 'On Time Pickup',
-    description: 'Our dedicated on-time pickup service ensures that you arrive at the office promptly, helping maintain productivity and work schedules.'
+    title: "On Time Pickup",
+    description:
+      "Our dedicated on-time pickup service ensures that you arrive at the office promptly, helping maintain productivity and work schedules.",
+    imageIndex: 0,
   },
   {
-    title: 'Hygienic Cabs',
-    description: 'We prioritize cleanliness in our cabs, ensuring they are sanitized after each ride for your health and peace of mind.'
+    title: "Hygienic Cabs",
+    description:
+      "We prioritize cleanliness in our cabs, ensuring they are sanitized after each ride for your health and peace of mind.",
+    imageIndex: 1,
   },
   {
-    title: 'Cost Efficient',
-    description: 'We strategize rides to minimize company expenses, employing a point-to-point billing system that optimizes transportation costs.'
+    title: "Cost Efficient",
+    description:
+      "We strategize rides to minimize company expenses, employing a point-to-point billing system that optimizes transportation costs.",
+    imageIndex: 1,
   },
   {
-    title: 'Preventive Maintenance',
-    description: 'Our fleet preventive maintenance policy constrains us to ensure that vehicles are checked at proper intervals for safety and reliability.'
+    title: "Preventive Maintenance",
+    description:
+      "Our fleet preventive maintenance policy constrains us to ensure that vehicles are checked at proper intervals for safety and reliability.",
+    imageIndex: 2,
   },
   {
-    title: '24/7 Customer Support',
-    description: 'We provide exceptional customer support through responsive inquiries, attentive in-ride experiences, and immediate assistance whenever needed.'
+    title: "24/7 Customer Support",
+    description:
+      "We provide exceptional customer support through responsive inquiries, attentive in-ride experiences, and immediate assistance whenever needed.",
+    imageIndex: 2,
+  },
+  {
+    title: "Real-time Tracking",
+    description:
+      "Monitor your ride in real-time with our advanced GPS tracking system, ensuring transparency and peace of mind for both employees and employers.",
+    imageIndex: 3,
+  },
+  {
+    title: "Flexible Scheduling",
+    description:
+      "Adapt to changing work schedules with our flexible booking system that accommodates last-minute changes and varying shift timings.",
+    imageIndex: 3,
   },
 ];
 
+const images = [
+  "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+];
+
 const WhatWeDo = () => {
-  const targetRef = useRef(null);
-  const viewportRef = useRef(null);
-  const motionDivRef = useRef(null);
-  const textContainerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-    offset: ['start start', 'end start'],
-  });
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const sectionRefs = useRef([]);
 
-  const [scrollEndOffset, setScrollEndOffset] = useState(0);
-  const [dynamicPaddingLeft, setDynamicPaddingLeft] = useState(0);
-
-  useLayoutEffect(() => {
-    const updateLayout = () => {
-      const viewport = viewportRef.current;
-      const motionDiv = motionDivRef.current;
-      const textContainer = textContainerRef.current;
-
-      if (viewport && motionDiv) {
-        // Calculate the width needed to show all cards
-        const scrollWidth = motionDiv.scrollWidth;
-        const clientWidth = viewport.clientWidth;
-        const extraGap = 5; // px, adjust as needed
-        const finalOffset = scrollWidth - clientWidth + extraGap;
-        setScrollEndOffset(finalOffset);
+  useEffect(() => {
+    const observers = [];
+    
+    sectionRefs.current.forEach((section, index) => {
+      if (section) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                // Calculate which image should be active
+                // Sections 0,1 -> Image 0
+                // Sections 2,3 -> Image 1
+                // Sections 4,5 -> Image 2
+                // Sections 6,7 -> Image 3
+                const imageIndex = Math.floor(index / 2);
+                
+                if (imageIndex !== activeImageIndex) {
+                  // Instantly change the image with fade effect
+                  setActiveImageIndex(imageIndex);
+                }
+              }
+            });
+          },
+          {
+            threshold: 0.5, // Trigger when 50% of section is visible
+            rootMargin: '0px'
+          }
+        );
+        
+        observer.observe(section);
+        observers.push(observer);
       }
-
-      if (textContainer) {
-        const computedStyle = window.getComputedStyle(textContainer);
-        setDynamicPaddingLeft(parseFloat(computedStyle.paddingLeft));
-      }
-    };
-
-    updateLayout();
-    window.addEventListener('resize', updateLayout);
-
-    // Trigger updateLayout after a short delay (for late layout changes)
-    const timeoutId = setTimeout(updateLayout, 200);
-
-    // Listen for image load events inside the scroll area
-    const motionDiv = motionDivRef.current;
-    let images = [];
-    if (motionDiv) {
-      images = Array.from(motionDiv.querySelectorAll('img'));
-      images.forEach(img => img.addEventListener('load', updateLayout));
-    }
+    });
 
     return () => {
-      window.removeEventListener('resize', updateLayout);
-      clearTimeout(timeoutId);
-      if (images.length > 0) {
-        images.forEach(img => img.removeEventListener('load', updateLayout));
-      }
+      observers.forEach(observer => observer.disconnect());
     };
-  }, []);
-
-  // Start horizontal scrolling very early, but make it last longer
-  const x = useTransform(scrollYProgress, [0, 0.5], [0, -scrollEndOffset]);
+  }, [activeImageIndex]);
 
   return (
-    <section id="what-we-do" ref={targetRef} className="relative h-[300vh] bg-white text-black">
-      <div className="sticky top-0 h-screen overflow-hidden flex flex-col">
-        {/* Added extra space at top - only visible on mobile */}
-        <div className="h-[12vh] sm:h-0"></div>
-        
-        {/* Desktop-only top spacing - REDUCED */}
-        <div className="hidden sm:block sm:h-[7vh] md:h-[9vh] lg:h-[12vh]"></div>
-        
-        {/* Text Content */}
-        <div ref={textContainerRef} className="w-full max-w-6xl mx-auto px-8 md:px-12 z-10 mb-1 sm:mb-4 md:mb-6">
-            <div className="flex flex-col md:flex-row justify-between items-start">
-                <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter leading-tight max-w-lg">
-                    Your corporate ride partner.
-                </h2>
-                <p className="text-gray-400 mt-2 md:mt-2 max-w-xs text-base md:text-lg">
-                    Empowering productivity & elevating commutes for workplace. Our vision is to provide employees with a safe, reliable, comfortable, and affordable commuting experience.
-                </p>
-            </div>
+    <section className="relative bg-white">
+      {/* Header */}
+      <div className="w-full py-16 px-8 md:px-12">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-start">
+            <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter leading-tight max-w-lg">
+              Your corporate ride partner.
+            </h2>
+            <p className="text-gray-400 mt-4 md:mt-2 max-w-xs text-base md:text-lg">
+              Empowering productivity & elevating commutes for workplace. Our
+              vision is to provide employees with a safe, reliable, comfortable,
+              and affordable commuting experience.
+            </p>
+          </div>
         </div>
-        
-        {/* Horizontal Scroll Section Wrapper */}
-        <div ref={viewportRef} className="w-full overflow-x-hidden flex-1">
-          <motion.div 
-            ref={motionDivRef}
-            style={{ x, paddingLeft: dynamicPaddingLeft, paddingRight: dynamicPaddingLeft }} 
-            className="flex gap-4 sm:gap-8 py-2 sm:py-10 md:py-14 w-max h-full"
-          >
-              {features.map((feature, index) => (
-                <div key={index} className="relative shrink-0 h-full flex items-center">
-                  <div 
-                    className="relative w-[90vw] md:w-[60vw] lg:w-[45vw] max-w-[800px] h-[75%] sm:h-auto sm:aspect-[4/2.7] rounded-2xl flex flex-col justify-end p-5 md:p-8 bg-white border-8 border-neutral-800 shadow-xl overflow-hidden"
-                    style={{
-                      boxShadow: '0 0 15px rgba(146, 51, 234, 0.31), 0 0 30px rgba(0, 0, 0, 0.1)'
-                    }}
-                  >
-                    {/* Add dual gradients - purple from bottom-right and orange from top-left */}
-                    <div className="absolute inset-0" style={{
-                      background: 'linear-gradient(to top left, rgba(146, 51, 234, 0.25), transparent 70%), linear-gradient(to bottom right, rgba(234, 88, 12, 0.15), transparent 70%)',
-                      borderRadius: '12px'
-                    }}></div>
-                    
-                    {/* Number indicator in top right */}
-                    <div className="absolute top-2 right-2 sm:top-4 md:top-8 sm:right-4 md:right-8 w-12 h-12 sm:w-16 md:w-20 sm:h-16 md:h-20 flex items-center justify-center">
-                      <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-neutral-800 opacity-40">0{index + 1}</span>
-                    </div>
-                    
-                    {/* Content aligned to bottom */}
-                    <div className="relative z-10 max-w-md text-left">
-                      <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black tracking-tight mb-2 sm:mb-3 md:mb-4">{feature.title}</h3>
-                      <p className="text-sm sm:text-base md:text-lg text-neutral-700">{feature.description}</p>
-                    </div>
+      </div>
+
+      {/* Sticky Scroll Container */}
+      <div className="relative">
+        <div className="flex">
+          {/* Left Side - Sticky Images */}
+          <div className="w-1/2 sticky top-0 h-screen">
+            <img
+              src={images[activeImageIndex]}
+              alt={`Service ${activeImageIndex + 1}`}
+              className="w-full h-full object-cover transition-opacity duration-500 ease-in-out"
+            />
+          </div>
+
+          {/* Right Side - Scrolling Sections */}
+          <div className="w-1/2">
+            {sections.map((section, index) => (
+              <div
+                key={index}
+                ref={(el) => (sectionRefs.current[index] = el)}
+                className="h-screen flex items-center justify-center p-8 md:p-12"
+              >
+                <div className="max-w-lg">
+                  <div className="mb-6">
+                    <span className="text-6xl font-bold text-gray-200">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
                   </div>
+                  <h3 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
+                    {section.title}
+                  </h3>
+                  <p className="text-lg text-gray-600 leading-relaxed">
+                    {section.description}
+                  </p>
                 </div>
-              ))}
-          </motion.div>
+              </div>
+            ))}
+          </div>
         </div>
-        
-        {/* Added space at bottom - only visible on mobile */}
-        <div className="h-[8vh] sm:h-0"></div>
       </div>
     </section>
   );

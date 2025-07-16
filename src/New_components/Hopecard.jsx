@@ -2,22 +2,23 @@ import React from 'react';
 
 const Hopecard = () => {
     return (
-        <section className="w-full bg-white flex flex-col items-center px-2 sm:px-4 pt-0 pb-0">
-            <div className="flex flex-col md:flex-row gap-8 w-full max-w-5xl mb-12">
-                {/* Blue box with quote */}
-                <div className="flex-1 bg-[#6CC4E3] rounded-xl shadow-lg p-6 flex flex-col md:flex-row justify-center min-h-[250px]">
-                    <div className='flex flex-col items-start md:items-start'>
-                        <h3 className="text-xl font-bold mb-2 text-white font-['MouldyCheeseRegular-WyMWG','Outfit',sans-serif]">
+        <section className="w-full bg-white px-4 sm:px-8 lg:px-12 py-16">
+            {/* Full-width blue card with responsive layout */}
+            <div className="w-full bg-[#6CC4E3] rounded-xl shadow-lg p-6 md:p-8 lg:p-12">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[400px]">
+                    {/* Left side: Text content */}
+                    <div className="flex flex-col justify-center">
+                        <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-white font-['MouldyCheeseRegular-WyMWG','Outfit',sans-serif] leading-tight">
                             You are the <span className="underline underline-offset-4 decoration-white">hope of others.</span>
                         </h3>
-                        <p className="text-white text-sm">
+                        <p className="text-white text-sm md:text-base lg:text-lg leading-relaxed">
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
                         </p>
                     </div>
 
-                    {/* Empty rounded shadow box */}
-                    <div className="flex-1 flex flex-col items-center mt-8 mb-8 md:mt-0 md:mb-0 md:items-start">
-                        <div className="w-80 h-96 bg-white rounded-xl shadow-lg border border-gray-100 flex items-center justify-center" />
+                    {/* Right side: Image placeholder */}
+                    <div className="flex justify-center lg:justify-end">
+                        <div className="w-full max-w-md h-80 lg:h-96 bg-white rounded-xl shadow-lg border border-gray-100 flex items-center justify-center" />
                     </div>
                 </div>
             </div>
