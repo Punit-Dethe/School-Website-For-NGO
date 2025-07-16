@@ -28,12 +28,7 @@ const Activities = () => {
   };
 
   return (
-    <div 
-      className="py-12 px-6 md:py-16 md:px-24 font-sans"
-      style={{
-        backgroundImage: 'radial-gradient(circle at 100% 0%, rgba(251, 146, 60, 0.7) 0%, transparent 35%), linear-gradient(to bottom, rgba(125, 211, 252, 0.8), rgba(191, 219, 254, 0.8))'
-      }}
-    >
+    <div className="py-12 px-6 md:py-16 md:px-24 font-sans bg-white">
       {/* --- DESKTOP HEADER --- */}
       <div className="hidden md:flex justify-between items-start mb-12">
         <div className="max-w-[60%]">

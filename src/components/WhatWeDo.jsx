@@ -133,27 +133,65 @@ const WhatWeDo = () => {
 
           {/* Right Side - Scrolling Sections */}
           <div className="w-1/2">
-            {sections.map((section, index) => (
-              <div
-                key={index}
-                ref={(el) => (sectionRefs.current[index] = el)}
-                className="h-screen flex items-center justify-center p-8 md:p-12"
-              >
-                <div className="max-w-lg">
-                  <div className="mb-6">
-                    <span className="text-6xl font-bold text-gray-200">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
+            {sections.map((section, index) => {
+              // Define gradient colors from light blue to dark blue
+              const bgColors = [
+                'bg-blue-50',    // Section 1 - Very light blue
+                'bg-blue-100',   // Section 2 - Light blue
+                'bg-blue-200',   // Section 3 - Light blue
+                'bg-blue-300',   // Section 4 - Medium light blue
+                'bg-blue-400',   // Section 5 - Medium blue
+                'bg-blue-500',   // Section 6 - Medium blue
+                'bg-blue-600',   // Section 7 - Dark blue
+                'bg-blue-700',   // Section 8 - Very dark blue
+              ];
+              
+              // Text colors - light text for dark backgrounds
+              const textColors = [
+                'text-blue-900',  // Dark text for light backgrounds
+                'text-blue-900',  // Dark text for light backgrounds
+                'text-blue-900',  // Dark text for light backgrounds
+                'text-blue-900',  // Dark text for light backgrounds
+                'text-white',     // White text for medium backgrounds
+                'text-white',     // White text for dark backgrounds
+                'text-white',     // White text for dark backgrounds
+                'text-white',     // White text for very dark backgrounds
+              ];
+              
+              // Number colors
+              const numberColors = [
+                'text-blue-200',  // Light number for light backgrounds
+                'text-blue-300',  // Light number for light backgrounds
+                'text-blue-400',  // Light number for light backgrounds
+                'text-blue-500',  // Medium number for light backgrounds
+                'text-blue-200',  // Light number for dark backgrounds
+                'text-blue-200',  // Light number for dark backgrounds
+                'text-blue-200',  // Light number for dark backgrounds
+                'text-blue-200',  // Light number for very dark backgrounds
+              ];
+
+              return (
+                <div
+                  key={index}
+                  ref={(el) => (sectionRefs.current[index] = el)}
+                  className={`h-screen flex items-center justify-center p-8 md:p-12 ${bgColors[index]}`}
+                >
+                  <div className="max-w-lg">
+                    <div className="mb-6">
+                      <span className={`text-6xl font-bold ${numberColors[index]}`}>
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                    </div>
+                    <h3 className={`text-3xl md:text-4xl font-bold mb-6 leading-tight ${textColors[index]}`}>
+                      {section.title}
+                    </h3>
+                    <p className={`text-lg leading-relaxed ${textColors[index]} opacity-90`}>
+                      {section.description}
+                    </p>
                   </div>
-                  <h3 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
-                    {section.title}
-                  </h3>
-                  <p className="text-lg text-gray-600 leading-relaxed">
-                    {section.description}
-                  </p>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
