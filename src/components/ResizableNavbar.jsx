@@ -215,10 +215,14 @@ const Navbar = ({ className = '' }) => {
           visible ? 'py-3' : 'py-4'
         )} style={{ minHeight: '64px' }}>
           <Link to="/" className="flex items-center">
-            <div className={cn(
-              "rounded-full bg-blue-500 transition-all duration-300 ease-in-out",
-              visible ? "h-7 w-7" : "h-8 w-8"
-            )}></div>
+            <img 
+              src={logo} 
+              alt="Prana Logo" 
+              className={cn(
+                "rounded-full object-cover transition-all duration-300 ease-in-out",
+                visible ? "h-7 w-7" : "h-8 w-8"
+              )}
+            />
             <span className="text-lg font-medium text-black ml-2">Prana</span>
           </Link>
           <button
