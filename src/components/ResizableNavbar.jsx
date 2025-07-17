@@ -127,7 +127,7 @@ const Navbar = ({ className = '' }) => {
               visible ? "mr-1" : "mr-2"
             )}>
               <img src={logo} alt="Prana Logo" className="h-8 w-8 rounded-full object-cover" />
-              <span className="font-medium text-black ml-2">Prana Foundation</span>
+              <span className="font-medium text-black ml-2" style={{ fontFamily: "'Gluten', sans-serif" }}>Prana</span>
             </Link>
 
             <NavItems items={navItems} visible={visible} isHomePage={isHomePage} />
@@ -148,7 +148,7 @@ const Navbar = ({ className = '' }) => {
                 )}
               >
 
-                <div className="relative h-5">
+                <div className="relative h-5" style={{ fontFamily: "'Gluten', sans-serif" }}>
                   <span className="font-medium opacity-0">Donate</span>
                   <div className="absolute inset-0 flex items-center justify-center">
                     <AnimatePresence mode="wait">
@@ -229,7 +229,7 @@ const Navbar = ({ className = '' }) => {
                   visible ? "h-7 w-7" : "h-8 w-8"
                 )}
               />
-              <span className="text-lg font-medium text-black ml-2">Prana Foundation</span>
+              <span className="text-lg font-medium text-black ml-2" style={{ fontFamily: "'Gluten', sans-serif" }}>Prana</span>
             </Link>
             <button
               onClick={toggleMobileMenu}
@@ -411,6 +411,7 @@ const NavItems = ({ items, visible, isHomePage }) => {
         );
 
         const linkClassName = `relative inline-flex justify-center px-3 py-2 transition-colors duration-200 cursor-pointer text-black ${isHomePage && !visible ? 'hover:text-purple-200' : 'hover:text-purple-800'}`;
+        const linkStyle = { fontFamily: "'Gluten', sans-serif" };
 
         return isAnchorLink ? (
           <a
@@ -419,6 +420,7 @@ const NavItems = ({ items, visible, isHomePage }) => {
             onClick={(e) => scrollToSection(e, item.link.substring(1))}
             onMouseEnter={() => setHovered(idx)}
             className={linkClassName}
+            style={linkStyle}
           >
             {linkContent}
           </a>
@@ -428,6 +430,7 @@ const NavItems = ({ items, visible, isHomePage }) => {
             to={item.link}
             onMouseEnter={() => setHovered(idx)}
             className={linkClassName}
+            style={linkStyle}
           >
             {linkContent}
           </Link>
