@@ -4,11 +4,11 @@ const Amenities = () => {
   return (
     <section className="w-full bg-white py-16 md:py-24 relative overflow-hidden">
 
-      <div className="absolute w-[800px] h-[800px] bg-orange-500 rounded-full opacity-10 blur-3xl" 
+      <div className="absolute w-[800px] h-[800px] bg-blue-400 rounded-full opacity-10 blur-3xl" 
            style={{ left: 'calc(40% - 400px)', top: 'calc(40% - 400px)' }}></div>
       
 
-      <div className="absolute w-[800px] h-[800px] bg-purple-600 rounded-full opacity-15 blur-3xl"
+      <div className="absolute w-[800px] h-[800px] bg-blue-600 rounded-full opacity-15 blur-3xl"
            style={{ left: 'calc(60% - 400px)', top: 'calc(60% - 400px)' }}></div>
            
       <div className="container mx-auto px-4 md:px-8 lg:px-12 max-w-7xl relative z-10">
