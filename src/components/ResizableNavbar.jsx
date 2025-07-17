@@ -2,9 +2,8 @@ import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import { IconMenu2, IconX } from '@tabler/icons-react';
 import { Link, useLocation } from 'react-router-dom';
-// Logo is loaded from public folder
-const logo = '/logo.ico';
-const logo2 = '/logo2.ico';
+// Import the logo from assets
+import logo from '../assets/LOGO/Logo.png';
 
 // Utility function for class names
 function cn(...classes) {
@@ -65,11 +64,9 @@ const Navbar = ({ className = '' }) => {
 
   const navItems = [
     { name: 'Home', hoverName: 'Start', link: '/' },
-    { name: 'About Us', hoverName: 'Story', link: '#about-us' },
     { name: 'Curriculum', hoverName: 'Learn', link: '#curriculum' },
+    { name: 'About Us', hoverName: 'Story', link: '#about-us' },
     { name: 'Activities', hoverName: 'Play', link: '#activities' },
-    { name: 'Reviews', hoverName: 'Love', link: '#reviews' },
-    { name: 'FAQ', hoverName: 'Help', link: '#faq' },
   ];
 
   return (
@@ -124,21 +121,15 @@ const Navbar = ({ className = '' }) => {
         />
         
         {/* Content layer */}
-        <div className="relative z-10 flex w-full flex-row items-center justify-between px-4 py-2">
-          <Link to="/" className="relative z-20 mr-4 flex items-center px-2 py-1 text-sm font-normal">
-            <div className="h-8 w-8 rounded-full bg-blue-500"></div>
-            <motion.div 
-              className="overflow-hidden"
-              animate={{ width: visible ? 0 : 'auto', opacity: visible ? 0 : 1 }}
-              transition={{ duration: 0.4, ease: 'easeInOut' }}
-            >
-              <span className="font-medium text-black ml-2">Prana</span>
-            </motion.div>
+        <div className="relative z-10 flex w-full flex-row items-center justify-between px-2 py-2">
+          <Link to="/" className="relative z-20 mr-2 flex items-center px-1 py-1 text-sm font-normal">
+            <img src={logo} alt="Prana Logo" className="h-8 w-8 rounded-full object-cover" />
+            <span className="font-medium text-black ml-2">Prana</span>
           </Link>
 
           <NavItems items={navItems} visible={visible} isHomePage={isHomePage} />
 
-          <div className="flex items-center space-x-4 ml-4">
+          <div className="flex items-center space-x-2 ml-2">
             <a
               href="#donate"
               onMouseEnter={() => setIsDownloadHovered(true)}
@@ -228,13 +219,7 @@ const Navbar = ({ className = '' }) => {
               "rounded-full bg-blue-500 transition-all duration-300 ease-in-out",
               visible ? "h-7 w-7" : "h-8 w-8"
             )}></div>
-            <motion.div 
-              className="overflow-hidden"
-              animate={{ width: visible ? 0 : 'auto', opacity: visible ? 0 : 1 }}
-              transition={{ duration: 0.4, ease: 'easeInOut' }}
-            >
-              <span className="text-lg font-medium text-black ml-2">Prana</span>
-            </motion.div>
+            <span className="text-lg font-medium text-black ml-2">Prana</span>
           </Link>
           <button
             onClick={toggleMobileMenu}
