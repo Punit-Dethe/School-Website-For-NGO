@@ -127,7 +127,7 @@ const Navbar = ({ className = '' }) => {
               visible ? "mr-1" : "mr-2"
             )}>
               <img src={logo} alt="Prana Logo" className="h-8 w-8 rounded-full object-cover" />
-              <span className="font-medium text-black ml-2">Prana</span>
+              <span className="font-medium text-black ml-2">Prana Foundation</span>
             </Link>
 
             <NavItems items={navItems} visible={visible} isHomePage={isHomePage} />
@@ -229,7 +229,7 @@ const Navbar = ({ className = '' }) => {
                   visible ? "h-7 w-7" : "h-8 w-8"
                 )}
               />
-              <span className="text-lg font-medium text-black ml-2">Prana</span>
+              <span className="text-lg font-medium text-black ml-2">Prana Foundation</span>
             </Link>
             <button
               onClick={toggleMobileMenu}
@@ -306,8 +306,8 @@ const Navbar = ({ className = '' }) => {
                   href={item.link}
                   onClick={handleClick}
                   className={`block text-5xl font-normal text-gray-800 hover:text-[#6c2bc7] transition-all duration-250 ${menuItemsVisible
-                      ? 'opacity-100 translate-x-0'
-                      : 'opacity-0 translate-x-8'
+                    ? 'opacity-100 translate-x-0'
+                    : 'opacity-0 translate-x-8'
                     }`}
                   style={{
                     transitionDelay: menuItemsVisible ? `${index * 75}ms` : '0ms',
@@ -321,8 +321,8 @@ const Navbar = ({ className = '' }) => {
                   key={item.name}
                   to={item.link}
                   className={`block text-5xl font-normal text-gray-800 hover:text-[#6c2bc7] transition-all duration-250 ${menuItemsVisible
-                      ? 'opacity-100 translate-x-0'
-                      : 'opacity-0 translate-x-8'
+                    ? 'opacity-100 translate-x-0'
+                    : 'opacity-0 translate-x-8'
                     }`}
                   style={{
                     transitionDelay: menuItemsVisible ? `${index * 75}ms` : '0ms',
