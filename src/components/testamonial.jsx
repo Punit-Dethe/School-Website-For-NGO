@@ -1,78 +1,47 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
 
-// Data for the testimonial cards based on the provided image
-const articles = [
+// Testimonial data matching the reference design
+const testimonials = [
   {
-    logo: {
-      text: "EQUIPMENT WORLD",
-    },
-    title:
-      "Moxion's Portable Power Solution Recharges Electric Equipment in the Field",
-    bgColor: "bg-blue-900",
-    textColor: "text-white",
-    dotColor: "text-white",
-    imageUrl:
-      "https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+    name: "Annemarie Buitelaar",
+    title: "CEO Adevinta Benelux (Marktplaats & 2dehands.be)",
+    testimonial: "We've been successfully collaborating with OPP for years to ensure that millions of Marktplaats users enjoy a seamless and secure payment experience.",
+    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+    companyLogo: "Marktplaats",
+    companyIcon: "M"
   },
   {
-    logo: {
-      text: "The Hollywood Reporter",
-    },
-    title: '"How Studios Are Making Sustainability the Default"',
-    bgColor: "bg-blue-200",
-    textColor: "text-blue-900",
-    dotColor: "text-blue-900",
-    imageUrl:
-      "https://images.unsplash.com/photo-1554672408-730436b60dde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+    name: "Sarah Johnson", 
+    title: "Director of Operations, TechCorp",
+    testimonial: "The partnership with Prana Foundation has transformed how we approach community engagement and sustainable development in our operations.",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+    companyLogo: "TechCorp",
+    companyIcon: "T"
   },
   {
-    logo: {
-      text: "FOR CONSTRUCTION PROS.COM",
-    },
-    title:
-      '"Contractors Will Soon Be Able To Rent Moxion Mobile Battery Units From Sunbelt Rentals"',
-    bgColor: "bg-blue-50",
-    textColor: "text-blue-800",
-    dotColor: "text-blue-800",
-    imageUrl:
-      "https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+    name: "Michael Chen",
+    title: "Founder & CEO, GreenTech Solutions", 
+    testimonial: "Prana Foundation's innovative approach to education and community development has been instrumental in our mission to create positive social impact.",
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+    companyLogo: "GreenTech",
+    companyIcon: "G"
   },
   {
-    logo: {
-      text: "TECHCRUNCH",
-    },
-    title:
-      '"The innovative approach to mobile power is a game-changer for outdoor events."',
-    bgColor: "bg-blue-600",
-    textColor: "text-white",
-    dotColor: "text-white",
-    imageUrl:
-      "https://images.unsplash.com/photo-1516259762381-22954d7d3ad2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+    name: "Emma Rodriguez",
+    title: "Head of Sustainability, EcoVentures",
+    testimonial: "Working with Prana Foundation has been transformative for our community outreach programs and environmental initiatives.",
+    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+    companyLogo: "EcoVentures", 
+    companyIcon: "E"
   },
   {
-    logo: {
-      text: "BUSINESS INSIDER",
-    },
-    title:
-      '"Moxion is powering the future of sustainable industry, one battery at a time."',
-    bgColor: "bg-blue-300",
-    textColor: "text-blue-900",
-    dotColor: "text-blue-900",
-    imageUrl:
-      "https://images.unsplash.com/photo-1600880292210-f7611a43a609?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    logo: {
-      text: "RENEWABLE ENERGY WORLD",
-    },
-    title:
-      '"A cleaner, quieter, and more efficient solution for on-site power needs."',
-    bgColor: "bg-blue-700",
-    textColor: "text-white",
-    dotColor: "text-white",
-    imageUrl:
-      "https://images.unsplash.com/photo-1497493292307-31c376b6e479?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-  },
+    name: "David Park",
+    title: "Managing Director, Innovation Labs",
+    testimonial: "The collaborative approach and expertise of Prana Foundation has helped us achieve remarkable results in our social impact projects.",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+    companyLogo: "Innovation Labs",
+    companyIcon: "I"
+  }
 ];
 
 // Arrow component for navigation
@@ -116,70 +85,182 @@ const Arrow = ({ direction, onClick }) => (
 );
 
 const Testimonial = () => {
-  const scrollContainerRef = useRef(null);
+  const [currentIndex, setCurrentIndex] = useState(1); // Start with middle card
 
-  const scroll = (direction) => {
-    const { current } = scrollContainerRef;
-    if (current) {
-      const scrollAmount = current.offsetWidth * 0.8; // Scroll by 80% of the container width
-      current.scrollBy({
-        left: direction === "left" ? -scrollAmount : scrollAmount,
-        behavior: "smooth",
-      });
-    }
+  const nextTestimonial = () => {
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
   };
 
-  return (
-    <section className="bg-white py-20 font-sans">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-end mb-4">
-          <h2 className="text-5xl md:text-6xl font-bold text-black max-w-lg leading-tight">
-            See what all the talk is about.
-          </h2>
-          <div className="hidden md:flex items-center gap-x-3">
-            <Arrow direction="left" onClick={() => scroll("left")} />
-            <Arrow direction="right" onClick={() => scroll("right")} />
-          </div>
-        </div>
-        <hr className="border-gray-300 mb-12" />
+  const prevTestimonial = () => {
+    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
 
-        <div
-          ref={scrollContainerRef}
-          className="flex overflow-x-auto space-x-8 pb-8 scrollbar-hide"
-        >
-          {articles.map((article, index) => (
-            <div
-              key={index}
-              className={`flex-shrink-0 w-80 md:w-96 rounded-2xl overflow-hidden ${article.bgColor} ${article.textColor}`}
-            >
-              <img
-                src={article.imageUrl}
-                alt={article.title}
-                className="w-full h-64 object-cover rounded-b-2xl"
-              />
-              <div className="p-8">
-                <div className="flex flex-col h-full justify-between">
-                  <div>
-                    <div
-                      className={`w-3 h-3 rounded-full ${article.dotColor} bg-current opacity-50 mb-8`}
-                    ></div>
-                    <div className="text-sm font-semibold tracking-widest uppercase opacity-70 mb-4">
-                      {article.logo.text}
-                    </div>
-                  </div>
-                  <h3 className="text-2xl font-medium leading-snug">
-                    {article.title}
+  const getVisibleCards = () => {
+    const prevIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
+    const nextIndex = (currentIndex + 1) % testimonials.length;
+    
+    return {
+      prev: testimonials[prevIndex],
+      current: testimonials[currentIndex],
+      next: testimonials[nextIndex]
+    };
+  };
+
+  const { prev, current, next } = getVisibleCards();
+
+  return (
+    <section className="bg-gray-50 py-16 font-sans overflow-hidden">
+      <div className="relative max-w-7xl mx-auto px-4">
+        {/* Cards Container */}
+        <div className="flex items-center justify-center relative h-[500px]">
+          
+          {/* Left Partial Card */}
+          <div className="absolute left-0 w-[500px] h-[400px] transform -translate-x-40 opacity-25">
+            <div className="bg-white rounded-3xl shadow-lg p-10 h-full">
+              <div className="flex items-start gap-6 mb-8">
+                <div className="w-24 h-24 rounded-full bg-orange-200 overflow-hidden flex-shrink-0">
+                  <img
+                    src={prev.avatar}
+                    alt={prev.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                    {prev.name}
                   </h3>
+                  <p className="text-base text-gray-600 leading-relaxed">
+                    {prev.title}
+                  </p>
                 </div>
               </div>
+              <p className="text-gray-800 text-lg leading-relaxed">
+                {prev.testimonial}
+              </p>
             </div>
-          ))}
+          </div>
+
+          {/* Center Main Card */}
+          <div className="w-[650px] h-[450px] z-10">
+            <div className="bg-white rounded-3xl shadow-2xl p-12 h-full relative">
+              <div className="flex items-start gap-8 mb-8">
+                {/* Main Avatar */}
+                <div className="w-32 h-32 rounded-full bg-orange-200 overflow-hidden flex-shrink-0">
+                  <img
+                    src={current.avatar}
+                    alt={current.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                
+                {/* Name and Title */}
+                <div className="flex-1 pt-2">
+                  <h3 className="text-3xl font-bold text-gray-900 mb-3 leading-tight">
+                    {current.name}
+                  </h3>
+                  <p className="text-lg text-gray-600 leading-relaxed">
+                    {current.title}
+                  </p>
+                </div>
+                
+                {/* Right Small Avatar */}
+                <div className="w-20 h-20 rounded-full bg-orange-200 overflow-hidden flex-shrink-0 opacity-70">
+                  <img
+                    src={current.avatar}
+                    alt={current.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              
+              {/* Testimonial Text */}
+              <div className="mb-10">
+                <p className="text-xl text-gray-800 leading-relaxed">
+                  {current.testimonial}
+                </p>
+              </div>
+              
+              {/* Company Logo - Centered */}
+              <div className="flex items-center justify-center gap-4">
+                <div className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center">
+                  <span className="text-white text-lg font-bold">
+                    {current.companyIcon}
+                  </span>
+                </div>
+                <span className="text-2xl font-bold text-gray-900">
+                  {current.companyLogo}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Partial Card */}
+          <div className="absolute right-0 w-[500px] h-[400px] transform translate-x-40 opacity-25">
+            <div className="bg-white rounded-3xl shadow-lg p-10 h-full">
+              <div className="flex items-start gap-6 mb-8">
+                <div className="w-24 h-24 rounded-full bg-orange-200 overflow-hidden flex-shrink-0">
+                  <img
+                    src={next.avatar}
+                    alt={next.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                    {next.name}
+                  </h3>
+                  <p className="text-base text-gray-600 leading-relaxed">
+                    {next.title}
+                  </p>
+                </div>
+              </div>
+              <p className="text-gray-800 text-lg leading-relaxed">
+                {next.testimonial}
+              </p>
+            </div>
+          </div>
         </div>
 
-        {/* Mobile navigation buttons */}
-        <div className="flex md:hidden items-center justify-end gap-x-3 mt-8">
-          <Arrow direction="left" onClick={() => scroll("left")} />
-          <Arrow direction="right" onClick={() => scroll("right")} />
+        {/* Navigation Arrows */}
+        <div className="flex items-center justify-center gap-4 mt-12">
+          <button
+            onClick={prevTestimonial}
+            className="w-12 h-12 rounded-full bg-purple-200 hover:bg-purple-300 flex items-center justify-center text-purple-700 transition-all duration-200"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+          </button>
+          <button
+            onClick={nextTestimonial}
+            className="w-12 h-12 rounded-full bg-purple-200 hover:bg-purple-300 flex items-center justify-center text-purple-700 transition-all duration-200"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </button>
         </div>
       </div>
     </section>

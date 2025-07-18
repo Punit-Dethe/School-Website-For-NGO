@@ -1,33 +1,33 @@
 import React, { useState } from 'react';
-import { FiPlus, FiX } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
-import faqImage from '../assets/Screenshot 2025-06-26 122635.png';
 
 const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState(null);
 
-  const cardColors = ['#A8DDEB', '#8ACCE0', '#6CC4E3', '#4EABC9', '#3D93B0'];
-
   const faqs = [
     {
-      question: 'What are u doing',
-      answer: 'Food and beverages will be available for purchase from various vendors at the event. We will have options to cater to different dietary needs.'
+      question: 'What makes Prana Foundation different to other organizations?',
+      answer: 'Prana Foundation focuses on sustainable community development through education, combining traditional wisdom with modern approaches to create lasting positive impact.'
     },
     { 
-      question: 'How do I get there?',
-      answer: 'Details about transportation and directions will be provided closer to the event date. Please check our website for updates.'
+      question: 'How much does Prana Foundation charge?',
+      answer: 'Our services are provided free of charge to communities in need. We are funded through donations and grants to ensure accessibility for all.'
     },
     {
-      question: 'Is there food included?',
-      answer: 'Food and beverages will be available for purchase from various vendors at the event. We will have options to cater to different dietary needs.'
+      question: 'What if I already have a benefits scheme in place?',
+      answer: 'We work alongside existing programs to enhance and complement current initiatives, ensuring no duplication while maximizing community benefit.'
     },
     {
-      question: 'What should I bring?',
-      answer: 'We recommend bringing comfortable clothing, sunscreen, a reusable water bottle, and any personal items you may need. A detailed list will be shared closer to the event.'
+      question: 'Do I need another organization?',
+      answer: 'Prana Foundation serves as a collaborative partner, working with existing organizations to amplify impact rather than replace current efforts.'
     },
     {
-      question: 'Will there be an afterparty?',
-      answer: 'Information regarding an official afterparty will be announced soon. Stay tuned to our social media channels and website for updates!'
+      question: 'Do I have to sign a long contract?',
+      answer: 'We believe in flexible partnerships. Our agreements are designed to be adaptable to your community\'s changing needs and circumstances.'
+    },
+    {
+      question: 'Is my data safe?',
+      answer: 'Yes, we maintain strict data protection protocols and comply with all relevant privacy regulations to ensure your information remains secure.'
     }
   ];
 
@@ -36,62 +36,97 @@ const FAQ = () => {
   };
 
   return (
-    <section className="py-16" style={{ backgroundColor: '#F0F9FF' }}>
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12 flex flex-col items-center">
-          <h2 className="text-5xl font-bold text-black mb-3">
-            Frequently Asked
-          </h2>
-          <div 
-            className="bg-[#A8DDEB] text-black px-6 py-2 rounded-lg border-2 border-black shadow-[4px_4px_0px_#000000]"
-            style={{ transform: 'rotate(2deg)' }}
-          >
-            <h2 className="text-5xl font-bold">Questions</h2>
-          </div>
-        </div>
-        
-        <div className="flex flex-col md:flex-row gap-8 items-start">
-          {/* Left side with just the image */}
-          <div className="md:w-1/2">
-            <img src={faqImage} alt="FAQ" className="rounded-2xl border-2 border-black" style={{ width: '100%', height: '500px', objectFit: 'cover' }} />
+    <section className="bg-white py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          
+          {/* Left Side */}
+          <div className="relative">
+            {/* FAQ Label */}
+            <div className="mb-8">
+              <span className="text-sm font-medium text-gray-500 uppercase tracking-wider">
+                FAQ
+              </span>
+            </div>
+            
+            {/* Main Heading */}
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12 leading-tight">
+              What would you like to<br />
+              know about Prana<br />
+              Foundation?
+            </h2>
+            
+            {/* Decorative Spheres - positioned below text */}
+            <div className="relative mb-8">
+              {/* Large Purple Gradient Sphere */}
+              <div 
+                className="w-40 h-40 rounded-full"
+                style={{
+                  background: 'linear-gradient(135deg, #8B5CF6 0%, #A855F7 50%, #C084FC 100%)'
+                }}
+              ></div>
+              
+              {/* Small Orange Sphere */}
+              <div 
+                className="absolute -bottom-4 -right-8 w-8 h-8 rounded-full"
+                style={{
+                  background: '#FB923C'
+                }}
+              ></div>
+            </div>
+            
+            {/* Talk to us Button */}
+            <button className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-700 font-medium transition-colors duration-200">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              </svg>
+              Talk to us
+            </button>
           </div>
           
-          {/* Right side with interactive FAQ */}
-          <div className="md:w-1/2">
+          {/* Right Side - FAQ Items */}
+          <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <div key={index} className="mb-6 relative">
-                {/* FAQ Question Button */}
-                <div 
-                  className="rounded-xl border-2 border-black p-6 flex justify-between items-center cursor-pointer z-20 relative"
-                  style={{ backgroundColor: cardColors[index % cardColors.length] }}
+              <div key={index} className="border border-gray-200 rounded-3xl overflow-hidden">
+                {/* Question */}
+                <button
                   onClick={() => toggleFAQ(index)}
+                  className="w-full px-6 py-4 text-left bg-blue-50 hover:bg-blue-100 transition-colors duration-200 flex items-center justify-between"
                 >
-                  <h3 className="text-lg font-medium text-black">
+                  <span className="text-gray-900 font-medium">
                     {faq.question}
-                  </h3>
-                  <span>
-                    {activeIndex === index ? <FiX size={24} className="font-bold" /> : <FiPlus size={24} className="font-bold" />}
                   </span>
-                </div>
+                  <svg
+                    className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${
+                      activeIndex === index ? 'rotate-180' : ''
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
                 
-                {/* Dropdown Content - tilted with left side lower */}
+                {/* Answer */}
                 <AnimatePresence>
                   {activeIndex === index && (
                     <motion.div
-                      initial={{ opacity: 0, height: 0, y: -20 }}
-                      animate={{ opacity: 1, height: 'auto', y: 0, marginTop: '-35px', marginBottom: '70px' }}
-                      exit={{ opacity: 0, height: 0, y: -20, marginTop: '0px', marginBottom: '0px' }}
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3, ease: 'easeInOut' }}
-                      className="relative overflow-hidden"
+                      className="overflow-hidden"
                     >
-                      <div className="rounded-lg border-2 border-black transform rotate-[-2deg] shadow-md z-0 relative w-[95%] mx-auto min-h-[120px] p-5 pb-8" style={{ backgroundColor: '#E0F7FF' }}>
-                        <div className="pt-8 pb-6">
-                          <p className="text-lg">
-                            {faq.answer}
-                          </p>
-                        </div>
-                        {/* Star decoration - bottom right */}
-                        <div className="absolute bottom-3 right-3 text-4xl transform -rotate-12" style={{ color: '#A8DDEB' }}>★</div>
+                      <div className="px-6 py-4 bg-white border-t border-gray-200">
+                        <p className="text-gray-600 leading-relaxed">
+                          {faq.answer}
+                        </p>
                       </div>
                     </motion.div>
                   )}
