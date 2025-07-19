@@ -123,11 +123,11 @@ const Navbar = ({ className = '' }) => {
           {/* Content layer */}
           <div className="relative z-10 flex w-full flex-row items-center justify-between px-2 py-2">
             <Link to="/" className={cn(
-              "relative z-20 flex items-center px-1 py-1 text-sm font-normal transition-all duration-300",
+              "relative z-20 flex items-center px-1 py-1 text-base font-normal transition-all duration-300", // Increased text size
               visible ? "mr-1" : "mr-2"
             )}>
-              <img src={logo} alt="Prana Logo" className="h-8 w-8 rounded-full object-cover" />
-              <span className="font-medium text-black ml-2" style={{ fontFamily: "'Gluten', sans-serif" }}>Prana</span>
+              <img src={logo} alt="Prana Logo" className="h-10 w-10 rounded-full object-cover" /> {/* Increased logo size */}
+              <span className={cn("font-medium ml-2", isHomePage && !visible ? 'text-white' : 'text-black')} style={{ fontFamily: "'Gluten', sans-serif" }}>Prana</span>
             </Link>
 
             <NavItems items={navItems} visible={visible} isHomePage={isHomePage} />
@@ -141,10 +141,10 @@ const Navbar = ({ className = '' }) => {
                 onMouseEnter={() => setIsDownloadHovered(true)}
                 onMouseLeave={() => setIsDownloadHovered(false)}
                 className={cn(
-                  "relative inline-flex items-center justify-center px-5 py-2 text-sm font-medium text-white rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 gap-1 shadow-md hover:shadow-lg transition-colors duration-200",
+                  "relative inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 gap-1 shadow-md hover:shadow-lg transition-colors duration-200", // Increased padding and text size
                   visible
                     ? "bg-black hover:bg-gray-800 focus:ring-black"
-                    : "bg-[#4f36b6] hover:bg-[#3b2a89] focus:ring-[#4f36b6]"
+                    : "bg-[#064e3b] hover:bg-[#052e16] focus:ring-[#064e3b]" // Changed to dark green
                 )}
               >
 
@@ -226,10 +226,10 @@ const Navbar = ({ className = '' }) => {
                 alt="Prana Logo"
                 className={cn(
                   "rounded-full object-cover transition-all duration-300 ease-in-out",
-                  visible ? "h-7 w-7" : "h-8 w-8"
+                  visible ? "h-9 w-9" : "h-10 w-10" // Increased mobile logo size
                 )}
               />
-              <span className="text-lg font-medium text-black ml-2" style={{ fontFamily: "'Gluten', sans-serif" }}>Prana</span>
+              <span className="text-xl font-medium text-black ml-2" style={{ fontFamily: "'Gluten', sans-serif" }}>Prana</span> {/* Increased mobile Prana text size */}
             </Link>
             <button
               onClick={toggleMobileMenu}
@@ -380,7 +380,7 @@ const NavItems = ({ items, visible, isHomePage }) => {
   return (
     <motion.div
       onMouseLeave={() => setHovered(null)}
-      className="hidden flex-1 flex-row items-center justify-center space-x-1 text-sm font-medium transition duration-200 lg:flex"
+      className="hidden flex-1 flex-row items-center justify-center space-x-1 text-base font-medium transition duration-200 lg:flex" // Increased text size
     >
       {items.map((item, idx) => {
         const isAnchorLink = item.link.startsWith('#');
@@ -410,7 +410,7 @@ const NavItems = ({ items, visible, isHomePage }) => {
           </>
         );
 
-        const linkClassName = `relative inline-flex justify-center px-3 py-2 transition-colors duration-200 cursor-pointer text-black ${isHomePage && !visible ? 'hover:text-purple-200' : 'hover:text-purple-800'}`;
+        const linkClassName = `relative inline-flex justify-center px-3 py-2 transition-colors duration-200 cursor-pointer ${isHomePage && !visible ? 'text-white hover:text-gray-200' : 'text-black hover:text-purple-800'}`;
         const linkStyle = { fontFamily: "'Gluten', sans-serif" };
 
         return isAnchorLink ? (

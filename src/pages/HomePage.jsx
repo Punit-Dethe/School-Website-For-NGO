@@ -1,7 +1,4 @@
 import React from "react";
-import Hero from "../New_components/Hero";
-import AboutSection from "../New_components/AboutSection";
-import QuotePage from "../New_components/QuotePage";
 import HopeCard from "../New_components/Hopecard";
 import WhatWeDo from "../components/WhatWeDo";
 import Amenities from "../components/Amenities";
@@ -13,9 +10,6 @@ import FAQ from "../components/FAQ";
 const HomePage = () => {
   return (
     <div>
-      <Hero />
-      <QuotePage />
-      <AboutSection />
       <HopeCard />
       <WhatWeDo />
       <Activities />

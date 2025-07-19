@@ -59,7 +59,7 @@ const TopCurveWave = () => (
 // --- "Quote" Section Component ---
 const QuoteSection = () => {
     return (
-        <section className="relative w-full bg-[#e0deda] pt-20 sm:pt-24 lg:pt-32 pb-24">
+        <section className="relative w-full bg-[#e0deda] pt-20 sm:pt-24 lg:pt-32 pb-32">
             
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
@@ -166,10 +166,10 @@ const HopeCard = () => {
                             Performance Spotlights
                         </div>
                         <h2 className="heading text-white font-bold text-4xl sm:text-5xl lg:text-6xl mt-2">
-                            One of the only music schools of its kind
+                            One of the only non-profit schools of its kind
                         </h2>
                         <p className="text-gray-200 mt-6 text-lg max-w-2xl mx-auto">
-                            Our unique approach to music education fosters creativity and passion in students of all ages. Discover a vibrant community where you can learn, perform, and grow as a musician.
+                            we do not only teach but also provide a platform for the students to showcase their talents.
                         </p>
                     </div>
                     <div onClick={openModal} className="relative max-w-4xl mx-auto mt-12 mb-[-8rem] sm:mb-[-10rem] lg:mb-[-12rem] cursor-pointer group">
@@ -199,43 +199,76 @@ const HopeCard = () => {
     );
 };
 
+// --- Heart-Shaped Video Player ---
+const HeartVideoPlayer = ({ videoId }) => {
+    const videoUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0`;
+    const heartPath = "M0.5,1 C0.5,1,0,0.7,0,0.3 A0.25,0.25,1,1,1,0.5,0.3 A0.25,0.25,1,1,1,1,0.3 C1,0.7,0.5,1,0.5,1 Z";
+
+    return (
+        <div className="relative w-64 h-64 drop-shadow-2xl">
+            {/* SVG definition for clip path */}
+            <svg width="0" height="0" className="absolute">
+                <defs>
+                    <clipPath id="heart-clip-path" clipPathUnits="objectBoundingBox">
+                        <path d={heartPath} />
+                    </clipPath>
+                </defs>
+            </svg>
+
+            {/* The video iframe, clipped to a heart shape without a border */}
+            <div
+                className="w-full h-full"
+                style={{ clipPath: 'url(#heart-clip-path)' }}
+            >
+                <iframe
+                    className="w-full h-full"
+                    src={videoUrl}
+                    frameBorder="0"
+                    allow="autoplay; encrypted-media"
+                    allowFullScreen
+                    style={{ transform: 'scale(3)', transformOrigin: 'center' }}
+                ></iframe>
+            </div>
+        </div>
+    );
+};
+
+
 // --- Hero Section Component ---
 const HeroSection = () => {
     return (
-        <section className="bg-[#0d9488] relative overflow-hidden text-white">
-            <div className="absolute inset-0 z-0">
-                <img
-                    src="https://images.unsplash.com/photo-1612019139209-664482a20e3a?q=80&w=2070&auto=format&fit=crop"
-                    alt="Abstract background"
-                    className="w-full h-full object-cover opacity-10"
-                />
-            </div>
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 lg:pt-40 pb-20">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <section className="relative bg-[#0d9488] text-white min-h-screen flex items-center overflow-hidden pb-32 pt-20 -mt-20">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div className="grid md:grid-cols-2 gap-12 items-center">
+                    {/* Left Column - Text */}
                     <div className="text-center md:text-left">
-                        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold leading-tight">
-                            Inspiring Young<br />Lives Through<br />Music
+                        <h1 className="font-serif text-5xl md:text-7xl font-bold leading-tight drop-shadow-md">
+                            Inspiring Young<br />Lives Through<br />Education
                         </h1>
-                        <p className="mt-6 text-lg max-w-md mx-auto md:mx-0">
-                            Unleash your inner musician. Join our music school today!
+                        <p className="mt-4 text-lg md:text-xl max-w-md mx-auto md:mx-0 drop-shadow">
+                            Unleash your inner passion. Join our school today!
                         </p>
-                        <div className="mt-8 flex justify-center md:justify-start">
-                            <button className="bg-gray-800 text-white font-semibold py-3 px-8 rounded-full hover:bg-gray-700 transition-colors">
-                                Our Programs
-                            </button>
-                        </div>
+                        <button className="mt-8 bg-gray-900 bg-opacity-80 backdrop-blur-sm text-white font-bold py-3 px-8 rounded-full hover:bg-opacity-100 transition-colors shadow-lg">
+                            Our Programs
+                        </button>
                     </div>
-                    <div className="relative flex justify-center items-center">
-                        <div className="absolute w-full h-3/4 bg-yellow-400 rounded-full transform -skew-y-12 scale-150 opacity-80"></div>
-                        <img
-                            src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=2070&auto=format&fit=crop"
-                            alt="Woman teaching a child to play the cello"
-                            className="relative w-full max-w-md rounded-2xl shadow-2xl"
-                        />
+
+                    {/* Right Column - Video */}
+                    <div className="relative flex items-center justify-center h-[500px]">
+                        <HeartVideoPlayer videoId="v1M4ydNlgP0" />
                     </div>
                 </div>
             </div>
-            <div className="absolute bottom-0 left-0 w-full h-24 bg-white" style={{ clipPath: 'ellipse(100% 55% at 45% 100%)' }}></div>
+
+            {/* Bottom curve separator */}
+            <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+                <svg viewBox="0 0 1440 100" preserveAspectRatio="none" className="block w-full h-32">
+                    <path
+                        d="M0,0 C720,100 720,100 1440,0 L1440,100 L0,100 Z"
+                        fill="#e0deda"
+                    />
+                </svg>
+            </div>
         </section>
     );
 };
@@ -251,7 +284,6 @@ export default function App() {
     return (
         <div style={bodyStyles} className="antialiased">
             <HeroSection />
-            <TopCurveWave />
             <QuoteSection />
             <OurStory />
             <HopeCard />
