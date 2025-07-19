@@ -205,7 +205,7 @@ const HeartVideoPlayer = ({ videoId }) => {
     const heartPath = "M0.5,1 C0.5,1,0,0.7,0,0.3 A0.25,0.25,1,1,1,0.5,0.3 A0.25,0.25,1,1,1,1,0.3 C1,0.7,0.5,1,0.5,1 Z";
 
     return (
-        <div className="relative w-64 h-64 drop-shadow-2xl">
+        <div className="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 drop-shadow-2xl">
             {/* SVG definition for clip path */}
             <svg width="0" height="0" className="absolute">
                 <defs>

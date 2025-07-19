@@ -2,8 +2,9 @@ import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import { IconMenu2, IconX } from '@tabler/icons-react';
 import { Link, useLocation } from 'react-router-dom';
-// Import the logo from assets
-import logo from '../assets/LOGO/Logo.png';
+// Import the new logos
+import whiteLogo from '../assets/LOGO/white.png';
+import blackLogo from '../assets/LOGO/black.png';
 
 // Utility function for class names
 function cn(...classes) {
@@ -123,10 +124,26 @@ const Navbar = ({ className = '' }) => {
           {/* Content layer */}
           <div className="relative z-10 flex w-full flex-row items-center justify-between px-2 py-2">
             <Link to="/" className={cn(
-              "relative z-20 flex items-center px-1 py-1 text-base font-normal transition-all duration-300", // Increased text size
+              "relative z-20 flex items-center px-1 text-base font-normal transition-all duration-300",
               visible ? "mr-1" : "mr-2"
             )}>
-              <img src={logo} alt="Prana Logo" className="h-10 w-10 rounded-full object-cover" /> {/* Increased logo size */}
+              <div className={cn(
+                "relative transition-all duration-300",
+                visible ? "h-8 w-8" : "h-10 w-10" // Smaller logo when floating
+              )}>
+                <AnimatePresence initial={false}>
+                  <motion.img
+                    key={visible ? 'black' : 'white'}
+                    src={visible ? blackLogo : whiteLogo}
+                    alt="Prana Logo"
+                    className="absolute h-full w-full rounded-full object-cover"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  />
+                </AnimatePresence>
+              </div>
               <span className={cn("font-medium ml-2", isHomePage && !visible ? 'text-white' : 'text-black')} style={{ fontFamily: "'Gluten', sans-serif" }}>Prana</span>
             </Link>
 
@@ -141,10 +158,11 @@ const Navbar = ({ className = '' }) => {
                 onMouseEnter={() => setIsDownloadHovered(true)}
                 onMouseLeave={() => setIsDownloadHovered(false)}
                 className={cn(
-                  "relative inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 gap-1 shadow-md hover:shadow-lg transition-colors duration-200", // Increased padding and text size
+                  "relative inline-flex items-center justify-center text-base font-medium text-white rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 gap-1 shadow-md hover:shadow-lg transition-all duration-300",
+                  visible ? "px-5 py-2" : "px-6 py-3", // Thinner button when floating
                   visible
                     ? "bg-black hover:bg-gray-800 focus:ring-black"
-                    : "bg-[#064e3b] hover:bg-[#052e16] focus:ring-[#064e3b]" // Changed to dark green
+                    : "bg-[#064e3b] hover:bg-[#052e16] focus:ring-[#064e3b]"
                 )}
               >
 
@@ -221,15 +239,24 @@ const Navbar = ({ className = '' }) => {
             visible ? 'py-3' : 'py-4'
           )} style={{ minHeight: '64px' }}>
             <Link to="/" className="flex items-center">
-              <img
-                src={logo}
-                alt="Prana Logo"
-                className={cn(
-                  "rounded-full object-cover transition-all duration-300 ease-in-out",
-                  visible ? "h-9 w-9" : "h-10 w-10" // Increased mobile logo size
-                )}
-              />
-              <span className="text-xl font-medium text-black ml-2" style={{ fontFamily: "'Gluten', sans-serif" }}>Prana</span> {/* Increased mobile Prana text size */}
+              <div className={cn(
+                "relative transition-all duration-300",
+                visible ? "h-8 w-8" : "h-10 w-10"
+              )}>
+                <AnimatePresence initial={false}>
+                  <motion.img
+                    key={visible ? 'black' : 'white'}
+                    src={visible ? blackLogo : whiteLogo}
+                    alt="Prana Logo"
+                    className="absolute h-full w-full rounded-full object-cover"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  />
+                </AnimatePresence>
+              </div>
+              <span className="text-xl font-medium text-black ml-2" style={{ fontFamily: "'Gluten', sans-serif" }}>Prana</span>
             </Link>
             <button
               onClick={toggleMobileMenu}
@@ -410,7 +437,11 @@ const NavItems = ({ items, visible, isHomePage }) => {
           </>
         );
 
-        const linkClassName = `relative inline-flex justify-center px-3 py-2 transition-colors duration-200 cursor-pointer ${isHomePage && !visible ? 'text-white hover:text-gray-200' : 'text-black hover:text-purple-800'}`;
+        const linkClassName = cn(
+          'relative inline-flex justify-center px-3 transition-colors duration-200 cursor-pointer',
+          visible ? 'py-1' : 'py-2', // Thinner links when floating
+          isHomePage && !visible ? 'text-white hover:text-gray-200' : 'text-black hover:text-purple-800'
+        );
         const linkStyle = { fontFamily: "'Gluten', sans-serif" };
 
         return isAnchorLink ? (
