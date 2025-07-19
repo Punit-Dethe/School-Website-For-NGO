@@ -134,47 +134,48 @@ const WhatWeDo = () => {
           {/* Right Side - Scrolling Sections */}
           <div className="w-1/2">
             {sections.map((section, index) => {
-              // Define gradient colors from light blue to dark blue
+              // Define gradient colors using shades of #0b9587 from light to dark
               const bgColors = [
-                'bg-blue-50',    // Section 1 - Very light blue
-                'bg-blue-100',   // Section 2 - Light blue
-                'bg-blue-200',   // Section 3 - Light blue
-                'bg-blue-300',   // Section 4 - Medium light blue
-                'bg-blue-400',   // Section 5 - Medium blue
-                'bg-blue-500',   // Section 6 - Medium blue
-                'bg-blue-600',   // Section 7 - Dark blue
-                'bg-blue-700',   // Section 8 - Very dark blue
+                '#f0fffe',        // Section 1 - Very light shade of #0b9587
+                '#d1f5f3',        // Section 2 - Light shade of #0b9587
+                '#a3e6e0',        // Section 3 - Light shade of #0b9587
+                '#75d7cd',        // Section 4 - Medium light shade of #0b9587
+                '#47c8ba',        // Section 5 - Medium shade of #0b9587
+                '#2bb3a3',        // Section 6 - Medium dark shade of #0b9587
+                '#1a9e90',        // Section 7 - Dark shade of #0b9587
+                '#0b9587',        // Section 8 - Original color
               ];
 
               // Text colors - light text for dark backgrounds
               const textColors = [
-                'text-blue-900',  // Dark text for light backgrounds
-                'text-blue-900',  // Dark text for light backgrounds
-                'text-blue-900',  // Dark text for light backgrounds
-                'text-blue-900',  // Dark text for light backgrounds
-                'text-white',     // White text for medium backgrounds
-                'text-white',     // White text for dark backgrounds
-                'text-white',     // White text for dark backgrounds
-                'text-white',     // White text for very dark backgrounds
+                'text-green-900',  // Dark text for light backgrounds
+                'text-green-900',  // Dark text for light backgrounds
+                'text-green-900',  // Dark text for light backgrounds
+                'text-green-900',  // Dark text for light backgrounds
+                'text-white',      // White text for medium backgrounds
+                'text-white',      // White text for dark backgrounds
+                'text-white',      // White text for dark backgrounds
+                'text-white',      // White text for very dark backgrounds
               ];
 
               // Number colors
               const numberColors = [
-                'text-blue-200',  // Light number for light backgrounds
-                'text-blue-300',  // Light number for light backgrounds
-                'text-blue-400',  // Light number for light backgrounds
-                'text-blue-500',  // Medium number for light backgrounds
-                'text-blue-200',  // Light number for dark backgrounds
-                'text-blue-200',  // Light number for dark backgrounds
-                'text-blue-200',  // Light number for dark backgrounds
-                'text-blue-200',  // Light number for very dark backgrounds
+                'text-green-200',  // Light number for light backgrounds
+                'text-green-300',  // Light number for light backgrounds
+                'text-green-400',  // Light number for light backgrounds
+                'text-green-500',  // Medium number for light backgrounds
+                'text-green-200',  // Light number for dark backgrounds
+                'text-green-200',  // Light number for dark backgrounds
+                'text-green-200',  // Light number for dark backgrounds
+                'text-green-200',  // Light number for very dark backgrounds
               ];
 
               return (
                 <div
                   key={index}
                   ref={(el) => (sectionRefs.current[index] = el)}
-                  className={`h-screen flex items-center justify-center p-8 md:p-12 ${bgColors[index]}`}
+                  className="h-screen flex items-center justify-center p-8 md:p-12"
+                  style={{ backgroundColor: bgColors[index] }}
                 >
                   <div className="max-w-lg">
                     <div className="mb-6">
