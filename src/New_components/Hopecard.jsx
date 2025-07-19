@@ -49,7 +49,7 @@ const TopCurveWave = () => (
         >
             <path
                 d="M0,0 Q720,80 1440,0 L1440,80 L0,80 Z"
-                fill="#e0deda"
+                fill="#eceae4"
             />
         </svg>
     </div>
@@ -59,7 +59,7 @@ const TopCurveWave = () => (
 // --- "Quote" Section Component ---
 const QuoteSection = () => {
     return (
-        <section className="relative w-full bg-[#e0deda] pt-20 sm:pt-24 lg:pt-32 pb-32">
+        <section className="relative w-full bg-[#eceae4] pt-20 sm:pt-24 lg:pt-32 pb-32">
             
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
@@ -265,7 +265,7 @@ const HeroSection = () => {
                 <svg viewBox="0 0 1440 100" preserveAspectRatio="none" className="block w-full h-32">
                     <path
                         d="M0,0 C720,100 720,100 1440,0 L1440,100 L0,100 Z"
-                        fill="#e0deda"
+                        fill="#eceae4"
                     />
                 </svg>
             </div>

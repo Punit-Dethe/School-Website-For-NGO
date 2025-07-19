@@ -67,7 +67,7 @@ const Navbar = ({ className = '' }) => {
     { name: 'Home', hoverName: 'Start', link: '/' },
     { name: 'Curriculum', hoverName: 'Learn', link: '#curriculum' },
     { name: 'About Us', hoverName: 'Story', link: '#about-us' },
-    { name: 'Activities', hoverName: 'Play', link: '#activities' },
+    { name: 'Contact Us', hoverName: 'Reach', link: '#contact-us' },
   ];
 
   return (
@@ -105,7 +105,7 @@ const Navbar = ({ className = '' }) => {
           <motion.div
             className="absolute inset-0 rounded-full"
             style={{
-              backgroundColor: visible ? "rgba(230, 240, 255, 0.8)" : "transparent",
+              backgroundColor: visible ? "rgba(245, 243, 237, 0.8)" : "transparent",
               backdropFilter: visible ? "blur(10px)" : "none",
               boxShadow: visible ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset" : "none",
               willChange: "background-color, backdrop-filter, box-shadow",
@@ -219,7 +219,7 @@ const Navbar = ({ className = '' }) => {
           <motion.div
             className="absolute inset-0 rounded-[inherit]"
             style={{
-              backgroundColor: visible ? "rgba(230, 240, 255, 0.8)" : "transparent",
+              backgroundColor: visible ? "rgba(245, 243, 237, 0.8)" : "transparent",
               backdropFilter: visible ? "blur(10px)" : "none",
               boxShadow: visible ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset" : "none",
               willChange: "background-color, backdrop-filter, box-shadow",
