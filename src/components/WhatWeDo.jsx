@@ -64,7 +64,7 @@ const WhatWeDo = () => {
 
   useEffect(() => {
     const observers = [];
-    
+
     sectionRefs.current.forEach((section, index) => {
       if (section) {
         const observer = new IntersectionObserver(
@@ -77,7 +77,7 @@ const WhatWeDo = () => {
                 // Sections 4,5 -> Image 2
                 // Sections 6,7 -> Image 3
                 const imageIndex = Math.floor(index / 2);
-                
+
                 if (imageIndex !== activeImageIndex) {
                   // Instantly change the image with fade effect
                   setActiveImageIndex(imageIndex);
@@ -90,7 +90,7 @@ const WhatWeDo = () => {
             rootMargin: '0px'
           }
         );
-        
+
         observer.observe(section);
         observers.push(observer);
       }
@@ -104,7 +104,7 @@ const WhatWeDo = () => {
   return (
     <section className="relative bg-white">
       {/* Header */}
-      <div className="w-full py-16 px-8 md:px-12">
+      <div className="w-full py-16 px-8 md:px-12" style={{ backgroundColor: '#f6f4ee' }}>
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start">
             <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter leading-tight max-w-lg">
@@ -145,7 +145,7 @@ const WhatWeDo = () => {
                 'bg-blue-600',   // Section 7 - Dark blue
                 'bg-blue-700',   // Section 8 - Very dark blue
               ];
-              
+
               // Text colors - light text for dark backgrounds
               const textColors = [
                 'text-blue-900',  // Dark text for light backgrounds
@@ -157,7 +157,7 @@ const WhatWeDo = () => {
                 'text-white',     // White text for dark backgrounds
                 'text-white',     // White text for very dark backgrounds
               ];
-              
+
               // Number colors
               const numberColors = [
                 'text-blue-200',  // Light number for light backgrounds
