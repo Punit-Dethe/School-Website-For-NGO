@@ -36,7 +36,7 @@ const FAQ = () => {
   };
 
   return (
-    <section className="bg-white py-20">
+    <section className="bg-[#eceae4] py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           
@@ -62,7 +62,7 @@ const FAQ = () => {
               <div 
                 className="w-40 h-40 rounded-full"
                 style={{
-                  background: 'linear-gradient(135deg, #8B5CF6 0%, #A855F7 50%, #C084FC 100%)'
+                  background: 'linear-gradient(135deg, #47c8ba 0%, #2bb3a3 100%)'
                 }}
               ></div>
               
@@ -70,7 +70,7 @@ const FAQ = () => {
               <div 
                 className="absolute -bottom-4 -right-8 w-8 h-8 rounded-full"
                 style={{
-                  background: '#FB923C'
+                  background: '#007a68'
                 }}
               ></div>
             </div>
@@ -91,13 +91,13 @@ const FAQ = () => {
                 {/* Question */}
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full px-6 py-4 text-left bg-blue-50 hover:bg-blue-100 transition-colors duration-200 flex items-center justify-between"
+                  className="w-full px-6 py-4 text-left bg-[#007a68] hover:bg-[#006354] transition-colors duration-200 flex items-center justify-between"
                 >
-                  <span className="text-gray-900 font-medium">
+                  <span className="text-white font-medium">
                     {faq.question}
                   </span>
                   <svg
-                    className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${
+                    className={`w-5 h-5 text-white transition-transform duration-200 ${
                       activeIndex === index ? 'rotate-180' : ''
                     }`}
                     fill="none"

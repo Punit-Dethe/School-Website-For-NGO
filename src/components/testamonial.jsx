@@ -109,7 +109,7 @@ const Testimonial = () => {
   const { prev, current, next } = getVisibleCards();
 
   return (
-    <section className="bg-gray-50 py-16 font-sans overflow-hidden">
+    <section className="bg-[#f6f4ee] py-16 font-sans overflow-hidden">
       <div className="relative max-w-7xl mx-auto px-4">
         {/* Cards Container */}
         <div className="flex items-center justify-center relative h-[500px]">
@@ -225,7 +225,7 @@ const Testimonial = () => {
         <div className="flex items-center justify-center gap-4 mt-12">
           <button
             onClick={prevTestimonial}
-            className="w-12 h-12 rounded-full bg-purple-200 hover:bg-purple-300 flex items-center justify-center text-purple-700 transition-all duration-200"
+            className="w-12 h-12 rounded-full bg-[#008e78] hover:bg-[#007a68] flex items-center justify-center text-white transition-all duration-200"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -244,7 +244,7 @@ const Testimonial = () => {
           </button>
           <button
             onClick={nextTestimonial}
-            className="w-12 h-12 rounded-full bg-purple-200 hover:bg-purple-300 flex items-center justify-center text-purple-700 transition-all duration-200"
+            className="w-12 h-12 rounded-full bg-[#008e78] hover:bg-[#007a68] flex items-center justify-center text-white transition-all duration-200"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

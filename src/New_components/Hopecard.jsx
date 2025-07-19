@@ -37,24 +37,6 @@ const VideoModal = ({ isOpen, onClose, videoId }) => {
     );
 };
 
-// --- Simple Curve Wave Component (Bottom of Quote Section) ---
-const SimpleCurveWave = () => (
-    <div className="w-full overflow-hidden relative bg-[#e0deda]">
-        <svg
-            width="100%"
-            height="80"
-            viewBox="0 0 1440 80"
-            preserveAspectRatio="none"
-            className="w-full"
-        >
-            <path
-                d="M0,0 Q720,80 1440,0 L1440,80 L0,80 Z"
-                fill="#f0eee6"
-            />
-        </svg>
-    </div>
-);
-
 // --- Top Curve Wave Component (Top of Quote Section) ---
 const TopCurveWave = () => (
     <div className="w-full overflow-hidden relative bg-white">
@@ -78,6 +60,7 @@ const TopCurveWave = () => (
 const QuoteSection = () => {
     return (
         <section className="relative w-full bg-[#e0deda] pt-20 sm:pt-24 lg:pt-32 pb-24">
+            
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
                 {/* Top row of quote cards */}
@@ -104,7 +87,7 @@ const QuoteSection = () => {
                 </div>
             </div>
 
-
+            <img src="https://cdn.prod.website-files.com/63e831145b939f85f3946000/63e9b24345927405279287d1_wave_3.svg" loading="eager" alt="Bottom Wave" className="absolute bottom-0 left-0 w-full h-auto z-20" />
         </section>
     );
 };
@@ -113,9 +96,12 @@ const QuoteSection = () => {
 // --- "Our Story" Section Component ---
 const OurStory = () => {
     return (
-        // Using the requested background color #f0eee6
-        <div className="bg-[#f0eee6] relative overflow-hidden pt-20 sm:pt-24 lg:pt-32 pb-16">
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+        // Using the requested background color #f6f4ee and adding a gradient
+        <div className="bg-gradient-to-b from-[#f6f4ee] to-[#f0eee6] relative overflow-hidden pb-24">
+            {/* Top S-curve Wave - Positioned at very top to merge with above section */}
+            
+
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-32 grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
                 {/* Left Column: Image and Text */}
                 <div className="flex flex-col gap-6">
                     <div className="bg-white p-3 rounded-2xl shadow-lg aspect-square">
@@ -213,6 +199,48 @@ const HopeCard = () => {
     );
 };
 
+// --- Hero Section Component ---
+const HeroSection = () => {
+    return (
+        <section className="bg-[#0d9488] relative overflow-hidden text-white">
+            <div className="absolute inset-0 z-0">
+                <img
+                    src="https://images.unsplash.com/photo-1612019139209-664482a20e3a?q=80&w=2070&auto=format&fit=crop"
+                    alt="Abstract background"
+                    className="w-full h-full object-cover opacity-10"
+                />
+            </div>
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 lg:pt-40 pb-20">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div className="text-center md:text-left">
+                        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold leading-tight">
+                            Inspiring Young<br />Lives Through<br />Music
+                        </h1>
+                        <p className="mt-6 text-lg max-w-md mx-auto md:mx-0">
+                            Unleash your inner musician. Join our music school today!
+                        </p>
+                        <div className="mt-8 flex justify-center md:justify-start">
+                            <button className="bg-gray-800 text-white font-semibold py-3 px-8 rounded-full hover:bg-gray-700 transition-colors">
+                                Our Programs
+                            </button>
+                        </div>
+                    </div>
+                    <div className="relative flex justify-center items-center">
+                        <div className="absolute w-full h-3/4 bg-yellow-400 rounded-full transform -skew-y-12 scale-150 opacity-80"></div>
+                        <img
+                            src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=2070&auto=format&fit=crop"
+                            alt="Woman teaching a child to play the cello"
+                            className="relative w-full max-w-md rounded-2xl shadow-2xl"
+                        />
+                    </div>
+                </div>
+            </div>
+            <div className="absolute bottom-0 left-0 w-full h-24 bg-white" style={{ clipPath: 'ellipse(100% 55% at 45% 100%)' }}></div>
+        </section>
+    );
+};
+
+
 // --- Main App Component ---
 export default function App() {
     const bodyStyles = {
@@ -222,9 +250,9 @@ export default function App() {
 
     return (
         <div style={bodyStyles} className="antialiased">
+            <HeroSection />
             <TopCurveWave />
             <QuoteSection />
-            <SimpleCurveWave />
             <OurStory />
             <HopeCard />
         </div>

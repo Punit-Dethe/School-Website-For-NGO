@@ -108,12 +108,10 @@ const WhatWeDo = () => {
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start">
             <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter leading-tight max-w-lg">
-              Your corporate ride partner.
+              What makes us different ?
             </h2>
             <p className="text-gray-400 mt-4 md:mt-2 max-w-xs text-base md:text-lg">
-              Empowering productivity & elevating commutes for workplace. Our
-              vision is to provide employees with a safe, reliable, comfortable,
-              and affordable commuting experience.
+            At Prana Foundation, we provide education and care for children with disabilities, helping them learn, grow, and build confidence in a supportive environment.
             </p>
           </div>
         </div>
@@ -134,59 +132,35 @@ const WhatWeDo = () => {
           {/* Right Side - Scrolling Sections */}
           <div className="w-1/2">
             {sections.map((section, index) => {
-              // Define gradient colors using shades of #0b9587 from light to dark
-              const bgColors = [
-                '#f0fffe',        // Section 1 - Very light shade of #0b9587
-                '#d1f5f3',        // Section 2 - Light shade of #0b9587
-                '#a3e6e0',        // Section 3 - Light shade of #0b9587
-                '#75d7cd',        // Section 4 - Medium light shade of #0b9587
-                '#47c8ba',        // Section 5 - Medium shade of #0b9587
-                '#2bb3a3',        // Section 6 - Medium dark shade of #0b9587
-                '#1a9e90',        // Section 7 - Dark shade of #0b9587
-                '#0b9587',        // Section 8 - Original color
+              // Define cycling background colors from the provided hex codes
+              const cycleColors = [
+                '#2bb3a3',
+                '#1a9e90',
+                '#0b9587',
               ];
+              const bgColor = cycleColors[index % 3];
 
-              // Text colors - light text for dark backgrounds
-              const textColors = [
-                'text-green-900',  // Dark text for light backgrounds
-                'text-green-900',  // Dark text for light backgrounds
-                'text-green-900',  // Dark text for light backgrounds
-                'text-green-900',  // Dark text for light backgrounds
-                'text-white',      // White text for medium backgrounds
-                'text-white',      // White text for dark backgrounds
-                'text-white',      // White text for dark backgrounds
-                'text-white',      // White text for very dark backgrounds
-              ];
-
-              // Number colors
-              const numberColors = [
-                'text-green-200',  // Light number for light backgrounds
-                'text-green-300',  // Light number for light backgrounds
-                'text-green-400',  // Light number for light backgrounds
-                'text-green-500',  // Medium number for light backgrounds
-                'text-green-200',  // Light number for dark backgrounds
-                'text-green-200',  // Light number for dark backgrounds
-                'text-green-200',  // Light number for dark backgrounds
-                'text-green-200',  // Light number for very dark backgrounds
-              ];
+              // Since all cycling colors are dark, text should consistently be white
+              const textColor = 'text-white';
+              const numberColor = 'text-green-200'; // A light green for contrast on dark backgrounds
 
               return (
                 <div
                   key={index}
                   ref={(el) => (sectionRefs.current[index] = el)}
                   className="h-screen flex items-center justify-center p-8 md:p-12"
-                  style={{ backgroundColor: bgColors[index] }}
+                  style={{ backgroundColor: bgColor }}
                 >
                   <div className="max-w-lg">
                     <div className="mb-6">
-                      <span className={`text-6xl font-bold ${numberColors[index]}`}>
+                      <span className={`text-6xl font-bold ${numberColor}`}>
                         {String(index + 1).padStart(2, "0")}
                       </span>
                     </div>
-                    <h3 className={`text-3xl md:text-4xl font-bold mb-6 leading-tight ${textColors[index]}`}>
+                    <h3 className={`text-3xl md:text-4xl font-bold mb-6 leading-tight ${textColor}`}>
                       {section.title}
                     </h3>
-                    <p className={`text-lg leading-relaxed ${textColors[index]} opacity-90`}>
+                    <p className={`text-lg leading-relaxed ${textColor} opacity-90`}>
                       {section.description}
                     </p>
                   </div>

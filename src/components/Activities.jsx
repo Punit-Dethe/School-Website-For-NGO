@@ -11,8 +11,8 @@ const activitiesData = [
   { id: 7, text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy", height: 'short' },
 ];
 
-// 7-step blue gradient palette generated from #6cc4e3
-const blueGradient = ['#bdeaf8', '#a5dff4', '#8dd5f0', '#6cc4e3', '#4cb4d6', '#35a2c8', '#2091b9'];
+// The three lighter green shades to cycle through.
+const greenShades = ['#a3e6e0', '#75d7cd', '#47c8ba'];
 
 const Activities = () => {
   const carouselRef = useRef(null);
@@ -28,7 +28,7 @@ const Activities = () => {
   };
 
   return (
-    <div className="py-12 px-6 md:py-16 md:px-24 font-sans bg-white">
+    <div className="py-20 px-6 md:py-24 md:px-24 font-sans bg-[#f6f4ee]">
       {/* --- DESKTOP HEADER --- */}
       <div className="hidden md:flex justify-between items-start mb-12">
         <div className="max-w-[60%]">
@@ -66,7 +66,7 @@ const Activities = () => {
               key={activity.id}
               className={`snap-center relative flex flex-col flex-none w-[95%] md:w-80 p-4 shadow-glow ${cardHeight}`}
               style={{
-                backgroundColor: blueGradient[index % 3], // Cycle through the first 3 colors
+                backgroundColor: greenShades[index % 3], // Cycle through the green shades
                 border: '1px solid #000',
                 borderRadius: '28px',
                 clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 65px 100%, 45px 106%, 45px 100%, 0% 100%)',
