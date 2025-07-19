@@ -7,28 +7,28 @@ const VideoModal = ({ isOpen, onClose, videoId }) => {
     const videoUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
 
     return (
-        <div 
+        <div
             className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4"
             onClick={onClose} // Close modal on overlay click
         >
-            <div 
+            <div
                 className="relative bg-black w-full max-w-4xl rounded-lg shadow-xl overflow-hidden"
                 onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the modal content
             >
-                <button 
+                <button
                     onClick={onClose}
                     className="absolute top-2 right-3 text-white text-4xl font-bold hover:text-gray-300 z-10"
                 >
                     &times;
                 </button>
                 <div className="aspect-w-16 aspect-h-9">
-                    <iframe 
-                        id="youtube-iframe" 
-                        className="w-full h-full" 
+                    <iframe
+                        id="youtube-iframe"
+                        className="w-full h-full"
                         src={videoUrl}
                         title="YouTube video player"
-                        frameBorder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                     ></iframe>
                 </div>
@@ -37,17 +37,47 @@ const VideoModal = ({ isOpen, onClose, videoId }) => {
     );
 };
 
+// --- Simple Curve Wave Component (Bottom of Quote Section) ---
+const SimpleCurveWave = () => (
+    <div className="w-full overflow-hidden relative bg-[#e0deda]">
+        <svg
+            width="100%"
+            height="80"
+            viewBox="0 0 1440 80"
+            preserveAspectRatio="none"
+            className="w-full"
+        >
+            <path
+                d="M0,0 Q720,80 1440,0 L1440,80 L0,80 Z"
+                fill="#f0eee6"
+            />
+        </svg>
+    </div>
+);
+
+// --- Top Curve Wave Component (Top of Quote Section) ---
+const TopCurveWave = () => (
+    <div className="w-full overflow-hidden relative bg-white">
+        <svg
+            width="100%"
+            height="80"
+            viewBox="0 0 1440 80"
+            preserveAspectRatio="none"
+            className="w-full"
+        >
+            <path
+                d="M0,0 Q720,80 1440,0 L1440,80 L0,80 Z"
+                fill="#e0deda"
+            />
+        </svg>
+    </div>
+);
+
+
 // --- "Quote" Section Component ---
 const QuoteSection = () => {
     return (
         <section className="relative w-full bg-[#e0deda] pt-20 sm:pt-24 lg:pt-32 pb-24">
-            {/* Top Wave */}
-            <img 
-                src="https://cdn.prod.website-files.com/63e831145b939f85f3946000/63e9b243d94eb70c07e3d5d0_wave_2.svg" 
-                loading="eager" 
-                alt="Top Wave" 
-                className="absolute top-0 left-0 w-full h-auto" 
-            />
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
                 {/* Top row of quote cards */}
@@ -62,7 +92,7 @@ const QuoteSection = () => {
                         {/* Card Content Placeholder */}
                     </div>
                 </div>
-                
+
                 {/* Quote heading and description */}
                 <div className="w-full text-center">
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gray-800 font-['MouldyCheeseRegular-WyMWG','Outfit',sans-serif]">
@@ -74,13 +104,7 @@ const QuoteSection = () => {
                 </div>
             </div>
 
-            {/* Bottom Wave */}
-            <img 
-                src="https://cdn.prod.website-files.com/63e831145b939f85f3946000/63e9b24345927405279287d1_wave_3.svg" 
-                loading="eager" 
-                alt="Bottom Wave" 
-                className="absolute bottom-0 left-0 w-full h-auto" 
-            />
+
         </section>
     );
 };
@@ -95,7 +119,7 @@ const OurStory = () => {
                 {/* Left Column: Image and Text */}
                 <div className="flex flex-col gap-6">
                     <div className="bg-white p-3 rounded-2xl shadow-lg aspect-square">
-                         <div className="bg-gray-200 h-full w-full rounded-xl"></div>
+                        <div className="bg-gray-200 h-full w-full rounded-xl"></div>
                     </div>
                     <div>
                         <p className="text-gray-600 text-sm">
@@ -148,7 +172,8 @@ const HopeCard = () => {
                     <img src="https://cdn.prod.website-files.com/63e831145b939f85f3946000/63e9b229e00682054217f8dc_abstract_green.svg" loading="eager" alt="" className="absolute top-0 left-0 w-1/3 max-w-md opacity-20 -translate-x-1/4 -translate-y-1/4 transform rotate-[-15deg]" />
                     <img src="https://cdn.prod.website-files.com/63e831145b939f85f3946000/63e9b229e00682054217f8dc_abstract_green.svg" loading="eager" alt="" className="absolute bottom-0 right-0 w-1/3 max-w-md opacity-20 translate-x-1/4 translate-y-1/4 transform rotate-[-10deg]" />
                 </div>
-                <img src="https://cdn.prod.website-files.com/63e831145b939f85f3946000/63e9b243d94eb70c07e3d5d0_wave_2.svg" loading="eager" alt="Top Wave" className="absolute top-0 left-0 w-full h-auto" />
+                {/* This wave is untouched, as requested */}
+                <img src="https://cdn.prod.website-files.com/63e831145b939f85f3946000/63e9b243d94eb70c07e3d5d0_wave_2.svg" loading="eager" alt="Top Wave" className="absolute top-0 left-0 w-full h-auto transform scale-x-[-1]" />
                 <div className="content relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="block-heading-center text-center max-w-3xl mx-auto">
                         <div className="text-[#facc15] font-semibold tracking-wider uppercase">
@@ -162,12 +187,12 @@ const HopeCard = () => {
                         </p>
                     </div>
                     <div onClick={openModal} className="relative max-w-4xl mx-auto mt-12 mb-[-8rem] sm:mb-[-10rem] lg:mb-[-12rem] cursor-pointer group">
-                        <img 
-                            src="https://assets-global.website-files.com/63e831145b939f85f3946000/63edeaa591a37f50fcef0529_lightbox.jpg" 
-                            loading="eager" 
-                            alt="Music lesson with an accordion" 
+                        <img
+                            src="https://assets-global.website-files.com/63e831145b939f85f3946000/63edeaa591a37f50fcef0529_lightbox.jpg"
+                            loading="eager"
+                            alt="Music lesson with an accordion"
                             className="image-lightbox w-full h-auto rounded-2xl shadow-2xl transition-transform duration-300 group-hover:scale-105 border-8 border-white"
-                            onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/1362x766/cccccc/666666?text=Image+Not+Found'; }}
+                            onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/1362x766/cccccc/666666?text=Image+Not+Found'; }}
                         />
                         <div className="absolute inset-0 flex items-center justify-center">
                             <div className="flex items-center justify-center gap-3 bg-white/90 backdrop-blur-sm text-gray-900 font-bold py-4 px-8 rounded-full shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:bg-white">
@@ -179,9 +204,9 @@ const HopeCard = () => {
                 </div>
                 <img src="https://cdn.prod.website-files.com/63e831145b939f85f3946000/63e9b24345927405279287d1_wave_3.svg" loading="eager" alt="Bottom Wave" className="absolute bottom-0 left-0 w-full h-auto z-20" />
             </div>
-            <VideoModal 
-                isOpen={isModalOpen} 
-                onClose={closeModal} 
+            <VideoModal
+                isOpen={isModalOpen}
+                onClose={closeModal}
                 videoId="v1M4ydNlgP0"
             />
         </>
@@ -194,10 +219,12 @@ export default function App() {
         fontFamily: "'Inter', sans-serif",
         backgroundColor: '#f0eee6', // Set main page background to match OurStory section
     };
-    
+
     return (
         <div style={bodyStyles} className="antialiased">
+            <TopCurveWave />
             <QuoteSection />
+            <SimpleCurveWave />
             <OurStory />
             <HopeCard />
         </div>
