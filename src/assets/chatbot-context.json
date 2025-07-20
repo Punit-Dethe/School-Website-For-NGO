@@ -1,0 +1,24 @@
+{
+  "name": "Prana Foundation",
+  "location": "Hiranandani Estate",
+  "type": "Non-Profit Organization (NGO)",
+  "focus": "Education for disabled children",
+  "mission": "To provide a safe and inclusive learning environment for disabled children, from the first standard until they are job-ready. We aim to empower them with skills and knowledge, ensuring they have the opportunity to lead independent and fulfilling lives.",
+  "services": {
+    "education": "We offer a comprehensive educational curriculum starting from the first standard. Our focus is on personalized, one-on-one teaching to cater to the unique needs of each child. We prepare students for future employment, equipping them with both academic and vocational skills.",
+    "summer_camps_and_activities": "We organize engaging summer camps and activities designed for disabled children. These events are also open to non-disabled children, promoting an inclusive and diverse community.",
+    "safe_space": "Prana Foundation is a safe haven for children who may not be accepted in mainstream schools. We provide a supportive and nurturing environment where every child feels valued and respected."
+  },
+  "fees_and_charges": {
+    "tuition": "Our educational services are completely free of charge. We are committed to ensuring that financial constraints do not hinder a child's access to quality education.",
+    "processing_fee": "A minimal processing fee of ₹100 may be applicable in some cases, but our core services remain free.",
+    "funding": "We are a 100% non-profit organization. All donations go directly towards funding the school's operations, resources, and programs. We rely on the generosity of our supporters to continue our work."
+  },
+  "donations": {
+    "how_to_donate": "You can support our cause by making a donation through this website. Your contribution, no matter how small, makes a significant impact on the lives of our students.",
+    "impact_of_donations": "Every donation helps us provide essential resources, including specialized teaching materials, assistive technologies, and funding for our various programs and activities."
+  },
+  "contact": {
+    "website": "You are currently on our website. For more information, please explore the different sections or use this chat to ask specific questions."
+  }
+} 

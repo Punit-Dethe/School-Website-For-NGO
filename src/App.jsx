@@ -3,6 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import Header from './components/ResizableNavbar';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
+import Chatbot from './components/Chatbot';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <HomePage />
         </main>
         <Footer />
+        <Chatbot />
       </div>
     </Router>
   );
