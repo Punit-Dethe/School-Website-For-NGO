@@ -111,6 +111,14 @@ const Testimonial = () => {
   return (
     <section className="bg-[#f6f4ee] py-16 font-sans overflow-hidden">
       <div className="relative max-w-7xl mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-5xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+            Know what parents think
+          </h2>
+          <p className="mt-6 text-lg leading-8 text-gray-600">
+            Discover the experiences and feedback from parents who have entrusted us with their children's education and well-being.
+          </p>
+        </div>
         {/* Cards Container */}
         <div className="flex items-center justify-center relative h-[500px]">
           

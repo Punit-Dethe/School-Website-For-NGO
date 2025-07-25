@@ -93,7 +93,7 @@ const Chatbot = () => {
       const newMessages = [...messages];
       newMessages[index] = { text: botText, sender: 'bot' };
       setMessages(newMessages);
-    } catch (error) {
+    } catch (error) { 
       console.error("Error regenerating response:", error);
       const newMessages = [...messages];
       newMessages[index] = { text: "Sorry, I couldn't regenerate a response. Please try again.", sender: 'bot' };
