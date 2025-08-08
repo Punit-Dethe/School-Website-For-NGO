@@ -1,8 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/ResizableNavbar';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
+import ReviewsPage from './pages/ReviewsPage';
 import Chatbot from './components/Chatbot';
 
 function App() {
@@ -11,7 +12,10 @@ function App() {
       <div className="App">
         <Header />
         <main>
-          <HomePage />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/reviews" element={<ReviewsPage />} />
+          </Routes>
         </main>
         <Footer />
         <Chatbot />

@@ -65,6 +65,7 @@ const Navbar = ({ className = '' }) => {
 
   const navItems = [
     { name: 'Home', hoverName: 'Start', link: '/' },
+    { name: 'Reviews', hoverName: 'Reviews', link: '/reviews' },
     { name: 'Curriculum', hoverName: 'Learn', link: '#curriculum' },
     { name: 'About Us', hoverName: 'Story', link: '#about-us' },
     { name: 'Contact Us', hoverName: 'Reach', link: '#contact-us' },
