@@ -73,8 +73,7 @@ const Card = ({ item }) => (
       </svg>
     </div>
   </div>
-);
-
+); 
 const ReviewsPage = () => {
   return (
     <div className="bg-[#F5F3ED] font-sans">
