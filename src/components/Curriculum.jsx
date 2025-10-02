@@ -33,13 +33,13 @@ export default function Curriculum() {
         <div className="bg-[#00816d] font-sans">
             {/* Add Google Fonts for 'Lora' */}
             <style>
-              {`
+                {`
                 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
                 .font-lora { font-family: 'Lora', serif; }
               `}
             </style>
 
-            <section className="py-20 sm:py-24 lg:py-32">
+            <section id="curriculum" className="py-20 sm:py-24 lg:py-32">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     {/* Changed items-center to items-start for top alignment */}
                     <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">

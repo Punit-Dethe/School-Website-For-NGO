@@ -66,7 +66,7 @@ const QuoteSection = () => {
                 {/* Top row of quote cards */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 w-full mb-20">
                     <div className="bg-white rounded-2xl h-80 md:h-72 lg:h-80 flex items-center justify-center text-gray-400 text-center text-lg font-semibold border-2 border-gray-200 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.1)]">
-                        {/* Card Content Placeholder */}
+                        <img className='h-full w-full p-2 rounded-2xl md:h-72 lg:h-80' src="../public/image.png" alt="img"></img>
                     </div>
                     <div className="bg-white rounded-2xl h-80 md:h-72 lg:h-80 flex items-center justify-center text-gray-400 text-center text-lg font-semibold border-2 border-gray-200 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.1)]">
                         {/* Card Content Placeholder */}
@@ -97,7 +97,7 @@ const QuoteSection = () => {
 const OurStory = () => {
     return (
         // Using the requested background color #f6f4ee and adding a gradient
-        <div className="bg-gradient-to-b from-[#f6f4ee] to-[#f0eee6] relative overflow-hidden pb-24">
+        <div id="about-us" className="bg-gradient-to-b from-[#f6f4ee] to-[#f0eee6] relative overflow-hidden pb-24">
             {/* Top S-curve Wave - Positioned at very top to merge with above section */}
 
 
@@ -207,7 +207,7 @@ const HeartVideoPlayer = ({ videoId }) => {
     const heartPath = "M0.5,1 C0.5,1,0,0.7,0,0.3 A0.25,0.25,1,1,1,0.5,0.3 A0.25,0.25,1,1,1,1,0.3 C1,0.7,0.5,1,0.5,1 Z";
 
     return (
-        <div className="relative w-82 h-82 drop-shadow-2xl">
+        <div className="relative w-80 h-80 drop-shadow-2xl">
             {/* SVG definition for clip path */}
             <svg width="0" height="0" className="absolute">
                 <defs>
