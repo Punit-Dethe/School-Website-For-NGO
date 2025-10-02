@@ -3,9 +3,9 @@ import React, { useRef } from 'react';
 // Expanded mock data to 7 items with alternating heights for desktop.
 const activitiesData = [
   {
-    id: 1, title: "Free Summer & Winter Camps", text: "Fun-filled holiday programs designed to engage children in art, craft, dance, music, and storytelling.\nSpecially curated sessions that combine creativity with skill-building.<br/>Inclusive environment where every child participates with joy.", height: 'short'
+    id: 1, title: "Creative Expression Workshop", text: "Interactive sessions focused on artistic exploration through various mediums.\nChildren discover their unique creative voice through guided activities.\nBuilds confidence and self-expression in a supportive environment.", height: 'short'
   },
-  { id: 2, title: "Monthly Free & Low-Cost Workshops", text: "Free community workshops every month to encourage creativity for all.\n Low-cost special sessions in art & craft, music, and life skills for consistent growth. \nFocus on hands-on activities that improve motor skills, imagination, and self-expression.", height: 'tall' },
+  { id: 2, title: "Skill Development Sessions", text: "Comprehensive workshops designed to enhance cognitive and motor abilities.\nStructured activities that promote learning through play and interaction.\nTailored approaches to meet individual developmental needs and goals.", height: 'tall' },
   { id: 3, title: "Life Skills & Vocational Training", text: "Workshops that teach everyday skills like communication, self-care, and simple crafts — helping children grow independent and confident.", height: 'short' },
   { id: 4, title: "Parent-Child Workshops", text: "Interactive sessions where parents and children learn, bond, and discover new ways to support each other’s growth.", height: 'tall' },
   { id: 5, title: "Awareness & Sensitization Programs", text: "Community programs in schools and groups to build empathy, reduce stigma, and promote inclusion for specially-abled children.", height: 'short' },
@@ -37,24 +37,52 @@ const Activities = () => {
           <h1 className="font-dancing-script text-7xl text-black" style={{ fontWeight: 500 }}>
             Workshops at Prana
           </h1>
-          <p className="mt-5 text-base text-gray-700 leading-relaxed">
+          <p className="mt-5 text-base text-gray-700 leading-relaxed mb-10">
             At Prana Foundation, learning goes beyond classrooms. We believe in creating experiences that help children discover their creativity, express themselves freely, and build lifelong confidence. Our workshops are thoughtfully designed for both specially-abled and mainstream children, ensuring equal opportunities to learn, play, and shine.
           </p>
-        </div>
-        <div className="flex items-center gap-10 mt-8 font-light">
-          <span className="text-5xl text-black cursor-pointer select-none" onClick={() => scroll('left')}>&lt;</span>
-          <span className="text-5xl text-black cursor-pointer select-none" onClick={() => scroll('right')}>&gt;</span>
+          
+          <div className="mb-8">
+            <h3 className="text-2xl font-bold text-black mb-3">
+              Free Summer & Winter Camps
+            </h3>
+            <p className="text-gray-700 text-base leading-relaxed mb-6 max-w-4xl">
+              Fun-filled holiday programs designed to engage children in art, craft, dance, music, and storytelling. Specially curated sessions that combine creativity with skill-building in an inclusive environment where every child participates with joy.
+            </p>
+            
+            <h3 className="text-2xl font-bold text-black mb-3">
+              Monthly Free & Low-Cost Workshops
+            </h3>
+            <p className="text-gray-700 text-base leading-relaxed max-w-4xl">
+              Free community workshops every month to encourage creativity for all. Low-cost special sessions in art & craft, music, and life skills for consistent growth. Focus on hands-on activities that improve motor skills, imagination, and self-expression.
+            </p>
+          </div>
         </div>
       </div>
 
       {/* --- MOBILE HEADER --- */}
       <div className="md:hidden mb-8">
         <h1 className="font-dancing-script text-6xl text-black" style={{ fontWeight: 500 }}>
-          Activities
+          Workshops at Prana
         </h1>
-        <p className="mt-4 text-sm text-gray-700 leading-relaxed">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+        <p className="mt-4 text-sm text-gray-700 leading-relaxed mb-8">
+          At Prana Foundation, learning goes beyond classrooms. We believe in creating experiences that help children discover their creativity, express themselves freely, and build lifelong confidence. Our workshops are thoughtfully designed for both specially-abled and mainstream children, ensuring equal opportunities to learn, play, and shine.
         </p>
+        
+        <div className="mb-6">
+          <h3 className="text-xl font-bold text-black mb-2">
+            Free Summer & Winter Camps
+          </h3>
+          <p className="text-gray-700 text-sm leading-relaxed mb-4">
+            Fun-filled holiday programs designed to engage children in art, craft, dance, music, and storytelling. Specially curated sessions that combine creativity with skill-building in an inclusive environment where every child participates with joy.
+          </p>
+          
+          <h3 className="text-xl font-bold text-black mb-2">
+            Monthly Free & Low-Cost Workshops
+          </h3>
+          <p className="text-gray-700 text-sm leading-relaxed">
+            Free community workshops every month to encourage creativity for all. Low-cost special sessions in art & craft, music, and life skills for consistent growth. Focus on hands-on activities that improve motor skills, imagination, and self-expression.
+          </p>
+        </div>
       </div>
 
       {/* --- RESPONSIVE CAROUSEL --- */}
@@ -84,12 +112,21 @@ const Activities = () => {
         })}
       </div>
 
-      {/* --- MOBILE-ONLY NAVIGATION --- */}
-      <div className="md:hidden flex justify-between items-center mt-6">
-        <p className="text-base text-gray-600">Check out our activities</p>
-        <div className="flex items-center gap-6 font-light">
-          <span className="text-4xl text-black cursor-pointer select-none" onClick={() => scroll('left')}>&lt;</span>
-          <span className="text-4xl text-black cursor-pointer select-none" onClick={() => scroll('right')}>&gt;</span>
+      {/* --- NAVIGATION BUTTONS BELOW CARDS --- */}
+      <div className="flex justify-center mt-8">
+        <div className="flex items-center gap-4">
+          <button 
+            onClick={() => scroll('left')}
+            className="w-12 h-12 bg-transparent border-2 border-black text-black rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors duration-300"
+          >
+            <span className="text-2xl font-light">&lt;</span>
+          </button>
+          <button 
+            onClick={() => scroll('right')}
+            className="w-12 h-12 bg-transparent border-2 border-black text-black rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors duration-300"
+          >
+            <span className="text-2xl font-light">&gt;</span>
+          </button>
         </div>
       </div>
 

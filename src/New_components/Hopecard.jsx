@@ -255,9 +255,21 @@ const HeroSection = () => {
                         </button>
                     </div>
 
-                    {/* Right Column - Video */}
-                    <div className="relative flex items-center justify-center">
-                        <HeartVideoPlayer videoId="v1M4ydNlgP0" />
+                    {/* Right Column - Hero Image */}
+                    <div className="relative flex items-center justify-center w-full">
+                        <div className="w-full max-w-2xl">
+                            <img
+                                src="/Image/hero.png"
+                                alt="Children learning and growing at Prana Foundation"
+                                className="w-full h-auto max-w-full object-contain rounded-2xl"
+                                style={{ clipPath: 'none' }}
+                                loading="lazy"
+                                onError={(e) => {
+                                    e.target.onerror = null;
+                                    e.target.src = 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80';
+                                }}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
