@@ -66,7 +66,7 @@ const QuoteSection = () => {
                 {/* Top row of quote cards */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 w-full mb-20">
                     <div className="bg-white rounded-2xl h-80 md:h-72 lg:h-80 flex items-center justify-center text-gray-400 text-center text-lg font-semibold border-2 border-gray-200 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.1)]">
-                        {/* Card Content Placeholder */}
+                        <img className='h-full w-full p-2 rounded-2xl md:h-72 lg:h-80' src="../public/image.png" alt="img"></img>
                     </div>
                     <div className="bg-white rounded-2xl h-80 md:h-72 lg:h-80 flex items-center justify-center text-gray-400 text-center text-lg font-semibold border-2 border-gray-200 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.1)]">
                         {/* Card Content Placeholder */}
