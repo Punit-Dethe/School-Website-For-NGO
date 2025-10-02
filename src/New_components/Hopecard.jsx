@@ -201,35 +201,70 @@ const HopeCard = () => {
     );
 };
 
-// --- Heart-Shaped Video Player ---
-const HeartVideoPlayer = ({ videoId }) => {
-    const videoUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0`;
-    const heartPath = "M0.5,1 C0.5,1,0,0.7,0,0.3 A0.25,0.25,1,1,1,0.5,0.3 A0.25,0.25,1,1,1,1,0.3 C1,0.7,0.5,1,0.5,1 Z";
+// --- Heart-Shaped Image Display ---
+const HeartImageDisplay = ({
+    imageUrl = "https://images.unsplash.com/photo-1544717297-fa95b6ee9643?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    altText = "Children learning and playing",
+    size = "large"
+}) => {
+    const sizeClasses = {
+        small: "w-48 h-48 sm:w-56 sm:h-56",
+        medium: "w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80",
+        large: "w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem]"
+    };
 
     return (
-        <div className="relative w-82 h-82 drop-shadow-2xl">
-            {/* SVG definition for clip path */}
+        <div className={`relative ${sizeClasses[size]} mx-auto`}>
+            {/* SVG for perfect heart shape */}
             <svg width="0" height="0" className="absolute">
                 <defs>
-                    <clipPath id="heart-clip-path" clipPathUnits="objectBoundingBox">
-                        <path d={heartPath} />
+                    <clipPath id="heart-clip" clipPathUnits="objectBoundingBox">
+                        <path d="M0.5,0.9 C0.5,0.9 0.1,0.65 0.1,0.35 C0.1,0.15 0.25,0.05 0.4,0.15 C0.45,0.1 0.5,0.15 0.5,0.15 C0.5,0.15 0.55,0.1 0.6,0.15 C0.75,0.05 0.9,0.15 0.9,0.35 C0.9,0.65 0.5,0.9 0.5,0.9 Z" />
                     </clipPath>
                 </defs>
             </svg>
 
-            {/* The video iframe, clipped to a heart shape without a border */}
-            <div
-                className="w-full h-full"
-                style={{ clipPath: 'url(#heart-clip-path)' }}
-            >
-                <iframe
-                    className="w-full h-full"
-                    src={videoUrl}
-                    frameBorder="0"
-                    allow="autoplay; encrypted-media"
-                    allowFullScreen
-                    style={{ transform: 'scale(3)', transformOrigin: 'center' }}
-                ></iframe>
+            {/* Heart-shaped image container */}
+            <div className="relative w-full h-full">
+                {/* Main image with heart clipping */}
+                <img
+                    src={imageUrl}
+                    alt={altText}
+                    className="w-full h-full object-cover shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105"
+                    style={{
+                        clipPath: 'url(#heart-clip)',
+                        transform: 'scale(1.2)',
+                        transformOrigin: 'center center'
+                    }}
+                    loading="lazy"
+                    onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80';
+                    }}
+                />
+
+                {/* Subtle overlay for better visual appeal */}
+                <div
+                    className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"
+                    style={{ clipPath: 'url(#heart-clip)', transform: 'scale(1.2)', transformOrigin: 'center center' }}
+                />
+
+                {/* Optional floating heart icon */}
+                <div className="absolute top-6 right-6 opacity-0 hover:opacity-100 transition-opacity duration-300 z-10">
+                    <div className="bg-white/90 backdrop-blur-sm rounded-full p-2 shadow-lg">
+                        <svg className="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            {/* Decorative elements around the heart */}
+            <div className="absolute -inset-6 opacity-40 pointer-events-none">
+                <div className="absolute top-2 left-1/4 w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
+                <div className="absolute top-1/3 right-2 w-3 h-3 bg-pink-400 rounded-full animate-pulse delay-1000"></div>
+                <div className="absolute bottom-1/3 left-2 w-2 h-2 bg-blue-400 rounded-full animate-pulse delay-500"></div>
+                <div className="absolute bottom-2 right-1/3 w-2 h-2 bg-green-400 rounded-full animate-pulse delay-1500"></div>
             </div>
         </div>
     );
@@ -255,9 +290,21 @@ const HeroSection = () => {
                         </button>
                     </div>
 
-                    {/* Right Column - Video */}
-                    <div className="relative flex items-center justify-center">
-                        <HeartVideoPlayer videoId="v1M4ydNlgP0" />
+                    {/* Right Column - Hero Image */}
+                    <div className="relative flex items-center justify-center w-full">
+                        <div className="w-full max-w-2xl">
+                            <img
+                                src="/Image/hero.png"
+                                alt="Children learning and growing at Prana Foundation"
+                                className="w-full h-auto max-w-full object-contain rounded-2xl"
+                                style={{ clipPath: 'none' }}
+                                loading="lazy"
+                                onError={(e) => {
+                                    e.target.onerror = null;
+                                    e.target.src = 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80';
+                                }}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
