@@ -56,25 +56,6 @@ const FAQ = () => {
               Foundation?
             </h2>
 
-            {/* Decorative Spheres - positioned below text */}
-            <div className="relative mb-8">
-              {/* Large Purple Gradient Sphere */}
-              <div
-                className="w-40 h-40 rounded-full"
-                style={{
-                  background: 'linear-gradient(135deg, #47c8ba 0%, #2bb3a3 100%)'
-                }}
-              ></div>
-
-              {/* Small Orange Sphere */}
-              <div
-                className="absolute -bottom-4 -right-8 w-8 h-8 rounded-full"
-                style={{
-                  background: '#007a68'
-                }}
-              ></div>
-            </div>
-
             {/* Talk to us Button */}
             <button className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-700 font-medium transition-colors duration-200">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

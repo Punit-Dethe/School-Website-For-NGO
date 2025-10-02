@@ -167,12 +167,7 @@ const Testimonial = () => {
                   </p>
                 </div>
 
-                {/* Right Small Avatar */}
-                <div className="w-20 h-20 rounded-full bg-orange-200 overflow-hidden flex-shrink-0 opacity-70">
-                  <h1 className="text-white text-lg font-bold">
-                    {current.avatar}
-                  </h1>
-                </div>
+                {/* Right Small Avatar Removed */}
               </div>
 
               {/* Testimonial Text */}
@@ -182,17 +177,7 @@ const Testimonial = () => {
                 </p>
               </div>
 
-              {/* Company Logo - Centered */}
-              <div className="flex items-center justify-center gap-4">
-                <div className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center">
-                  <span className="text-white text-lg font-bold">
-                    {current.companyIcon}
-                  </span>
-                </div>
-                <span className="text-2xl font-bold text-gray-900">
-                  {current.companyLogo}
-                </span>
-              </div>
+              {/* Company Logo Section Removed */}
             </div>
           </div>
 
