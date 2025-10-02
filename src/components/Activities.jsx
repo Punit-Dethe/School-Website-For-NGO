@@ -2,13 +2,15 @@ import React, { useRef } from 'react';
 
 // Expanded mock data to 7 items with alternating heights for desktop.
 const activitiesData = [
-  { id: 1, text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy", height: 'short' },
-  { id: 2, text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.", height: 'tall' },
-  { id: 3, text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy", height: 'short' },
-  { id: 4, text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make", height: 'tall' },
-  { id: 5, text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy", height: 'short' },
-  { id: 6, text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.", height: 'tall' },
-  { id: 7, text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy", height: 'short' },
+  {
+    id: 1, title: "Free Summer & Winter Camps", text: "Fun-filled holiday programs designed to engage children in art, craft, dance, music, and storytelling.\nSpecially curated sessions that combine creativity with skill-building.<br/>Inclusive environment where every child participates with joy.", height: 'short'
+  },
+  { id: 2, title: "Monthly Free & Low-Cost Workshops", text: "Free community workshops every month to encourage creativity for all.\n Low-cost special sessions in art & craft, music, and life skills for consistent growth. \nFocus on hands-on activities that improve motor skills, imagination, and self-expression.", height: 'tall' },
+  { id: 3, title: "Life Skills & Vocational Training", text: "Workshops that teach everyday skills like communication, self-care, and simple crafts — helping children grow independent and confident.", height: 'short' },
+  { id: 4, title: "Parent-Child Workshops", text: "Interactive sessions where parents and children learn, bond, and discover new ways to support each other’s growth.", height: 'tall' },
+  { id: 5, title: "Awareness & Sensitization Programs", text: "Community programs in schools and groups to build empathy, reduce stigma, and promote inclusion for specially-abled children.", height: 'short' },
+  { id: 6, title: "Celebration of Festivals & Events", text: "Festive workshops with art, dance, music, and stories that connect children to culture and create joyful shared experiences.", height: 'tall' },
+  { id: 7, title: "Expert-Led Sessions", text: "Special guest trainers and therapists bring fresh skills, creative techniques, and innovative learning opportunities.", height: 'tall' },
 ];
 
 // The three lighter green shades to cycle through.
@@ -32,11 +34,11 @@ const Activities = () => {
       {/* --- DESKTOP HEADER --- */}
       <div className="hidden md:flex justify-between items-start mb-12">
         <div className="max-w-[60%]">
-          <h1 className="font-dancing-script text-7xl text-black" style={{fontWeight: 500}}>
-            Activities
+          <h1 className="font-dancing-script text-7xl text-black" style={{ fontWeight: 500 }}>
+            Workshops at Prana
           </h1>
           <p className="mt-5 text-base text-gray-700 leading-relaxed">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+            At Prana Foundation, learning goes beyond classrooms. We believe in creating experiences that help children discover their creativity, express themselves freely, and build lifelong confidence. Our workshops are thoughtfully designed for both specially-abled and mainstream children, ensuring equal opportunities to learn, play, and shine.
           </p>
         </div>
         <div className="flex items-center gap-10 mt-8 font-light">
@@ -47,7 +49,7 @@ const Activities = () => {
 
       {/* --- MOBILE HEADER --- */}
       <div className="md:hidden mb-8">
-        <h1 className="font-dancing-script text-6xl text-black" style={{fontWeight: 500}}>
+        <h1 className="font-dancing-script text-6xl text-black" style={{ fontWeight: 500 }}>
           Activities
         </h1>
         <p className="mt-4 text-sm text-gray-700 leading-relaxed">
@@ -73,6 +75,7 @@ const Activities = () => {
               }}
             >
               <div className={`bg-white border-2 border-black rounded-2xl mb-5 ${placeholderHeight}`}></div>
+              <h2 className=' text-xl mb-1 font-bold'>{activity.title}</h2>
               <p className="text-[15px] text-gray-800 leading-relaxed px-1">
                 {activity.text}
               </p>

@@ -9,25 +9,25 @@ const FAQ = () => {
       question: 'What makes Prana Foundation different to other organizations?',
       answer: 'Prana Foundation focuses on sustainable community development through education, combining traditional wisdom with modern approaches to create lasting positive impact.'
     },
-    { 
+    {
       question: 'How much does Prana Foundation charge?',
       answer: 'Our services are provided free of charge to communities in need. We are funded through donations and grants to ensure accessibility for all.'
     },
     {
-      question: 'What if I already have a benefits scheme in place?',
-      answer: 'We work alongside existing programs to enhance and complement current initiatives, ensuring no duplication while maximizing community benefit.'
+      question: 'What kind of support do you provide for children?',
+      answer: 'We provide education, therapy, skill development, vocational training, and creative workshops like art, music, dance, and storytelling, ensuring all-round development.'
     },
     {
-      question: 'Do I need another organization?',
-      answer: 'Prana Foundation serves as a collaborative partner, working with existing organizations to amplify impact rather than replace current efforts.'
+      question: 'How much do the programs cost?',
+      answer: 'Many of our workshops are free or low-cost. For specialized programs, we keep fees minimal to ensure accessibility for every family.'
     },
     {
-      question: 'Do I have to sign a long contract?',
-      answer: 'We believe in flexible partnerships. Our agreements are designed to be adaptable to your community\'s changing needs and circumstances.'
+      question: 'Can parents be involved in the programs?',
+      answer: 'Yes! We regularly conduct parent-child workshops and family sessions to strengthen bonds and support the child’s learning journey'
     },
     {
-      question: 'Is my data safe?',
-      answer: 'Yes, we maintain strict data protection protocols and comply with all relevant privacy regulations to ensure your information remains secure.'
+      question: 'How can I contribute or volunteer?',
+      answer: 'You can support us by donating, sponsoring a child, funding a workshop, or volunteering your time and skills with our children.'
     }
   ];
 
@@ -39,7 +39,7 @@ const FAQ = () => {
     <section className="bg-[#eceae4] py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          
+
           {/* Left Side */}
           <div className="relative">
             {/* FAQ Label */}
@@ -48,33 +48,33 @@ const FAQ = () => {
                 FAQ
               </span>
             </div>
-            
+
             {/* Main Heading */}
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12 leading-tight">
               What would you like to<br />
               know about Prana<br />
               Foundation?
             </h2>
-            
+
             {/* Decorative Spheres - positioned below text */}
             <div className="relative mb-8">
               {/* Large Purple Gradient Sphere */}
-              <div 
+              <div
                 className="w-40 h-40 rounded-full"
                 style={{
                   background: 'linear-gradient(135deg, #47c8ba 0%, #2bb3a3 100%)'
                 }}
               ></div>
-              
+
               {/* Small Orange Sphere */}
-              <div 
+              <div
                 className="absolute -bottom-4 -right-8 w-8 h-8 rounded-full"
                 style={{
                   background: '#007a68'
                 }}
               ></div>
             </div>
-            
+
             {/* Talk to us Button */}
             <button className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-700 font-medium transition-colors duration-200">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -83,7 +83,7 @@ const FAQ = () => {
               Talk to us
             </button>
           </div>
-          
+
           {/* Right Side - FAQ Items */}
           <div className="space-y-4">
             {faqs.map((faq, index) => (
@@ -97,9 +97,8 @@ const FAQ = () => {
                     {faq.question}
                   </span>
                   <svg
-                    className={`w-5 h-5 text-white transition-transform duration-200 ${
-                      activeIndex === index ? 'rotate-180' : ''
-                    }`}
+                    className={`w-5 h-5 text-white transition-transform duration-200 ${activeIndex === index ? 'rotate-180' : ''
+                      }`}
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -112,7 +111,7 @@ const FAQ = () => {
                     />
                   </svg>
                 </button>
-                
+
                 {/* Answer */}
                 <AnimatePresence>
                   {activeIndex === index && (

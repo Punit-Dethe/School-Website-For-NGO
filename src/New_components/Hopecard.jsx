@@ -60,7 +60,7 @@ const TopCurveWave = () => (
 const QuoteSection = () => {
     return (
         <section className="relative w-full bg-[#eceae4] pt-20 sm:pt-24 lg:pt-32 pb-32">
-            
+
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
                 {/* Top row of quote cards */}
@@ -79,10 +79,10 @@ const QuoteSection = () => {
                 {/* Quote heading and description */}
                 <div className="w-full text-center">
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gray-800 font-['MouldyCheeseRegular-WyMWG','Outfit',sans-serif]">
-                        Add a <span className="underline underline-offset-4 decoration-[#6CC4E3]">Quote</span>
+                        Empowering Every <span className="underline underline-offset-4 decoration-[#6CC4E3]">Child’s Journey</span>
                     </h2>
                     <p className="text-gray-600 text-base md:text-lg lg:text-xl max-w-5xl mx-auto leading-relaxed">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                        At Prana, we believe that every child, regardless of their physical or mental challenges, carries within them a spark of limitless potential. With patience, care, and the right opportunities, that spark can become a guiding light—helping them discover new skills, build confidence, and grow into individuals who inspire the world. Our mission is not just to teach, but to nurture, uplift, and remind every child that they are capable of achieving dreams beyond boundaries.
                     </p>
                 </div>
             </div>
@@ -99,7 +99,7 @@ const OurStory = () => {
         // Using the requested background color #f6f4ee and adding a gradient
         <div className="bg-gradient-to-b from-[#f6f4ee] to-[#f0eee6] relative overflow-hidden pb-24">
             {/* Top S-curve Wave - Positioned at very top to merge with above section */}
-            
+
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-32 grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
                 {/* Left Column: Image and Text */}
@@ -108,8 +108,8 @@ const OurStory = () => {
                         <div className="bg-gray-200 h-full w-full rounded-xl"></div>
                     </div>
                     <div>
-                        <p className="text-gray-600 text-sm">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make.
+                        <p className="text-gray-600 text-lg">
+                            Today, Prana is more than a school, it is a community of hope, growth, and possibilities. Every day, we work to help children discover their strengths, unlock their potential, and take steps towards a brighter future.
                         </p>
                     </div>
                 </div>
@@ -125,7 +125,9 @@ const OurStory = () => {
                         Our Story
                     </h2>
                     <p className="mt-6 text-lg text-gray-600">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.
+                        What began as a small child development and physiotherapy centre in Thane has now grown into a holistic learning and support space for children with physical and mental challenges.<br></br>
+                        <br></br>
+                        Founded by Dr. Payal Jain, a passionate physiotherapist with a vision to help children live beyond limitations, the journey started under the name Pra-Sadh Physio Fitness & Child Development Centre. At the time, the focus was on physiotherapy, pediatric care, and rehabilitation, helping children overcome developmental delays, mobility issues, and neurological challenges.
                     </p>
                 </div>
             </div>

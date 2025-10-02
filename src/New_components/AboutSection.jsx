@@ -11,12 +11,12 @@ const AboutSection = () => {
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
           </p>
         </div>
-        
+
         {/* Center: large box */}
         <div className="flex flex-col items-center">
           <div className="bg-white rounded-2xl w-full h-96 lg:h-[28rem] border-2 border-gray-200 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.1)]" />
         </div>
-        
+
         {/* Right: Our Story */}
         <div className="flex flex-col items-center lg:items-start text-center lg:text-left lg:pt-8">
           <h3 className="text-3xl md:text-4xl font-bold mb-6 font-['MouldyCheeseRegular-WyMWG','Outfit',sans-serif] underline underline-offset-4 decoration-[#000]">

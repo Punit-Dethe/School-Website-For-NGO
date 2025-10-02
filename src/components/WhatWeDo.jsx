@@ -2,51 +2,51 @@ import React, { useRef, useEffect, useState } from "react";
 
 const sections = [
   {
-    title: "Safe Rides",
+    title: "Child-Centered Approach",
     description:
-      "Prioritizing the safety of female employees is paramount for all corporations. We ensure secure transportation with trained drivers and real-time tracking.",
+      "Every program at Prana is designed around the unique needs and abilities of each child, ensuring they grow at their own pace with confidence.",
     imageIndex: 0,
   },
   {
-    title: "On Time Pickup",
+    title: "One-on-One Attention",
     description:
-      "Our dedicated on-time pickup service ensures that you arrive at the office promptly, helping maintain productivity and work schedules.",
+      "We ensure every child receives personal guidance, care, and support to help them grow with confidence.",
     imageIndex: 0,
   },
   {
-    title: "Hygienic Cabs",
+    title: "Family as Partners",
     description:
-      "We prioritize cleanliness in our cabs, ensuring they are sanitized after each ride for your health and peace of mind.",
+      "Parents and families are active partners in a child’s journey, guided with resources, counseling, and continuous support.",
     imageIndex: 1,
   },
   {
-    title: "Cost Efficient",
+    title: "Inclusive Environment",
     description:
-      "We strategize rides to minimize company expenses, employing a point-to-point billing system that optimizes transportation costs.",
+      "Prana fosters a safe and inclusive community where children with disabilities learn, play, and thrive without barriers.",
     imageIndex: 1,
   },
   {
-    title: "Preventive Maintenance",
+    title: "Empowerment Through Skills",
     description:
-      "Our fleet preventive maintenance policy constrains us to ensure that vehicles are checked at proper intervals for safety and reliability.",
+      "From communication to vocational training, we help children discover talents that empower them to lead independent and fulfilling lives.",
     imageIndex: 2,
   },
   {
-    title: "24/7 Customer Support",
+    title: "Beyond Therapy",
     description:
-      "We provide exceptional customer support through responsive inquiries, attentive in-ride experiences, and immediate assistance whenever needed.",
+      "We don’t just provide medical or physical support — we integrate skill-building, creative learning, and emotional well-being into our daily activities.",
     imageIndex: 2,
   },
   {
-    title: "Real-time Tracking",
+    title: "Experienced & Caring Team",
     description:
-      "Monitor your ride in real-time with our advanced GPS tracking system, ensuring transparency and peace of mind for both employees and employers.",
+      "Our trained professionals bring expertise, patience, and compassion to every child’s journey.",
     imageIndex: 3,
   },
   {
-    title: "Flexible Scheduling",
+    title: "Empowerment Through Skills",
     description:
-      "Adapt to changing work schedules with our flexible booking system that accommodates last-minute changes and varying shift timings.",
+      "From communication to vocational training, we help children discover talents that prepare them for an independent future.",
     imageIndex: 3,
   },
 ];
@@ -111,7 +111,7 @@ const WhatWeDo = () => {
               What makes us different ?
             </h2>
             <p className="text-gray-400 mt-4 md:mt-2 max-w-xs text-base md:text-lg">
-            At Prana Foundation, we provide education and care for children with disabilities, helping them learn, grow, and build confidence in a supportive environment.
+              At Prana Foundation, we provide education and care for children with disabilities, helping them learn, grow, and build confidence in a supportive environment.
             </p>
           </div>
         </div>

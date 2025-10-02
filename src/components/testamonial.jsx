@@ -3,44 +3,44 @@ import React, { useState } from "react";
 // Testimonial data matching the reference design
 const testimonials = [
   {
-    name: "Annemarie Buitelaar",
-    title: "CEO Adevinta Benelux (Marktplaats & 2dehands.be)",
-    testimonial: "We've been successfully collaborating with OPP for years to ensure that millions of Marktplaats users enjoy a seamless and secure payment experience.",
-    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
-    companyLogo: "Marktplaats",
-    companyIcon: "M"
+    name: "Anjali Mehra",
+    title: "Parent",
+    testimonial: "Prana Foundation has been a blessing for my son. The one-on-one attention he receives has boosted his confidence and learning. We feel truly supported here.",
+    avatar: "A",
+    companyLogo: "Prana",
+    companyIcon: "P"
   },
   {
-    name: "Sarah Johnson", 
-    title: "Director of Operations, TechCorp",
-    testimonial: "The partnership with Prana Foundation has transformed how we approach community engagement and sustainable development in our operations.",
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
-    companyLogo: "TechCorp",
-    companyIcon: "T"
+    name: "Rajesh Iyer",
+    title: "Volunteer",
+    testimonial: "Volunteering at Prana has been one of the most rewarding experiences of my life. The children are so full of energy and creativity, and the team genuinely cares for every child",
+    avatar: "R",
+    companyLogo: "Prana",
+    companyIcon: "P"
   },
   {
-    name: "Michael Chen",
-    title: "Founder & CEO, GreenTech Solutions", 
-    testimonial: "Prana Foundation's innovative approach to education and community development has been instrumental in our mission to create positive social impact.",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
-    companyLogo: "GreenTech",
-    companyIcon: "G"
+    name: "Sneha Kulkarni",
+    title: "Parent",
+    testimonial: "My daughter loves the art and dance workshops! She has found new ways to express herself, and I’ve seen such a positive change in her personality.",
+    avatar: "S",
+    companyLogo: "Prana",
+    companyIcon: "P"
   },
   {
-    name: "Emma Rodriguez",
-    title: "Head of Sustainability, EcoVentures",
+    name: "Vikram Sharma",
+    title: "Donor",
     testimonial: "Working with Prana Foundation has been transformative for our community outreach programs and environmental initiatives.",
-    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
-    companyLogo: "EcoVentures", 
-    companyIcon: "E"
+    avatar: "V",
+    companyLogo: "Prana",
+    companyIcon: "P"
   },
   {
-    name: "David Park",
-    title: "Managing Director, Innovation Labs",
-    testimonial: "The collaborative approach and expertise of Prana Foundation has helped us achieve remarkable results in our social impact projects.",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
-    companyLogo: "Innovation Labs",
-    companyIcon: "I"
+    name: "Pooja Nair",
+    title: "Parent",
+    testimonial: "The therapists and teachers at Prana treat every child with so much patience and care. My child looks forward to going every single day!",
+    avatar: "P",
+    companyLogo: "Prana",
+    companyIcon: "P"
   }
 ];
 
@@ -98,7 +98,7 @@ const Testimonial = () => {
   const getVisibleCards = () => {
     const prevIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
     const nextIndex = (currentIndex + 1) % testimonials.length;
-    
+
     return {
       prev: testimonials[prevIndex],
       current: testimonials[currentIndex],
@@ -121,17 +121,15 @@ const Testimonial = () => {
         </div>
         {/* Cards Container */}
         <div className="flex items-center justify-center relative h-[500px]">
-          
+
           {/* Left Partial Card */}
           <div className="absolute left-0 w-[500px] h-[400px] transform -translate-x-40 opacity-25">
             <div className="bg-white rounded-3xl shadow-lg p-10 h-full">
               <div className="flex items-start gap-6 mb-8">
                 <div className="w-24 h-24 rounded-full bg-orange-200 overflow-hidden flex-shrink-0">
-                  <img
-                    src={prev.avatar}
-                    alt={prev.name}
-                    className="w-full h-full object-cover"
-                  />
+                  <h1 className="text-white text-lg font-bold">
+                    {testimonials.avatar}
+                  </h1>
                 </div>
                 <div className="flex-1">
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">
@@ -154,13 +152,11 @@ const Testimonial = () => {
               <div className="flex items-start gap-8 mb-8">
                 {/* Main Avatar */}
                 <div className="w-32 h-32 rounded-full bg-orange-200 overflow-hidden flex-shrink-0">
-                  <img
-                    src={current.avatar}
-                    alt={current.name}
-                    className="w-full h-full object-cover"
-                  />
+                  <h1 className="text-white text-lg font-bold">
+                    {testimonials.avatar}
+                  </h1>
                 </div>
-                
+
                 {/* Name and Title */}
                 <div className="flex-1 pt-2">
                   <h3 className="text-3xl font-bold text-gray-900 mb-3 leading-tight">
@@ -170,24 +166,22 @@ const Testimonial = () => {
                     {current.title}
                   </p>
                 </div>
-                
+
                 {/* Right Small Avatar */}
                 <div className="w-20 h-20 rounded-full bg-orange-200 overflow-hidden flex-shrink-0 opacity-70">
-                  <img
-                    src={current.avatar}
-                    alt={current.name}
-                    className="w-full h-full object-cover"
-                  />
+                  <h1 className="text-white text-lg font-bold">
+                    {current.avatar}
+                  </h1>
                 </div>
               </div>
-              
+
               {/* Testimonial Text */}
               <div className="mb-10">
                 <p className="text-xl text-gray-800 leading-relaxed">
                   {current.testimonial}
                 </p>
               </div>
-              
+
               {/* Company Logo - Centered */}
               <div className="flex items-center justify-center gap-4">
                 <div className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center">
@@ -206,12 +200,10 @@ const Testimonial = () => {
           <div className="absolute right-0 w-[500px] h-[400px] transform translate-x-40 opacity-25">
             <div className="bg-white rounded-3xl shadow-lg p-10 h-full">
               <div className="flex items-start gap-6 mb-8">
-                <div className="w-24 h-24 rounded-full bg-orange-200 overflow-hidden flex-shrink-0">
-                  <img
-                    src={next.avatar}
-                    alt={next.name}
-                    className="w-full h-full object-cover"
-                  />
+                <div className="w-24 h-24 rounded-full bg-orange-200 overflow-hidden flex-shrink-0 justify-center items-center">
+                  <h1 className="text-white text-lg font-bold">
+                    {testimonials.avatar}
+                  </h1>
                 </div>
                 <div className="flex-1">
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">
